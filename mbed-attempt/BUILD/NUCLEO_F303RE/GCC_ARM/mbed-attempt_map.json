@@ -1,0 +1,120 @@
+[
+    {
+        "module": "[fill]", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 4, 
+            ".bss": 21, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 82
+        }
+    }, 
+    {
+        "module": "[lib]/c.a", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 0, 
+            ".bss": 56, 
+            ".data": 2472, 
+            ".bss-delta": 0, 
+            ".text": 25332
+        }
+    }, 
+    {
+        "module": "[lib]/gcc.a", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 0, 
+            ".bss": 0, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 3176
+        }
+    }, 
+    {
+        "module": "[lib]/misc", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 0, 
+            ".bss": 28, 
+            ".data": 4, 
+            ".bss-delta": 0, 
+            ".text": 208
+        }
+    }, 
+    {
+        "module": "main.o", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 108, 
+            ".bss": 20644, 
+            ".data": 0, 
+            ".bss-delta": 20496, 
+            ".text": 380
+        }
+    }, 
+    {
+        "module": "mbed-os/drivers", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 36, 
+            ".bss": 40, 
+            ".data": 0, 
+            ".bss-delta": 0, 
+            ".text": 184
+        }
+    }, 
+    {
+        "module": "mbed-os/hal", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": -44, 
+            ".bss": 66, 
+            ".data": 4, 
+            ".bss-delta": 0, 
+            ".text": 1366
+        }
+    }, 
+    {
+        "module": "mbed-os/platform", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 0, 
+            ".bss": 220, 
+            ".data": 260, 
+            ".bss-delta": 0, 
+            ".text": 3060
+        }
+    }, 
+    {
+        "module": "mbed-os/rtos", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 238, 
+            ".bss": 5973, 
+            ".data": 168, 
+            ".bss-delta": 0, 
+            ".text": 6912
+        }
+    }, 
+    {
+        "module": "mbed-os/targets", 
+        "size": {
+            ".data-delta": 0, 
+            ".text-delta": 618, 
+            ".bss": 736, 
+            ".data": 4, 
+            ".bss-delta": 8, 
+            ".text": 12252
+        }
+    }, 
+    {
+        "summary": {
+            "static_ram": 30696, 
+            "total_flash_delta": 960, 
+            "static_ram_delta": 20504, 
+            "total_flash": 55864
+        }
+    }
+]
