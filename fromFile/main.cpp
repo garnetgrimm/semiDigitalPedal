@@ -1,8 +1,25 @@
 #include <stdio.h>
 #include "AudioFile.h"
+#include "math.h"
 AudioFile<double> audioFile;
+void fuzz(double gain, double volume, double* sample) {
+    double threshold = 1/gain;
+    if(*sample < -threshold) *sample = -threshold;
+    if(*sample > threshold) *sample = threshold;
+    *sample *= volume;
+}
+void reverb() {
+
+}
+void chorus() {
+
+}
 int main() {
     audioFile.load ("clean.wav");
+    if(!audioFile.isMono()) {
+        printf("Bad format, removing channel 1.\r\n");
+        audioFile.samples.resize(1);
+    }
     int sampleRate = audioFile.getSampleRate();
     int bitDepth = audioFile.getBitDepth();
 
@@ -17,12 +34,19 @@ int main() {
     audioFile.printSummary();
     int channel = 0;
 
+    double gain = 60;
+    double volume = 10;
     for (int i = 0; i < numSamples; i++)
     {
-        double currentSample = audioFile.samples[channel][i];
-        char buf[32];
-        sprintf(buf, "%f\r\n", currentSample);
+        //float sample = sinf (2. * M_PI * ((float) i / sampleRate) * frequency); 
+        fuzz(60,10,&audioFile.samples[channel][i]);
+
+        //double currentSample = audioFile.samples[channel][i];
+        //char buf[32];
+        //sprintf(buf, "%f\r\n", currentSample);
         //printf(buf);
     }
+
+    audioFile.save ("newfile.wav", AudioFileFormat::Wave);
     return 0;
 }

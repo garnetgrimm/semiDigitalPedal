@@ -20,6 +20,8 @@
  */
 //=======================================================================
 
+//https://github.com/adamstark/AudioFile
+
 #ifndef _AS_AudioFile_h
 #define _AS_AudioFile_h
 
