@@ -14,6 +14,15 @@ void reverb() {
 void chorus() {
 
 }
+void octave() {
+
+}
+void overdrive() {
+
+}
+void tremolo(double freq, double t, double* sample) {
+    *sample *= sinf (2. * M_PI * ((float) t / audioFile.getSampleRate()) * freq); 
+}
 int main() {
     audioFile.load ("clean.wav");
     if(!audioFile.isMono()) {
@@ -39,7 +48,8 @@ int main() {
     for (int i = 0; i < numSamples; i++)
     {
         //float sample = sinf (2. * M_PI * ((float) i / sampleRate) * frequency); 
-        fuzz(60,10,&audioFile.samples[channel][i]);
+        //fuzz(60,10,&audioFile.samples[channel][i]);
+        tremolo(2, i, &audioFile.samples[channel][i]);
 
         //double currentSample = audioFile.samples[channel][i];
         //char buf[32];
