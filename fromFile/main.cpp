@@ -3,14 +3,19 @@
 #include "GraphFFT.h"
 #include <math.h>
 AudioFile<double> audioFile;
+const int bufferSize = 23000;
+double buffer[bufferSize] = {1.0};
+int idx = 0;
 void fuzz(double gain, double volume, double* sample) {
     double threshold = 1/gain;
     if(*sample < -threshold) *sample = -threshold;
     if(*sample > threshold) *sample = threshold;
     *sample *= volume;
 }
-void reverb() {
-
+void reverb(double* sample) {
+    *sample += (buffer[idx % bufferSize] * .3);
+    buffer[idx % bufferSize] = *sample;
+    idx++;
 }
 void chorus() {
 
@@ -52,6 +57,7 @@ int main() {
         float sample = sinf (2. * M_PI * ((float) i / sampleRate) * 440);
         //fuzz(60,10,&audioFile.samples[channel][i]);
         //tremolo(2, i, &audioFile.samples[channel][i]);
+        //reverb(&audioFile.samples[channel][i]);
 
         audioFile.samples[channel][i] = sample;
         //double currentSample = audioFile.samples[channel][i];

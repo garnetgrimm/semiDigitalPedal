@@ -1,5 +1,7 @@
 #include "GraphFFT.h"
 
+using namespace std;
+
 complex<double>* graphFFT::doFFT() {
   int FFTBuffSize = 128;
   int sampleRate = audioFile->getSampleRate();
@@ -9,7 +11,7 @@ complex<double>* graphFFT::doFFT() {
   {
     vec[i] = sinf(2. * M_PI * ((FFTtime+i)/sampleRate) * (440+FFTtime));
   }
-  FFT(vec, FFTBuffSize, 1);
+  DSP::FFT(vec, FFTBuffSize, 1);
   complex<double> normalized[FFTBuffSize];
   float biggestFound = 0;
   for (int i = 0; i < FFTBuffSize; i++)

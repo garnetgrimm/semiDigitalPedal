@@ -11,6 +11,7 @@ class DSP {
   static int reverse(int N, int n);
   static void sort(std::complex<double>* f1, int N);
   static void transform(std::complex<double>* f, int N);
+public:
   static void FFT(std::complex<double>* f, int N, double d);
 };
 
