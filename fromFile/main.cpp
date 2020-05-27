@@ -3,9 +3,13 @@
 #include "math.h"
 
 AudioFile<double> audioFile;
-const int bufferSize = 23000;
+const int bufferSize = 45000;
+const int bufferSize2 = 35000;
 double buffer[bufferSize] = {1.0};
 int index = 0;
+
+double chorusBuffer[bufferSize] = {0};
+double chorusBuffer2[bufferSize2] = {0};
 
 void fuzz(double gain, double volume, double* sample) {
     double threshold = 1/gain;
@@ -18,20 +22,34 @@ void reverb(double* sample) {
     buffer[index % bufferSize] = *sample;
     index++;
 }
-void chorus() {
-
+void chorus(double* sample) {
+    double chorusSample = chorusBuffer[index % bufferSize];
+    chorusBuffer[index % bufferSize] = *sample;
+    double chorusSample2 = chorusBuffer2[index % bufferSize2];
+    chorusBuffer2[index % bufferSize2] = *sample;
+    *sample += (chorusSample  + chorusSample2 );
+    int increase = (5.0 * rand()) / RAND_MAX;
+    increase = 5;
+    index += increase;
 }
+
 void octave() {
 
 }
-void overdrive() {
 
+void overdrive(double gain, double volume, double* sample) {
+    double threshold = 1 / gain;
+    *sample = atan(*sample * (10 / M_PI)) * threshold * (2.0 / M_PI);
+    *sample *= volume;
 }
+
 void tremolo(double freq, double t, double* sample) {
     *sample *= sinf (2. * M_PI * ((float) t / audioFile.getSampleRate()) * freq); 
 }
+
 int main() {
     audioFile.load ("clean.wav");
+    //audioFile.load ("the_best_song_ever.wav");
     if(!audioFile.isMono()) {
         printf("Bad format, removing channel 1.\r\n");
         audioFile.samples.resize(1);
@@ -56,7 +74,7 @@ int main() {
     {
         //float sample = sinf (2. * M_PI * ((float) i / sampleRate) * frequency); 
         //fuzz(60,10,&audioFile.samples[channel][i]);
-        reverb(&audioFile.samples[channel][i]);
+        overdrive(60, 100, &audioFile.samples[channel][i]);
 
         //double currentSample = audioFile.samples[channel][i];
         //char buf[32];
