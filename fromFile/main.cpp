@@ -50,11 +50,13 @@ int main() {
     audioFile.printSummary();
     int channel = 0;
 
-    /*double gain = 60;
+    double gain = 60;
     double volume = 10;
     for (int i = 0; i < numSamples; i++)
     {
-        float sample = sinf (2. * M_PI * ((float) i / sampleRate) * 440);
+        float sin1 = 0.2 * sinf (2. * M_PI * ((float) i / sampleRate) * (440+(500*((float)i/sampleRate))));
+        float sin2 = 0.2 * sinf (2. * M_PI * ((float) i / sampleRate) * (10000-(700*((float)i/sampleRate))));
+        float sample = sin1 + sin2;
         //fuzz(60,10,&audioFile.samples[channel][i]);
         //tremolo(2, i, &audioFile.samples[channel][i]);
         //reverb(&audioFile.samples[channel][i]);
@@ -64,10 +66,11 @@ int main() {
         //char buf[32];
         //sprintf(buf, "%f\r\n", currentSample);
         //printf(buf);
-    }*/
-    graphFFT gfft;
-    gfft.drawGraph(&audioFile);
+    }
 
-    //audioFile.save ("440Hz.wav", AudioFileFormat::Wave);*/
+    audioFile.save ("IncHz.wav", AudioFileFormat::Wave);
+
+    graphFFT gfft;
+    gfft.drawGraph("IncHz.wav");
     return 0;
 }

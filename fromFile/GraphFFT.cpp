@@ -1,27 +1,41 @@
 #include "GraphFFT.h"
 
 using namespace std;
+using namespace std::chrono;
 
 complex<double>* graphFFT::doFFT() {
+  auto now = high_resolution_clock::now();
+  double duration = std::chrono::duration<double>(now-lastRun).count();
+  FFTtime+=(duration);
   int FFTBuffSize = 128;
-  int sampleRate = audioFile->getSampleRate();
+  int sampleRate = audioFile.getSampleRate();
   complex<double> vec[FFTBuffSize];
-  FFTtime++;
   for (int i = 0; i < FFTBuffSize; i++)
   {
-    vec[i] = sinf(2. * M_PI * ((FFTtime+i)/sampleRate) * (440+FFTtime));
+    int idx = (FFTtime*sampleRate) - i;
+    if(idx < 0) idx = 0;
+    if(idx > audioFile.getNumSamplesPerChannel()) running = 0;
+    vec[i] = audioFile.samples[0][idx];
   }
   DSP::FFT(vec, FFTBuffSize, 1);
-  complex<double> normalized[FFTBuffSize];
-  float biggestFound = 0;
-  for (int i = 0; i < FFTBuffSize; i++)
+  int HalfFFTBuffSize = FFTBuffSize/2;
+  complex<double> normalized[HalfFFTBuffSize];
+  int biggestFound = 0;
+  for (int i = 0; i < HalfFFTBuffSize; i++)
   {
-    if(abs(vec[i].real()) > biggestFound) biggestFound = abs(vec[i].real());
+    if(abs(vec[i].real()) > abs(vec[biggestFound].real())) biggestFound = i;
   }
-  for (int i = 0; i < FFTBuffSize; i++)
+  for (int i = 0; i < HalfFFTBuffSize; i++)
   {
-    normalized[i] = complex<double>((i*sampleRate/FFTBuffSize), abs(vec[i].real())/biggestFound);
+    normalized[i] = complex<double>((i*sampleRate/HalfFFTBuffSize), abs(vec[i].real())/abs(vec[biggestFound].real()));
   }
+  float currHighestFreq = normalized[biggestFound].real();
+  if(highestFreq == 0) highestFreq = currHighestFreq;
+  /*if((int)currHighestFreq / (int)highestFreq != 2 && (int)currHighestFreq != (int)highestFreq) {
+    highestFreq = normalized[biggestFound].real();
+    cout << highestFreq << endl;
+  }*/
+  lastRun = high_resolution_clock::now();
   return normalized;
 }
 
@@ -54,11 +68,23 @@ void graphFFT::drawRect(SDL_Renderer* rend, float x, float y, float width, float
   SDL_RenderFillRect(rend, &rect);
 }
 
-void graphFFT::drawGraph(AudioFile<double>* audioFile) {
-    this->audioFile = audioFile;
+void graphFFT::drawGraph(char* filename) {
+    audioFile.load(filename);
+
     SDL_Window *window;                    // Declare a pointer
     SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL2
+    SDL_Init(SDL_INIT_AUDIO);
     TTF_Init();
+
+    SDL_AudioSpec wavSpec;
+    Uint32 wavLength;
+    Uint8 *wavBuffer;
+    SDL_LoadWAV(filename, &wavSpec, &wavBuffer, &wavLength);
+    SDL_AudioDeviceID deviceId = SDL_OpenAudioDevice(NULL, 0, &wavSpec, NULL, 0);
+    int success = SDL_QueueAudio(deviceId, wavBuffer, wavLength);
+    //SDL_PauseAudioDevice(deviceId, 0);
+    lastRun = std::chrono::high_resolution_clock::now();
+
     // Create an application window with the following settings:
     window = SDL_CreateWindow(
         "An SDL2 window",                  // window title
@@ -76,18 +102,15 @@ void graphFFT::drawGraph(AudioFile<double>* audioFile) {
     SDL_Renderer* rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     font = TTF_OpenFont("CascadiaMono.ttf", 128);
     // The window is open: could enter program loop here (see SDL_PollEvent())
-    int running = 1;
     complex<double>* samples = (complex<double>*) calloc(128,sizeof(complex<double>));
     while(running) {
 
       SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
       SDL_RenderClear(rend);
       complex<double>* samples = doFFT();
-      for(int row = 0; row < 128; row++) {
-        drawRect(rend,row*(640/128),480,(640/128),-samples[row].imag()*480,0xff00ff);
-        /*char buf[32];
-        sprintf(buf, "%d\r\n", (int)samples[row].real());
-        drawText(rend,row*(640/128),480-(samples[row].imag()*480),buf);*/
+      int sCount = 128/2;
+      for(int row = 0; row < sCount; row++) {
+        drawRect(rend,row*(640/sCount),480,(640/sCount),-samples[row].imag()*480,0xff00ff);
       }
       SDL_RenderPresent(rend);
 
@@ -100,6 +123,9 @@ void graphFFT::drawGraph(AudioFile<double>* audioFile) {
           }
         }
     }
+
+    SDL_CloseAudioDevice(deviceId);
+    SDL_FreeWAV(wavBuffer);
     // Close and destroy the window
     SDL_DestroyWindow(window);
     // Clean up
