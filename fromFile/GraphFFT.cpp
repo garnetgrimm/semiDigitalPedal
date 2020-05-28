@@ -3,32 +3,25 @@
 using namespace std;
 using namespace std::chrono;
 
-void graphFFT::getDataFFT(complex<double>* vec) {
-  auto now = high_resolution_clock::now();
-  double duration = std::chrono::duration<double>(now-lastRun).count();
-  lastRun = now;
-  FFTtime+=(duration);
+void graphFFT::getDataFFT(complex<double>* vec, double t) {
   for (int i = 0; i < FFT_BUFF_SIZE; i++)
   {
-    int idx = (FFTtime*audioFile.getSampleRate()) - i;
+    int idx = (t*audioFile.getSampleRate()) - i;
     if(idx < 0) idx = 0;
-    if(idx > audioFile.getNumSamplesPerChannel()) running = 0;
+    if(idx > audioFile.getNumSamplesPerChannel()) break;
     vec[i] = audioFile.samples[0][idx];
   }
 }
 
-void graphFFT::prepGraphFFT(complex<double>* normalized) {
-  complex<double> vec[FFT_BUFF_SIZE];
-  getDataFFT(vec);
+void graphFFT::organizeFFT(complex<double>* vec, FFTdata* data) {
   DSP::FFT(vec, FFT_BUFF_SIZE, 1);
-
-  int half_buff = FFT_BUFF_SIZE/2;
-
-  for (int i = 0; i < half_buff; i++)
+  for (int i = 0; i < FFT_BUFF_SIZE/2; i++)
   {
-    normalized[i] = complex<double>((i*audioFile.getSampleRate()/half_buff), abs(vec[i].real()));
+    double freq = (i*audioFile.getSampleRate()/(FFT_BUFF_SIZE/2));
+    double amplitude = vec[i].real();
+    double phase = vec[i].imag();
+    data[i] = FFTdata(freq,amplitude,phase);
   }
-  lastRun = high_resolution_clock::now();
 }
 
 void graphFFT::drawText(SDL_Renderer *rend, int x, int y, char *text) {
@@ -60,6 +53,13 @@ void graphFFT::drawRect(SDL_Renderer* rend, float x, float y, float width, float
   SDL_RenderFillRect(rend, &rect);
 }
 
+void graphFFT::playAudio(SDL_AudioDeviceID deviceId, uint32_t wavLength, uint8_t *wavBuffer) {
+  int success = SDL_QueueAudio(deviceId, wavBuffer, wavLength);
+  SDL_PauseAudioDevice(deviceId, 0);
+  audioStart = std::chrono::high_resolution_clock::now();
+  playingAudio = 1;
+}
+
 void graphFFT::drawGraph(char* filename) {
     audioFile.load(filename);
 
@@ -73,9 +73,6 @@ void graphFFT::drawGraph(char* filename) {
     Uint8 *wavBuffer;
     SDL_LoadWAV(filename, &wavSpec, &wavBuffer, &wavLength);
     SDL_AudioDeviceID deviceId = SDL_OpenAudioDevice(NULL, 0, &wavSpec, NULL, 0);
-    int success = SDL_QueueAudio(deviceId, wavBuffer, wavLength);
-    //SDL_PauseAudioDevice(deviceId, 0);
-    lastRun = std::chrono::high_resolution_clock::now();
 
     // Create an application window with the following settings:
     window = SDL_CreateWindow(
@@ -99,13 +96,17 @@ void graphFFT::drawGraph(char* filename) {
     // The window is open: could enter program loop here (see SDL_PollEvent())
     //complex<double>* samples = (complex<double>*) calloc(FFT_BUFF_SIZE,sizeof(complex<double>));
     int sCount = FFT_BUFF_SIZE/2;
-    complex<double> samples[sCount];
+    complex<double> vec[FFT_BUFF_SIZE];
+    FFTdata samples[sCount];
     while(running) {
       SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
       SDL_RenderClear(rend);
-      prepGraphFFT(samples);
+      auto now = high_resolution_clock::now();
+      double playTime = std::chrono::duration<double>(now-audioStart).count();
+      getDataFFT(vec, playTime);
+      organizeFFT(vec, samples);
       for(int row = 0; row < sCount; row++) {
-        drawRect(rend,row*(WINDOW_WIDTH/sCount),WINDOW_HEIGHT,(WINDOW_WIDTH/sCount),-(samples[row].imag()*WINDOW_HEIGHT)/MAX_VOL,0xff00ff);
+        if(playingAudio) drawRect(rend,row*(WINDOW_WIDTH/sCount),WINDOW_HEIGHT,(WINDOW_WIDTH/sCount),-(samples[row].amplitude*WINDOW_HEIGHT)/MAX_VOL,0xff00ff);
       }
       SDL_RenderPresent(rend);
 
@@ -115,6 +116,14 @@ void graphFFT::drawGraph(char* filename) {
           case SDL_QUIT:
               running = 0;
               break;
+          case SDL_KEYDOWN:
+            // keyboard API for key pressed
+            switch (event.key.keysym.scancode) {
+              case SDL_SCANCODE_SPACE:
+                playAudio(deviceId, wavLength, wavBuffer);
+                break;
+              }
+            break;
           }
         }
     }
