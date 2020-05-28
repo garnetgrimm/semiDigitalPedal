@@ -23,14 +23,14 @@ void reverb(double* sample) {
     index++;
 }
 void chorus(double* sample) {
-    double chorusSample = chorusBuffer[index % bufferSize];
-    chorusBuffer[index % bufferSize] = *sample;
-    double chorusSample2 = chorusBuffer2[index % bufferSize2];
-    chorusBuffer2[index % bufferSize2] = *sample;
-    *sample += (chorusSample  + chorusSample2 );
-    int increase = (5.0 * rand()) / RAND_MAX;
-    increase = 5;
-    index += increase;
+    // double chorusSample = chorusBuffer[index % bufferSize];
+    // chorusBuffer[index % bufferSize] = *sample;
+    // double chorusSample2 = chorusBuffer2[index % bufferSize2];
+    // chorusBuffer2[index % bufferSize2] = *sample;
+    // *sample += (chorusSample  + chorusSample2 );
+    // int increase = (5.0 * rand()) / RAND_MAX;
+    // increase = 5;
+    // index += increase;
 }
 
 void octave() {
