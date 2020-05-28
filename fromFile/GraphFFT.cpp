@@ -3,32 +3,36 @@
 using namespace std;
 using namespace std::chrono;
 
-complex<double>* graphFFT::doFFT() {
+void graphFFT::getDataFFT(complex<double>* vec) {
   auto now = high_resolution_clock::now();
   double duration = std::chrono::duration<double>(now-lastRun).count();
+  lastRun = now;
   FFTtime+=(duration);
-  int FFTBuffSize = 128;
-  int sampleRate = audioFile.getSampleRate();
-  complex<double> vec[FFTBuffSize];
-  for (int i = 0; i < FFTBuffSize; i++)
+  for (int i = 0; i < FFT_BUFF_SIZE; i++)
   {
-    int idx = (FFTtime*sampleRate) - i;
+    int idx = (FFTtime*audioFile.getSampleRate()) - i;
     if(idx < 0) idx = 0;
     if(idx > audioFile.getNumSamplesPerChannel()) running = 0;
     vec[i] = audioFile.samples[0][idx];
   }
-  DSP::FFT(vec, FFTBuffSize, 1);
-  int HalfFFTBuffSize = FFTBuffSize/2;
-  complex<double> normalized[HalfFFTBuffSize];
+}
+
+void graphFFT::prepGraphFFT(complex<double>* normalized) {
+  complex<double> vec[FFT_BUFF_SIZE];
+  getDataFFT(vec);
+  DSP::FFT(vec, FFT_BUFF_SIZE, 1);
+
+  int half_buff = FFT_BUFF_SIZE/2;
   int biggestFound = 0;
-  for (int i = 0; i < HalfFFTBuffSize; i++)
+  for (int i = 0; i < half_buff; i++)
   {
     if(abs(vec[i].real()) > abs(vec[biggestFound].real())) biggestFound = i;
   }
-  for (int i = 0; i < HalfFFTBuffSize; i++)
+  for (int i = 0; i < half_buff; i++)
   {
-    normalized[i] = complex<double>((i*sampleRate/HalfFFTBuffSize), abs(vec[i].real())/abs(vec[biggestFound].real()));
+    normalized[i] = complex<double>((i*audioFile.getSampleRate()/half_buff), abs(vec[i].real()));
   }
+  //cout << normalized[biggestFound] << endl;
   float currHighestFreq = normalized[biggestFound].real();
   if(highestFreq == 0) highestFreq = currHighestFreq;
   /*if((int)currHighestFreq / (int)highestFreq != 2 && (int)currHighestFreq != (int)highestFreq) {
@@ -36,7 +40,6 @@ complex<double>* graphFFT::doFFT() {
     cout << highestFreq << endl;
   }*/
   lastRun = high_resolution_clock::now();
-  return normalized;
 }
 
 void graphFFT::drawText(SDL_Renderer *rend, int x, int y, char *text) {
@@ -90,27 +93,30 @@ void graphFFT::drawGraph(char* filename) {
         "An SDL2 window",                  // window title
         SDL_WINDOWPOS_UNDEFINED,           // initial x position
         SDL_WINDOWPOS_UNDEFINED,           // initial y position
-        640,                               // width, in pixels
-        480,                               // height, in pixels
+        WINDOW_WIDTH,                               // WINDOW_WIDTH, in pixels
+        WINDOW_HEIGHT,                               // height, in pixels
         SDL_WINDOW_OPENGL                  // flags - see below
     );
+
     // Check that the window was successfully created
     if (window == NULL) {
         // In the case that the window could not be made...
         printf("Could not create window: %s\n", SDL_GetError());
     }
     SDL_Renderer* rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    font = TTF_OpenFont("CascadiaMono.ttf", 128);
-    // The window is open: could enter program loop here (see SDL_PollEvent())
-    complex<double>* samples = (complex<double>*) calloc(128,sizeof(complex<double>));
-    while(running) {
+    font = TTF_OpenFont("CascadiaMono.ttf", FFT_BUFF_SIZE);
 
+    running = 1;
+    // The window is open: could enter program loop here (see SDL_PollEvent())
+    //complex<double>* samples = (complex<double>*) calloc(FFT_BUFF_SIZE,sizeof(complex<double>));
+    int sCount = FFT_BUFF_SIZE/2;
+    complex<double> samples[sCount];
+    while(running) {
       SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
       SDL_RenderClear(rend);
-      complex<double>* samples = doFFT();
-      int sCount = 128/2;
+      prepGraphFFT(samples);
       for(int row = 0; row < sCount; row++) {
-        drawRect(rend,row*(640/sCount),480,(640/sCount),-samples[row].imag()*480,0xff00ff);
+        drawRect(rend,row*(WINDOW_WIDTH/sCount),WINDOW_HEIGHT,(WINDOW_WIDTH/sCount),-(samples[row].imag()*WINDOW_HEIGHT)/MAX_VOL,0xff00ff);
       }
       SDL_RenderPresent(rend);
 

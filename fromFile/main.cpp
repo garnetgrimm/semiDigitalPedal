@@ -31,7 +31,7 @@ void tremolo(double freq, double t, double* sample) {
 }
 
 int main() {
-    audioFile.load ("440Hz.wav");
+    /*audioFile.load ("440Hz.wav");
     if(!audioFile.isMono()) {
         printf("Bad format, removing channel 1.\r\n");
         audioFile.samples.resize(1);
@@ -69,7 +69,7 @@ int main() {
     }
 
     audioFile.save ("IncHz.wav", AudioFileFormat::Wave);
-
+    */
     graphFFT gfft;
     gfft.drawGraph("IncHz.wav");
     return 0;
