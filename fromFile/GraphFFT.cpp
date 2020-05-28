@@ -23,22 +23,11 @@ void graphFFT::prepGraphFFT(complex<double>* normalized) {
   DSP::FFT(vec, FFT_BUFF_SIZE, 1);
 
   int half_buff = FFT_BUFF_SIZE/2;
-  int biggestFound = 0;
-  for (int i = 0; i < half_buff; i++)
-  {
-    if(abs(vec[i].real()) > abs(vec[biggestFound].real())) biggestFound = i;
-  }
+
   for (int i = 0; i < half_buff; i++)
   {
     normalized[i] = complex<double>((i*audioFile.getSampleRate()/half_buff), abs(vec[i].real()));
   }
-  //cout << normalized[biggestFound] << endl;
-  float currHighestFreq = normalized[biggestFound].real();
-  if(highestFreq == 0) highestFreq = currHighestFreq;
-  /*if((int)currHighestFreq / (int)highestFreq != 2 && (int)currHighestFreq != (int)highestFreq) {
-    highestFreq = normalized[biggestFound].real();
-    cout << highestFreq << endl;
-  }*/
   lastRun = high_resolution_clock::now();
 }
 

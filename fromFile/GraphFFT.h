@@ -12,17 +12,17 @@
 #define FFT_BUFF_SIZE 128
 #define MAX_VOL 20
 
-class FFTdata() {
+class FFTdata {
 public:
-  dataFFT();
-  void getFreq();
-  void getPhase();
-  void getVolume();
+  FFTdata();
+  double getFreq();
+  double getPhase();
+  double getVolume();
 private:
   double freq;
   double phase;
   double volume;
-}
+};
 
 class graphFFT {
   public:
