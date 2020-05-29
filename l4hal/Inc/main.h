@@ -54,7 +54,9 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-uint16_t adc_value;
+uint32_t value_adc;
+uint32_t trig;
+uint32_t value_dac;
 void debugPrintln(UART_HandleTypeDef *huart, char _out[]);
 UART_HandleTypeDef huart2;
 ADC_HandleTypeDef hadc1;

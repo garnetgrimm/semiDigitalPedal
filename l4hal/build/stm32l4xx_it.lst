@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccoTGaMH.s 			page 1
+ARM GAS  /tmp/ccaRJHqf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
   28:Src/stm32l4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Src/stm32l4xx_it.c **** /* USER CODE BEGIN TD */
   30:Src/stm32l4xx_it.c **** 
-ARM GAS  /tmp/ccoTGaMH.s 			page 2
+ARM GAS  /tmp/ccaRJHqf.s 			page 2
 
 
   31:Src/stm32l4xx_it.c **** /* USER CODE END TD */
@@ -95,7 +95,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
   62:Src/stm32l4xx_it.c **** /* USER CODE END EV */
   63:Src/stm32l4xx_it.c **** 
   64:Src/stm32l4xx_it.c **** /******************************************************************************/
-  65:Src/stm32l4xx_it.c **** /*           Cortex-M4 Processor Interruption and Exception Handlers          */
+  65:Src/stm32l4xx_it.c **** /*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
   66:Src/stm32l4xx_it.c **** /******************************************************************************/
   67:Src/stm32l4xx_it.c **** /**
   68:Src/stm32l4xx_it.c ****   * @brief This function handles Non maskable interrupt.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
   35 0000 7047     		bx	lr
   36              		.cfi_endproc
   37              	.LFE286:
-ARM GAS  /tmp/ccoTGaMH.s 			page 3
+ARM GAS  /tmp/ccaRJHqf.s 			page 3
 
 
   39              		.section	.text.HardFault_Handler,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
   74              		.cfi_startproc
   75              		@ Volatile: function does not return.
   76              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccoTGaMH.s 			page 4
+ARM GAS  /tmp/ccaRJHqf.s 			page 4
 
 
   77              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  108              		.cfi_endproc
  109              	.LFE289:
  111              		.section	.text.UsageFault_Handler,"ax",%progbits
-ARM GAS  /tmp/ccoTGaMH.s 			page 5
+ARM GAS  /tmp/ccaRJHqf.s 			page 5
 
 
  112              		.align	1
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  146              		.cfi_startproc
  147              		@ args = 0, pretend = 0, frame = 0
  148              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccoTGaMH.s 			page 6
+ARM GAS  /tmp/ccaRJHqf.s 			page 6
 
 
  149              		@ link register save eliminated.
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  167:Src/stm32l4xx_it.c ****   * @brief This function handles Pendable request for system service.
  168:Src/stm32l4xx_it.c ****   */
  169:Src/stm32l4xx_it.c **** void PendSV_Handler(void)
-ARM GAS  /tmp/ccoTGaMH.s 			page 7
+ARM GAS  /tmp/ccaRJHqf.s 			page 7
 
 
  170:Src/stm32l4xx_it.c **** {
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  219              		.cfi_endproc
  220              	.LFE294:
  222              		.section	.text.ADC1_IRQHandler,"ax",%progbits
-ARM GAS  /tmp/ccoTGaMH.s 			page 8
+ARM GAS  /tmp/ccaRJHqf.s 			page 8
 
 
  223              		.align	1
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  258              		.thumb
  259              		.thumb_func
  260              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccoTGaMH.s 			page 9
+ARM GAS  /tmp/ccaRJHqf.s 			page 9
 
 
  262              	HAL_ADC_ConvCpltCallback:
@@ -494,104 +494,135 @@ ARM GAS  /tmp/ccoTGaMH.s 			page 1
  267              		@ args = 0, pretend = 0, frame = 0
  268              		@ frame_needed = 0, uses_anonymous_args = 0
  269              		.loc 1 217 1 is_stmt 0 view .LVU31
- 270 0000 08B5     		push	{r3, lr}
+ 270 0000 10B5     		push	{r4, lr}
  271              	.LCFI2:
  272              		.cfi_def_cfa_offset 8
- 273              		.cfi_offset 3, -8
+ 273              		.cfi_offset 4, -8
  274              		.cfi_offset 14, -4
- 218:Src/stm32l4xx_it.c ****     adc_value = HAL_ADC_GetValue(&hadc1);
- 275              		.loc 1 218 5 is_stmt 1 view .LVU32
- 276              		.loc 1 218 17 is_stmt 0 view .LVU33
- 277 0002 0648     		ldr	r0, .L21
+ 218:Src/stm32l4xx_it.c ****   value_adc = HAL_ADC_GetValue(&hadc1);
+ 275              		.loc 1 218 3 is_stmt 1 view .LVU32
+ 276              		.loc 1 218 15 is_stmt 0 view .LVU33
+ 277 0002 0D48     		ldr	r0, .L23
  278              	.LVL3:
- 279              		.loc 1 218 17 view .LVU34
+ 279              		.loc 1 218 15 view .LVU34
  280 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
  281              	.LVL4:
- 282              		.loc 1 218 15 view .LVU35
- 283 0008 83B2     		uxth	r3, r0
- 284 000a 054A     		ldr	r2, .L21+4
- 285 000c 1380     		strh	r3, [r2]	@ movhi
- 219:Src/stm32l4xx_it.c ****     HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, adc_value);
- 286              		.loc 1 219 5 is_stmt 1 view .LVU36
+ 282 0008 0346     		mov	r3, r0
+ 283              		.loc 1 218 13 view .LVU35
+ 284 000a 0C4A     		ldr	r2, .L23+4
+ 285 000c 1060     		str	r0, [r2]
+ 219:Src/stm32l4xx_it.c ****   HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_adc);
+ 286              		.loc 1 219 3 is_stmt 1 view .LVU36
  287 000e 0022     		movs	r2, #0
  288 0010 1146     		mov	r1, r2
- 289 0012 0448     		ldr	r0, .L21+8
+ 289 0012 0B48     		ldr	r0, .L23+8
  290 0014 FFF7FEFF 		bl	HAL_DAC_SetValue
  291              	.LVL5:
- 220:Src/stm32l4xx_it.c ****     //trig = (trig != 0) ? 0 : 4095;
- 221:Src/stm32l4xx_it.c ****     //char buf[32];
- 222:Src/stm32l4xx_it.c ****     //sprintf(buf, "%d", trig);
- 223:Src/stm32l4xx_it.c ****     //debugPrintln(&huart2,buf);
- 224:Src/stm32l4xx_it.c **** }
- 292              		.loc 1 224 1 is_stmt 0 view .LVU37
- 293 0018 08BD     		pop	{r3, pc}
- 294              	.L22:
- 295 001a 00BF     		.align	2
- 296              	.L21:
- 297 001c 00000000 		.word	hadc1
- 298 0020 00000000 		.word	adc_value
- 299 0024 00000000 		.word	hdac1
- 300              		.cfi_endproc
- 301              	.LFE296:
- 303              		.comm	hdac1,20,4
- 304              		.comm	hadc1,100,4
- 305              		.comm	huart2,128,4
- 306              		.comm	adc_value,2,2
- 307              		.text
-ARM GAS  /tmp/ccoTGaMH.s 			page 10
+ 220:Src/stm32l4xx_it.c ****   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, trig);
+ 292              		.loc 1 220 3 view .LVU37
+ 293 0018 0A4C     		ldr	r4, .L23+12
+ 294 001a 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 295 001c 0121     		movs	r1, #1
+ 296 001e 0A48     		ldr	r0, .L23+16
+ 297 0020 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 298              	.LVL6:
+ 221:Src/stm32l4xx_it.c ****   trig = (trig != 0) ? 0 : 4095;
+ 299              		.loc 1 221 3 view .LVU38
+ 300              		.loc 1 221 16 is_stmt 0 view .LVU39
+ 301 0024 2368     		ldr	r3, [r4]
+ 302              		.loc 1 221 26 view .LVU40
+ 303 0026 1BB1     		cbz	r3, .L21
+ 304 0028 0022     		movs	r2, #0
+ 305              	.L20:
+ 306              		.loc 1 221 8 discriminator 4 view .LVU41
+ 307 002a 064B     		ldr	r3, .L23+12
+ 308 002c 1A60     		str	r2, [r3]
+ 222:Src/stm32l4xx_it.c ****   //char buf[32];
+ARM GAS  /tmp/ccaRJHqf.s 			page 10
 
 
- 308              	.Letext0:
- 309              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
- 310              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
- 311              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 312              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
- 313              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
- 314              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
- 315              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 316              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 317              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 318              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
- 319              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
- 320              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
- 321              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 322              		.file 15 "Inc/main.h"
-ARM GAS  /tmp/ccoTGaMH.s 			page 11
+ 223:Src/stm32l4xx_it.c ****   //sprintf(buf, "%d", value_adc);
+ 224:Src/stm32l4xx_it.c ****   //debugPrintln(&huart2,buf);
+ 225:Src/stm32l4xx_it.c **** }
+ 309              		.loc 1 225 1 discriminator 4 view .LVU42
+ 310 002e 10BD     		pop	{r4, pc}
+ 311              	.L21:
+ 221:Src/stm32l4xx_it.c ****   trig = (trig != 0) ? 0 : 4095;
+ 312              		.loc 1 221 26 view .LVU43
+ 313 0030 40F6FF72 		movw	r2, #4095
+ 314 0034 F9E7     		b	.L20
+ 315              	.L24:
+ 316 0036 00BF     		.align	2
+ 317              	.L23:
+ 318 0038 00000000 		.word	hadc1
+ 319 003c 00000000 		.word	value_adc
+ 320 0040 00000000 		.word	hdac1
+ 321 0044 00000000 		.word	trig
+ 322 0048 00040048 		.word	1207960576
+ 323              		.cfi_endproc
+ 324              	.LFE296:
+ 326              		.comm	hdac1,20,4
+ 327              		.comm	hadc1,100,4
+ 328              		.comm	huart2,128,4
+ 329              		.comm	value_dac,4,4
+ 330              		.comm	trig,4,4
+ 331              		.comm	value_adc,4,4
+ 332              		.text
+ 333              	.Letext0:
+ 334              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
+ 335              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 336              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 337              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 338              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
+ 339              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
+ 340              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 341              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 342              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+ 343              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
+ 344              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 345              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
+ 346              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 347              		.file 15 "Inc/main.h"
+ 348              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ARM GAS  /tmp/ccaRJHqf.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_it.c
-     /tmp/ccoTGaMH.s:18     .text.NMI_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
-     /tmp/ccoTGaMH.s:40     .text.HardFault_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
-     /tmp/ccoTGaMH.s:64     .text.MemManage_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:71     .text.MemManage_Handler:0000000000000000 MemManage_Handler
-     /tmp/ccoTGaMH.s:88     .text.BusFault_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:95     .text.BusFault_Handler:0000000000000000 BusFault_Handler
-     /tmp/ccoTGaMH.s:112    .text.UsageFault_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
-     /tmp/ccoTGaMH.s:136    .text.SVC_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:143    .text.SVC_Handler:0000000000000000 SVC_Handler
-     /tmp/ccoTGaMH.s:156    .text.DebugMon_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:163    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
-     /tmp/ccoTGaMH.s:176    .text.PendSV_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:183    .text.PendSV_Handler:0000000000000000 PendSV_Handler
-     /tmp/ccoTGaMH.s:196    .text.SysTick_Handler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:203    .text.SysTick_Handler:0000000000000000 SysTick_Handler
-     /tmp/ccoTGaMH.s:223    .text.ADC1_IRQHandler:0000000000000000 $t
-     /tmp/ccoTGaMH.s:230    .text.ADC1_IRQHandler:0000000000000000 ADC1_IRQHandler
-     /tmp/ccoTGaMH.s:250    .text.ADC1_IRQHandler:000000000000000c $d
+     /tmp/ccaRJHqf.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/ccaRJHqf.s:40     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/ccaRJHqf.s:64     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:71     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/ccaRJHqf.s:88     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:95     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/ccaRJHqf.s:112    .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/ccaRJHqf.s:136    .text.SVC_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:143    .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/ccaRJHqf.s:156    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:163    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/ccaRJHqf.s:176    .text.PendSV_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:183    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+     /tmp/ccaRJHqf.s:196    .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:203    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/ccaRJHqf.s:223    .text.ADC1_IRQHandler:0000000000000000 $t
+     /tmp/ccaRJHqf.s:230    .text.ADC1_IRQHandler:0000000000000000 ADC1_IRQHandler
+     /tmp/ccaRJHqf.s:250    .text.ADC1_IRQHandler:000000000000000c $d
                             *COM*:0000000000000064 hadc1
-     /tmp/ccoTGaMH.s:255    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccoTGaMH.s:262    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccoTGaMH.s:297    .text.HAL_ADC_ConvCpltCallback:000000000000001c $d
-                            *COM*:0000000000000002 adc_value
+     /tmp/ccaRJHqf.s:255    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccaRJHqf.s:262    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccaRJHqf.s:318    .text.HAL_ADC_ConvCpltCallback:0000000000000038 $d
+                            *COM*:0000000000000004 value_adc
                             *COM*:0000000000000014 hdac1
+                            *COM*:0000000000000004 trig
                             *COM*:0000000000000080 huart2
+                            *COM*:0000000000000004 value_dac
 
 UNDEFINED SYMBOLS
 HAL_IncTick
 HAL_ADC_IRQHandler
 HAL_ADC_GetValue
 HAL_DAC_SetValue
+HAL_GPIO_WritePin

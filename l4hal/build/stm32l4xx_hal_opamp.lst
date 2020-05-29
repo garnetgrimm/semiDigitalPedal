@@ -1,0 +1,2514 @@
+ARM GAS  /tmp/cci58Y56.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_hal_opamp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HAL_OPAMP_MspInit,"ax",%progbits
+  18              		.align	1
+  19              		.weak	HAL_OPAMP_MspInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	HAL_OPAMP_MspInit:
+  27              	.LVL0:
+  28              	.LFB288:
+  29              		.file 1 "Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c"
+   1:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+   2:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ******************************************************************************
+   3:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @file    stm32l4xx_hal_opamp.c
+   4:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @author  MCD Application Team
+   5:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief   OPAMP HAL module driver.
+   6:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *          This file provides firmware functions to manage the following
+   7:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *          functionalities of the operational amplifier(s) peripheral:
+   8:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + OPAMP configuration
+   9:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + OPAMP calibration
+  10:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *          Thanks to
+  11:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + Initialization and de-initialization functions
+  12:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + IO operation functions
+  13:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + Peripheral Control functions
+  14:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *           + Peripheral State functions
+  15:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
+  16:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   @verbatim
+  17:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** ================================================================================
+  18:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           ##### OPAMP Peripheral Features #####
+  19:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** ================================================================================
+  20:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  21:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   [..] The device integrates 1 or 2 operational amplifiers OPAMP1 & OPAMP2
+  22:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  23:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMP(s) provide(s) several exclusive running modes.
+  24:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) 1 OPAMP: STM32L412xx STM32L422xx STM32L431xx STM32L432xx STM32L433xx STM32L442xx STM32L
+  25:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) 2 OPAMP: STM32L471xx STM32L475xx STM32L476xx STM32L485xx STM32L486xx
+  26:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMP(s) provide(s) several exclusive running modes.
+  28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Standalone mode
+  29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Programmable Gain Amplifier (PGA) mode (Resistor feedback output)
+ARM GAS  /tmp/cci58Y56.s 			page 2
+
+
+  30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Follower mode
+  31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  32:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) All OPAMP (same for all OPAMPs) can operate in
+  33:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Either Low range (VDDA < 2.4V) power supply
+  34:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Or High range (VDDA > 2.4V) power supply
+  35:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  36:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) Each OPAMP(s) can be configured in normal and low power mode.
+  37:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  38:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMP(s) provide(s) calibration capabilities.
+  39:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Calibration aims at correcting some offset for running mode.
+  40:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) The OPAMP uses either factory calibration settings OR user defined
+  41:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            calibration (trimming) settings (i.e. trimming mode).
+  42:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) The user defined settings can be figured out using self calibration
+  43:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            handled by HAL_OPAMP_SelfCalibrate, HAL_OPAMPEx_SelfCalibrateAll
+  44:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) HAL_OPAMP_SelfCalibrate:
+  45:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (+++) Runs automatically the calibration.
+  46:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (+++) Enables the user trimming mode
+  47:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (+++) Updates the init structure with trimming values with fresh calibration
+  48:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             results.
+  49:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             The user may store the calibration results for larger
+  50:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             (ex monitoring the trimming as a function of temperature
+  51:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             for instance)
+  52:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (+++) HAL_OPAMPEx_SelfCalibrateAll
+  53:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             runs calibration of all OPAMPs in parallel to save search time.
+  54:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  55:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) Running mode: Standalone mode
+  56:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Gain is set externally (gain depends on external loads).
+  57:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Follower mode also possible externally by connecting the inverting input to
+  58:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            the output.
+  59:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  60:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) Running mode: Follower mode
+  61:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) No Inverting Input is connected.
+  62:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  63:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) Running mode: Programmable Gain Amplifier (PGA) mode
+  64:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            (Resistor feedback output)
+  65:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) The OPAMP(s) output(s) can be internally connected to resistor feedback
+  66:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            output.
+  67:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) OPAMP gain is either 2, 4, 8 or 16.
+  68:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  69:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMPs inverting input can be selected according to the Reference Manual
+  70:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            "OPAMP function description" chapter.
+  71:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  72:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMPs non inverting input can be selected according to the Reference Manual
+  73:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            "OPAMP function description" chapter.
+  74:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  75:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  76:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             ##### How to use this driver #####
+  77:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** ================================================================================
+  78:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   [..]
+  79:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  80:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     *** Power supply range ***
+  81:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     ============================================
+  82:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..] To run in low power mode:
+  83:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Configure the OPAMP using HAL_OPAMP_Init() function:
+  85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select OPAMP_POWERSUPPLY_LOW (VDDA lower than 2.4V)
+  86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Otherwise select OPAMP_POWERSUPPLY_HIGH (VDDA higher than 2.4V)
+ARM GAS  /tmp/cci58Y56.s 			page 3
+
+
+  87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     *** Low / normal power mode ***
+  89:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     ============================================
+  90:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..] To run in low power mode:
+  91:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  92:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Configure the OPAMP using HAL_OPAMP_Init() function:
+  93:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select OPAMP_POWERMODE_LOWPOWER
+  94:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Otherwise select OPAMP_POWERMODE_NORMAL
+  95:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  96:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     *** Calibration ***
+  97:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     ============================================
+  98:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..] To run the OPAMP calibration self calibration:
+  99:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 100:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Start calibration using HAL_OPAMP_SelfCalibrate.
+ 101:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            Store the calibration results.
+ 102:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 103:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     *** Running mode ***
+ 104:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     ============================================
+ 105:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 106:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..] To use the OPAMP, perform the following steps:
+ 107:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 108:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Fill in the HAL_OPAMP_MspInit() to
+ 109:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Enable the OPAMP Peripheral clock using macro __HAL_RCC_OPAMP_CLK_ENABLE()
+ 110:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Configure the OPAMP input AND output in analog mode using
+ 111:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            HAL_GPIO_Init() to map the OPAMP output to the GPIO pin.
+ 112:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 113:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Registrate Callbacks
+ 114:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) The compilation define  USE_HAL_OPAMP_REGISTER_CALLBACKS when set to 1
+ 115:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            allows the user to configure dynamically the driver callbacks.
+ 116:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 117:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Use Functions @ref HAL_OPAMP_RegisterCallback() to register a user callback,
+ 118:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            it allows to register following callbacks:
+ 119:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (+++) MspInitCallback         : OPAMP MspInit.
+ 120:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (+++) MspDeInitCallback       : OPAMP MspFeInit.
+ 121:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            This function takes as parameters the HAL peripheral handle, the Callback ID
+ 122:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            and a pointer to the user callback function.
+ 123:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 124:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Use function @ref HAL_OPAMP_UnRegisterCallback() to reset a callback to the default
+ 125:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****            weak (surcharged) function. It allows to reset following callbacks:
+ 126:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (+++) MspInitCallback         : OPAMP MspInit.
+ 127:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (+++) MspDeInitCallback       : OPAMP MspdeInit.
+ 128:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (+++) All Callbacks
+ 129:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 130:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Configure the OPAMP using HAL_OPAMP_Init() function:
+ 131:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select the mode
+ 132:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select the inverting input
+ 133:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select the non-inverting input
+ 134:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) If PGA mode is enabled, Select if inverting input is connected.
+ 135:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select either factory or user defined trimming mode.
+ 136:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) If the user-defined trimming mode is enabled, select PMOS & NMOS trimming values
+ 137:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           (typically values set by HAL_OPAMP_SelfCalibrate function).
+ 138:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 139:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Enable the OPAMP using HAL_OPAMP_Start() function.
+ 140:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Disable the OPAMP using HAL_OPAMP_Stop() function.
+ 142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Lock the OPAMP in running mode using HAL_OPAMP_Lock() function.
+ARM GAS  /tmp/cci58Y56.s 			page 4
+
+
+ 144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           Caution: On STM32L4, HAL OPAMP lock is software lock only (not
+ 145:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           hardware lock as on some other STM32 devices)
+ 146:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 147:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) If needed, unlock the OPAMP using HAL_OPAMPEx_Unlock() function.
+ 148:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 149:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     *** Running mode: change of configuration while OPAMP ON  ***
+ 150:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     ============================================
+ 151:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..] To Re-configure OPAMP when OPAMP is ON (change on the fly)
+ 152:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) If needed, fill in the HAL_OPAMP_MspInit()
+ 153:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) This is the case for instance if you wish to use new OPAMP I/O
+ 154:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 155:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Configure the OPAMP using HAL_OPAMP_Init() function:
+ 156:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) As in configure case, select first the parameters you wish to modify.
+ 157:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 158:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Change from low power mode to normal power mode (& vice versa) requires
+ 159:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           first HAL_OPAMP_DeInit() (force OPAMP OFF) and then HAL_OPAMP_Init().
+ 160:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           In other words, of OPAMP is ON, HAL_OPAMP_Init can NOT change power mode
+ 161:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           alone.
+ 162:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 163:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   @endverbatim
+ 164:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ******************************************************************************
+ 165:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 166:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       Table 1.  OPAMPs inverting/non-inverting inputs for the STM32L4 devices:
+ 167:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       +------------------------------------------------------------------------|
+ 168:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |         | OPAMP1               | OPAMP2              |
+ 169:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |-----------------|---------|----------------------|---------------------|
+ 170:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       | Inverting Input | VM_SEL  |                      |                     |
+ 171:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |         |  IO0-> PA1           | IO0-> PA7           |
+ 172:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |         |  LOW LEAKAGE IO (2)  | LOW LEAKAGE IO (2)  |
+ 173:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |         |  Not connected       | Not connected       |
+ 174:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       | (1)             |         |    PGA mode only     |   PGA mode only     |
+ 175:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |-----------------|---------|----------------------|---------------------|
+ 176:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |  Non Inverting  | VP_SEL  |                      |                     |
+ 177:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |         |  IO0-> PA0 (GPIO)    | IO0-> PA6  (GPIO)   |
+ 178:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |    Input        |         |  DAC1_OUT1 internal  | DAC1_OUT2 internal  |
+ 179:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       +------------------------------------------------------------------------|
+ 180:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (1): NA in follower mode.
+ 181:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (2): Available on some package only (ex. BGA132).
+ 182:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 183:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 184:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       Table 2.  OPAMPs outputs for the STM32L4 devices:
+ 185:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 186:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       +-------------------------------------------------------------------------
+ 187:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |        | OPAMP1                | OPAMP2              |
+ 188:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |-----------------|--------|-----------------------|---------------------|
+ 189:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       | Output          |  VOUT  |  PA3                  |  PB0                |
+ 190:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |        |  & (1) ADC12_IN if    | & (1) ADC12_IN if   |
+ 191:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |                 |        |  connected internally | connected internally|
+ 192:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       |-----------------|--------|-----------------------|---------------------|
+ 193:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (1): ADC1 or ADC2 shall select IN15.
+ 194:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 195:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ******************************************************************************
+ 196:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @attention
+ 197:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
+ 198:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+ 199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * All rights reserved.</center></h2>
+ 200:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
+ARM GAS  /tmp/cci58Y56.s 			page 5
+
+
+ 201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+ 202:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * the "License"; You may not use this file except in compliance with the
+ 203:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * License. You may obtain a copy of the License at:
+ 204:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                        opensource.org/licenses/BSD-3-Clause
+ 205:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
+ 206:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ******************************************************************************
+ 207:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 208:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 209:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Includes ------------------------------------------------------------------*/
+ 210:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #include "stm32l4xx_hal.h"
+ 211:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 212:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @addtogroup STM32L4xx_HAL_Driver
+ 213:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 214:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 215:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 216:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP OPAMP
+ 217:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief OPAMP module driver
+ 218:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 219:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 220:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 221:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #ifdef HAL_OPAMP_MODULE_ENABLED
+ 222:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 223:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Private types -------------------------------------------------------------*/
+ 224:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Private variables ---------------------------------------------------------*/
+ 225:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Private constants ---------------------------------------------------------*/
+ 226:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @addtogroup OPAMP_Private_Constants
+ 227:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 228:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 229:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 230:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* CSR register reset value */
+ 231:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #define OPAMP_CSR_RESET_VALUE             ((uint32_t)0x00000000)
+ 232:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 233:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #define OPAMP_CSR_RESET_BITS    (OPAMP_CSR_OPAMPxEN | OPAMP_CSR_OPALPM | OPAMP_CSR_OPAMODE \
+ 234:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                | OPAMP_CSR_PGGAIN | OPAMP_CSR_VMSEL | OPAMP_CSR_VPSEL \
+ 235:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                | OPAMP_CSR_CALON | OPAMP_CSR_USERTRIM)
+ 236:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 237:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* CSR Init masks */
+ 238:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #define OPAMP_CSR_INIT_MASK_PGA (OPAMP_CSR_OPALPM | OPAMP_CSR_OPAMODE| OPAMP_CSR_PGGAIN \
+ 239:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                | OPAMP_CSR_VMSEL | OPAMP_CSR_VPSEL | OPAMP_CSR_USERTRIM)
+ 240:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 241:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #define OPAMP_CSR_INIT_MASK_FOLLOWER (OPAMP_CSR_OPALPM | OPAMP_CSR_OPAMODE| OPAMP_CSR_VPSEL \
+ 242:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                     | OPAMP_CSR_USERTRIM)
+ 243:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 244:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #define OPAMP_CSR_INIT_MASK_STANDALONE (OPAMP_CSR_OPALPM | OPAMP_CSR_OPAMODE| OPAMP_CSR_VPSEL \
+ 245:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                       | OPAMP_CSR_VMSEL | OPAMP_CSR_USERTRIM)
+ 246:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 247:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 248:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 249:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @}
+ 250:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 251:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 252:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Private macros ------------------------------------------------------------*/
+ 253:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Private functions ---------------------------------------------------------*/
+ 254:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /* Exported functions --------------------------------------------------------*/
+ 255:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 256:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions OPAMP Exported Functions
+ 257:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ARM GAS  /tmp/cci58Y56.s 			page 6
+
+
+ 258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 259:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 260:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions_Group1 Initialization and de-initialization functions
+ 261:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *  @brief    Initialization and Configuration functions
+ 262:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *
+ 263:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @verbatim
+ 264:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ==============================================================================
+ 265:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****               ##### Initialization and de-initialization functions #####
+ 266:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   ==============================================================================
+ 267:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 268:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @endverbatim
+ 269:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 270:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 271:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 272:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 273:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Initializes the OPAMP according to the specified
+ 274:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         parameters in the OPAMP_InitTypeDef and initialize the associated handle.
+ 275:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   If the selected opamp is locked, initialization can't be performed.
+ 276:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         To unlock the configuration, perform a system reset.
+ 277:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 278:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 279:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 280:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_Init(OPAMP_HandleTypeDef *hopamp)
+ 281:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 282:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 283:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t updateotrlpotr;
+ 284:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 285:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation and lock status */
+ 286:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Init not allowed if calibration is ongoing */
+ 287:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 288:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 289:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return HAL_ERROR;
+ 290:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 291:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSYLOCKED)
+ 292:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return HAL_ERROR;
+ 294:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 295:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_CALIBBUSY)
+ 296:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 297:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return HAL_ERROR;
+ 298:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 299:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 300:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 301:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 302:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 303:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 304:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Set OPAMP parameters */
+ 305:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_POWER_SUPPLY_RANGE(hopamp->Init.PowerSupplyRange));
+ 306:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_POWERMODE(hopamp->Init.PowerMode));
+ 307:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_FUNCTIONAL_NORMALMODE(hopamp->Init.Mode));
+ 308:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_NONINVERTING_INPUT(hopamp->Init.NonInvertingInput));
+ 309:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 310:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->State == HAL_OPAMP_STATE_RESET)
+ 311:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 312:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #if (USE_HAL_OPAMP_REGISTER_CALLBACKS == 1)
+ 313:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->MspInitCallback == NULL)
+ 314:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ARM GAS  /tmp/cci58Y56.s 			page 7
+
+
+ 315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->MspInitCallback               = HAL_OPAMP_MspInit;
+ 316:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 317:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 318:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 319:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 320:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if ((hopamp->Init.Mode) == OPAMP_STANDALONE_MODE)
+ 321:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 322:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_INVERTING_INPUT_STANDALONE(hopamp->Init.InvertingInput));
+ 323:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 324:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 325:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if ((hopamp->Init.Mode) == OPAMP_PGA_MODE)
+ 326:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 327:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_INVERTING_INPUT_PGA(hopamp->Init.InvertingInput));
+ 328:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 329:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 330:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if ((hopamp->Init.Mode) == OPAMP_PGA_MODE)
+ 331:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 332:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_PGA_GAIN(hopamp->Init.PgaGain));
+ 333:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 334:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 335:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_TRIMMING(hopamp->Init.UserTrimming));
+ 336:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if ((hopamp->Init.UserTrimming) == OPAMP_TRIMMING_USER)
+ 337:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 338:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (hopamp->Init.PowerMode == OPAMP_POWERMODE_NORMAL)
+ 339:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 340:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValueP));
+ 341:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValueN));
+ 342:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 343:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     else
+ 344:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 345:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValuePLowPower));
+ 346:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValueNLowPower));
+ 347:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 348:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 349:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 350:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->State == HAL_OPAMP_STATE_RESET)
+ 351:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 352:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Allocate lock resource and initialize it */
+ 353:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->Lock = HAL_UNLOCKED;
+ 354:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 355:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 356:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #if (USE_HAL_OPAMP_REGISTER_CALLBACKS == 1)
+ 357:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     hopamp->MspInitCallback(hopamp);
+ 358:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #else
+ 359:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Call MSP init function */
+ 360:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     HAL_OPAMP_MspInit(hopamp);
+ 361:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 362:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 363:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Set operating mode */
+ 364:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     CLEAR_BIT(hopamp->Instance->CSR, OPAMP_CSR_CALON);
+ 365:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 366:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->Init.Mode == OPAMP_PGA_MODE)
+ 367:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 368:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_INIT_MASK_PGA, \
+ 369:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 370:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.Mode | \
+ 371:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PgaGain | \
+ARM GAS  /tmp/cci58Y56.s 			page 8
+
+
+ 372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.InvertingInput    | \
+ 373:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.NonInvertingInput | \
+ 374:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.UserTrimming);
+ 375:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 376:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 377:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->Init.Mode == OPAMP_FOLLOWER_MODE)
+ 378:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 379:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* In Follower mode InvertingInput is Not Applicable  */
+ 380:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_INIT_MASK_FOLLOWER, \
+ 381:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 382:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.Mode | \
+ 383:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.NonInvertingInput | \
+ 384:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.UserTrimming);
+ 385:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 386:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 387:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->Init.Mode == OPAMP_STANDALONE_MODE)
+ 388:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 389:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_INIT_MASK_STANDALONE, \
+ 390:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 391:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.Mode | \
+ 392:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.InvertingInput    | \
+ 393:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.NonInvertingInput | \
+ 394:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.UserTrimming);
+ 395:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 396:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 397:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->Init.UserTrimming == OPAMP_TRIMMING_USER)
+ 398:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 399:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Set power mode and associated calibration parameters */
+ 400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (hopamp->Init.PowerMode != OPAMP_POWERMODE_LOWPOWER)
+ 401:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 402:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_POWERMODE_NORMAL */
+ 403:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set calibration mode (factory or user) and values for            */
+ 404:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* transistors differential pair high (PMOS) and low (NMOS) for     */
+ 405:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* normal mode.                                                     */
+ 406:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         updateotrlpotr = (((hopamp->Init.TrimmingValueP) << (OPAMP_INPUT_NONINVERTING)) \
+ 407:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueN));
+ 408:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(hopamp->Instance->OTR, OPAMP_OTR_TRIMOFFSETN | OPAMP_OTR_TRIMOFFSETP, updateotrl
+ 409:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 410:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       else
+ 411:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 412:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_POWERMODE_LOWPOWER */
+ 413:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* transistors differential pair high (PMOS) and low (NMOS) for     */
+ 414:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* low power mode.                                                     */
+ 415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         updateotrlpotr = (((hopamp->Init.TrimmingValuePLowPower) << (OPAMP_INPUT_NONINVERTING)) \
+ 416:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueNLowPower));
+ 417:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(hopamp->Instance->LPOTR, OPAMP_OTR_TRIMOFFSETN | OPAMP_OTR_TRIMOFFSETP, updateot
+ 418:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 419:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 420:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 421:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Configure the power supply range */
+ 422:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* The OPAMP_CSR_OPARANGE is common configuration for all OPAMPs */
+ 423:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* bit OPAMP1_CSR_OPARANGE is used for both OPAMPs */
+ 424:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(OPAMP1->CSR, OPAMP1_CSR_OPARANGE, hopamp->Init.PowerSupplyRange);
+ 425:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 426:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Update the OPAMP state*/
+ 427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->State == HAL_OPAMP_STATE_RESET)
+ 428:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ARM GAS  /tmp/cci58Y56.s 			page 9
+
+
+ 429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* From RESET state to READY State */
+ 430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->State = HAL_OPAMP_STATE_READY;
+ 431:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 432:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* else: remain in READY or BUSY state (no update) */
+ 433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return status;
+ 434:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 435:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 436:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 437:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 438:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  DeInitialize the OPAMP peripheral.
+ 439:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   Deinitialization can be performed if the OPAMP configuration is locked.
+ 440:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         (the lock is SW in L4)
+ 441:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 442:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 443:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 444:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_DeInit(OPAMP_HandleTypeDef *hopamp)
+ 445:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 446:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 447:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 448:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 449:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* DeInit not allowed if calibration is ongoing */
+ 450:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 451:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 452:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 453:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 454:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_CALIBBUSY)
+ 455:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 456:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 457:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 458:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 459:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 460:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 461:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 462:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 463:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Set OPAMP_CSR register to reset value */
+ 464:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Mind that OPAMP1_CSR_OPARANGE of CSR of OPAMP1 remains unchanged (applies to both OPAMPs) */
+ 465:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* OPAMP shall be disabled first separately */
+ 466:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     CLEAR_BIT(hopamp->Instance->CSR, OPAMP_CSR_OPAMPxEN);
+ 467:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_RESET_BITS, OPAMP_CSR_RESET_VALUE);
+ 468:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 469:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #if (USE_HAL_OPAMP_REGISTER_CALLBACKS == 1)
+ 470:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp->MspDeInitCallback == NULL)
+ 471:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 472:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     hopamp->MspDeInitCallback = HAL_OPAMP_MspDeInit;
+ 473:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 474:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* DeInit the low level hardware */
+ 475:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   hopamp->MspDeInitCallback(hopamp);
+ 476:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #else
+ 477:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* DeInit the low level hardware: GPIO, CLOCK and NVIC */
+ 478:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     HAL_OPAMP_MspDeInit(hopamp);
+ 479:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 480:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Update the OPAMP state*/
+ 481:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     hopamp->State = HAL_OPAMP_STATE_RESET;
+ 482:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 483:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Process unlocked */
+ 484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     __HAL_UNLOCK(hopamp);
+ 485:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ARM GAS  /tmp/cci58Y56.s 			page 10
+
+
+ 486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
+ 487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 488:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 489:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 490:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Initialize the OPAMP MSP.
+ 491:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 492:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval None
+ 493:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 494:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** __weak void HAL_OPAMP_MspInit(OPAMP_HandleTypeDef *hopamp)
+ 495:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+  30              		.loc 1 495 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+ 496:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Prevent unused argument(s) compilation warning */
+ 497:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   UNUSED(hopamp);
+  35              		.loc 1 497 3 view .LVU1
+ 498:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 499:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+ 500:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             the function "HAL_OPAMP_MspInit()" must be implemented in the user file.
+ 501:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****    */
+ 502:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+  36              		.loc 1 502 1 is_stmt 0 view .LVU2
+  37 0000 7047     		bx	lr
+  38              		.cfi_endproc
+  39              	.LFE288:
+  41              		.section	.text.HAL_OPAMP_Init,"ax",%progbits
+  42              		.align	1
+  43              		.global	HAL_OPAMP_Init
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  47              		.fpu fpv4-sp-d16
+  49              	HAL_OPAMP_Init:
+  50              	.LVL1:
+  51              	.LFB286:
+ 281:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+  52              		.loc 1 281 1 is_stmt 1 view -0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t updateotrlpotr;
+  56              		.loc 1 282 3 view .LVU4
+ 283:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  57              		.loc 1 283 3 view .LVU5
+ 287:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  58              		.loc 1 287 3 view .LVU6
+ 287:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  59              		.loc 1 287 5 is_stmt 0 view .LVU7
+  60 0000 0028     		cmp	r0, #0
+  61 0002 00F08580 		beq	.L11
+ 281:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+  62              		.loc 1 281 1 view .LVU8
+  63 0006 10B5     		push	{r4, lr}
+  64              	.LCFI0:
+  65              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/cci58Y56.s 			page 11
+
+
+  66              		.cfi_offset 4, -8
+  67              		.cfi_offset 14, -4
+  68 0008 0446     		mov	r4, r0
+ 291:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  69              		.loc 1 291 8 is_stmt 1 view .LVU9
+ 291:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  70              		.loc 1 291 17 is_stmt 0 view .LVU10
+  71 000a 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+  72 000e DBB2     		uxtb	r3, r3
+ 291:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  73              		.loc 1 291 10 view .LVU11
+  74 0010 052B     		cmp	r3, #5
+  75 0012 7FD0     		beq	.L12
+ 295:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  76              		.loc 1 295 8 is_stmt 1 view .LVU12
+ 295:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  77              		.loc 1 295 17 is_stmt 0 view .LVU13
+  78 0014 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+  79 0018 DBB2     		uxtb	r3, r3
+ 295:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+  80              		.loc 1 295 10 view .LVU14
+  81 001a 022B     		cmp	r3, #2
+  82 001c 7CD0     		beq	.L13
+ 302:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  83              		.loc 1 302 5 is_stmt 1 view .LVU15
+ 305:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_POWERMODE(hopamp->Init.PowerMode));
+  84              		.loc 1 305 5 view .LVU16
+ 306:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_FUNCTIONAL_NORMALMODE(hopamp->Init.Mode));
+  85              		.loc 1 306 5 view .LVU17
+ 307:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_NONINVERTING_INPUT(hopamp->Init.NonInvertingInput));
+  86              		.loc 1 307 5 view .LVU18
+ 308:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  87              		.loc 1 308 5 view .LVU19
+ 310:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  88              		.loc 1 310 5 view .LVU20
+ 310:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  89              		.loc 1 310 14 is_stmt 0 view .LVU21
+  90 001e 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 318:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+  91              		.loc 1 318 5 is_stmt 1 view .LVU22
+ 320:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  92              		.loc 1 320 5 view .LVU23
+ 322:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+  93              		.loc 1 322 7 view .LVU24
+ 325:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  94              		.loc 1 325 5 view .LVU25
+ 327:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+  95              		.loc 1 327 7 view .LVU26
+ 330:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  96              		.loc 1 330 5 view .LVU27
+ 332:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+  97              		.loc 1 332 7 view .LVU28
+ 335:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if ((hopamp->Init.UserTrimming) == OPAMP_TRIMMING_USER)
+  98              		.loc 1 335 5 view .LVU29
+ 336:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+  99              		.loc 1 336 5 view .LVU30
+ 345:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValueNLowPower));
+ARM GAS  /tmp/cci58Y56.s 			page 12
+
+
+ 100              		.loc 1 345 9 view .LVU31
+ 346:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 101              		.loc 1 346 9 view .LVU32
+ 350:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 102              		.loc 1 350 5 view .LVU33
+ 350:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 103              		.loc 1 350 14 is_stmt 0 view .LVU34
+ 104 0022 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 350:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 105              		.loc 1 350 7 view .LVU35
+ 106 0026 0BB9     		cbnz	r3, .L4
+ 353:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 107              		.loc 1 353 7 is_stmt 1 view .LVU36
+ 353:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 108              		.loc 1 353 20 is_stmt 0 view .LVU37
+ 109 0028 80F83130 		strb	r3, [r0, #49]
+ 110              	.L4:
+ 360:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 111              		.loc 1 360 5 is_stmt 1 view .LVU38
+ 112 002c 2046     		mov	r0, r4
+ 113              	.LVL2:
+ 360:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 114              		.loc 1 360 5 is_stmt 0 view .LVU39
+ 115 002e FFF7FEFF 		bl	HAL_OPAMP_MspInit
+ 116              	.LVL3:
+ 364:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 117              		.loc 1 364 5 is_stmt 1 view .LVU40
+ 118 0032 2268     		ldr	r2, [r4]
+ 119 0034 1368     		ldr	r3, [r2]
+ 120 0036 23F48053 		bic	r3, r3, #4096
+ 121 003a 1360     		str	r3, [r2]
+ 366:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 122              		.loc 1 366 5 view .LVU41
+ 366:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 123              		.loc 1 366 21 is_stmt 0 view .LVU42
+ 124 003c E368     		ldr	r3, [r4, #12]
+ 366:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 125              		.loc 1 366 8 view .LVU43
+ 126 003e 082B     		cmp	r3, #8
+ 127 0040 27D0     		beq	.L18
+ 128              	.L5:
+ 377:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 129              		.loc 1 377 5 is_stmt 1 view .LVU44
+ 377:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 130              		.loc 1 377 21 is_stmt 0 view .LVU45
+ 131 0042 E368     		ldr	r3, [r4, #12]
+ 377:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 132              		.loc 1 377 8 view .LVU46
+ 133 0044 0C2B     		cmp	r3, #12
+ 134 0046 37D0     		beq	.L19
+ 135              	.L6:
+ 387:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 136              		.loc 1 387 5 is_stmt 1 view .LVU47
+ 387:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 137              		.loc 1 387 21 is_stmt 0 view .LVU48
+ 138 0048 E368     		ldr	r3, [r4, #12]
+ 387:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ARM GAS  /tmp/cci58Y56.s 			page 13
+
+
+ 139              		.loc 1 387 8 view .LVU49
+ 140 004a 7BB9     		cbnz	r3, .L7
+ 389:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 141              		.loc 1 389 7 is_stmt 1 view .LVU50
+ 142 004c 2168     		ldr	r1, [r4]
+ 143 004e 0A68     		ldr	r2, [r1]
+ 144 0050 22F48E42 		bic	r2, r2, #18176
+ 145 0054 22F00E02 		bic	r2, r2, #14
+ 146 0058 A068     		ldr	r0, [r4, #8]
+ 147 005a 0343     		orrs	r3, r3, r0
+ 148 005c 2069     		ldr	r0, [r4, #16]
+ 149 005e 0343     		orrs	r3, r3, r0
+ 150 0060 6069     		ldr	r0, [r4, #20]
+ 151 0062 0343     		orrs	r3, r3, r0
+ 152 0064 E069     		ldr	r0, [r4, #28]
+ 153 0066 0343     		orrs	r3, r3, r0
+ 154 0068 1343     		orrs	r3, r3, r2
+ 155 006a 0B60     		str	r3, [r1]
+ 156              	.L7:
+ 397:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 157              		.loc 1 397 5 view .LVU51
+ 397:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 158              		.loc 1 397 21 is_stmt 0 view .LVU52
+ 159 006c E369     		ldr	r3, [r4, #28]
+ 397:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 160              		.loc 1 397 8 view .LVU53
+ 161 006e B3F5804F 		cmp	r3, #16384
+ 162 0072 30D0     		beq	.L20
+ 163              	.L8:
+ 424:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 164              		.loc 1 424 5 is_stmt 1 view .LVU54
+ 165 0074 294A     		ldr	r2, .L21
+ 166 0076 1368     		ldr	r3, [r2]
+ 167 0078 23F00043 		bic	r3, r3, #-2147483648
+ 168 007c 6168     		ldr	r1, [r4, #4]
+ 169 007e 0B43     		orrs	r3, r3, r1
+ 170 0080 1360     		str	r3, [r2]
+ 427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 171              		.loc 1 427 5 view .LVU55
+ 427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 172              		.loc 1 427 15 is_stmt 0 view .LVU56
+ 173 0082 94F83230 		ldrb	r3, [r4, #50]	@ zero_extendqisi2
+ 427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 174              		.loc 1 427 8 view .LVU57
+ 175 0086 13B9     		cbnz	r3, .L10
+ 430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 176              		.loc 1 430 7 is_stmt 1 view .LVU58
+ 430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 177              		.loc 1 430 21 is_stmt 0 view .LVU59
+ 178 0088 0123     		movs	r3, #1
+ 179 008a 84F83230 		strb	r3, [r4, #50]
+ 180              	.L10:
+ 433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 181              		.loc 1 433 5 is_stmt 1 view .LVU60
+ 433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 182              		.loc 1 433 12 is_stmt 0 view .LVU61
+ 183 008e 0020     		movs	r0, #0
+ARM GAS  /tmp/cci58Y56.s 			page 14
+
+
+ 184              	.L3:
+ 435:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 185              		.loc 1 435 1 view .LVU62
+ 186 0090 10BD     		pop	{r4, pc}
+ 187              	.LVL4:
+ 188              	.L18:
+ 368:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 189              		.loc 1 368 7 is_stmt 1 view .LVU63
+ 190 0092 2168     		ldr	r1, [r4]
+ 191 0094 0A68     		ldr	r2, [r1]
+ 192 0096 22F48E42 		bic	r2, r2, #18176
+ 193 009a 22F03E02 		bic	r2, r2, #62
+ 194 009e A068     		ldr	r0, [r4, #8]
+ 195 00a0 0343     		orrs	r3, r3, r0
+ 196 00a2 A069     		ldr	r0, [r4, #24]
+ 197 00a4 0343     		orrs	r3, r3, r0
+ 198 00a6 2069     		ldr	r0, [r4, #16]
+ 199 00a8 0343     		orrs	r3, r3, r0
+ 200 00aa 6069     		ldr	r0, [r4, #20]
+ 201 00ac 0343     		orrs	r3, r3, r0
+ 202 00ae E069     		ldr	r0, [r4, #28]
+ 203 00b0 0343     		orrs	r3, r3, r0
+ 204 00b2 1343     		orrs	r3, r3, r2
+ 205 00b4 0B60     		str	r3, [r1]
+ 206 00b6 C4E7     		b	.L5
+ 207              	.L19:
+ 380:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
+ 208              		.loc 1 380 5 view .LVU64
+ 209 00b8 2168     		ldr	r1, [r4]
+ 210 00ba 0A68     		ldr	r2, [r1]
+ 211 00bc 22F48842 		bic	r2, r2, #17408
+ 212 00c0 22F00E02 		bic	r2, r2, #14
+ 213 00c4 A068     		ldr	r0, [r4, #8]
+ 214 00c6 0343     		orrs	r3, r3, r0
+ 215 00c8 6069     		ldr	r0, [r4, #20]
+ 216 00ca 0343     		orrs	r3, r3, r0
+ 217 00cc E069     		ldr	r0, [r4, #28]
+ 218 00ce 0343     		orrs	r3, r3, r0
+ 219 00d0 1343     		orrs	r3, r3, r2
+ 220 00d2 0B60     		str	r3, [r1]
+ 221 00d4 B8E7     		b	.L6
+ 222              	.L20:
+ 400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 223              		.loc 1 400 7 view .LVU65
+ 400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 224              		.loc 1 400 23 is_stmt 0 view .LVU66
+ 225 00d6 A368     		ldr	r3, [r4, #8]
+ 400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 226              		.loc 1 400 10 view .LVU67
+ 227 00d8 022B     		cmp	r3, #2
+ 228 00da 0CD0     		beq	.L9
+ 406:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueN));
+ 229              		.loc 1 406 9 is_stmt 1 view .LVU68
+ 406:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueN));
+ 230              		.loc 1 406 41 is_stmt 0 view .LVU69
+ 231 00dc 226A     		ldr	r2, [r4, #32]
+ 407:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(hopamp->Instance->OTR, OPAMP_OTR_TRIMOFFSETN | OPAMP_OTR_TRIMOFFSETP, updateotrl
+ARM GAS  /tmp/cci58Y56.s 			page 15
+
+
+ 232              		.loc 1 407 41 view .LVU70
+ 233 00de 636A     		ldr	r3, [r4, #36]
+ 406:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueN));
+ 234              		.loc 1 406 24 view .LVU71
+ 235 00e0 43EA0222 		orr	r2, r3, r2, lsl #8
+ 236              	.LVL5:
+ 408:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 237              		.loc 1 408 9 is_stmt 1 view .LVU72
+ 238 00e4 2168     		ldr	r1, [r4]
+ 239 00e6 4B68     		ldr	r3, [r1, #4]
+ 240 00e8 23F4F853 		bic	r3, r3, #7936
+ 241 00ec 23F01F03 		bic	r3, r3, #31
+ 242 00f0 1343     		orrs	r3, r3, r2
+ 243 00f2 4B60     		str	r3, [r1, #4]
+ 244 00f4 BEE7     		b	.L8
+ 245              	.LVL6:
+ 246              	.L9:
+ 415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueNLowPower));
+ 247              		.loc 1 415 9 view .LVU73
+ 415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueNLowPower));
+ 248              		.loc 1 415 41 is_stmt 0 view .LVU74
+ 249 00f6 A26A     		ldr	r2, [r4, #40]
+ 416:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(hopamp->Instance->LPOTR, OPAMP_OTR_TRIMOFFSETN | OPAMP_OTR_TRIMOFFSETP, updateot
+ 250              		.loc 1 416 41 view .LVU75
+ 251 00f8 E36A     		ldr	r3, [r4, #44]
+ 415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                          | (hopamp->Init.TrimmingValueNLowPower));
+ 252              		.loc 1 415 24 view .LVU76
+ 253 00fa 43EA0222 		orr	r2, r3, r2, lsl #8
+ 254              	.LVL7:
+ 417:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 255              		.loc 1 417 9 is_stmt 1 view .LVU77
+ 256 00fe 2168     		ldr	r1, [r4]
+ 257 0100 8B68     		ldr	r3, [r1, #8]
+ 258 0102 23F4F853 		bic	r3, r3, #7936
+ 259 0106 23F01F03 		bic	r3, r3, #31
+ 260 010a 1343     		orrs	r3, r3, r2
+ 261 010c 8B60     		str	r3, [r1, #8]
+ 262 010e B1E7     		b	.L8
+ 263              	.LVL8:
+ 264              	.L11:
+ 265              	.LCFI1:
+ 266              		.cfi_def_cfa_offset 0
+ 267              		.cfi_restore 4
+ 268              		.cfi_restore 14
+ 289:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 269              		.loc 1 289 12 is_stmt 0 view .LVU78
+ 270 0110 0120     		movs	r0, #1
+ 271              	.LVL9:
+ 435:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 272              		.loc 1 435 1 view .LVU79
+ 273 0112 7047     		bx	lr
+ 274              	.LVL10:
+ 275              	.L12:
+ 276              	.LCFI2:
+ 277              		.cfi_def_cfa_offset 8
+ 278              		.cfi_offset 4, -8
+ 279              		.cfi_offset 14, -4
+ARM GAS  /tmp/cci58Y56.s 			page 16
+
+
+ 293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 280              		.loc 1 293 12 view .LVU80
+ 281 0114 0120     		movs	r0, #1
+ 282              	.LVL11:
+ 293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 283              		.loc 1 293 12 view .LVU81
+ 284 0116 BBE7     		b	.L3
+ 285              	.LVL12:
+ 286              	.L13:
+ 297:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 287              		.loc 1 297 12 view .LVU82
+ 288 0118 0120     		movs	r0, #1
+ 289              	.LVL13:
+ 297:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 290              		.loc 1 297 12 view .LVU83
+ 291 011a B9E7     		b	.L3
+ 292              	.L22:
+ 293              		.align	2
+ 294              	.L21:
+ 295 011c 00780040 		.word	1073772544
+ 296              		.cfi_endproc
+ 297              	.LFE286:
+ 299              		.section	.text.HAL_OPAMP_MspDeInit,"ax",%progbits
+ 300              		.align	1
+ 301              		.weak	HAL_OPAMP_MspDeInit
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 305              		.fpu fpv4-sp-d16
+ 307              	HAL_OPAMP_MspDeInit:
+ 308              	.LVL14:
+ 309              	.LFB289:
+ 503:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 504:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 505:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  DeInitialize OPAMP MSP.
+ 506:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 507:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval None
+ 508:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 509:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** __weak void HAL_OPAMP_MspDeInit(OPAMP_HandleTypeDef *hopamp)
+ 510:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 310              		.loc 1 510 1 is_stmt 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              		@ link register save eliminated.
+ 511:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Prevent unused argument(s) compilation warning */
+ 512:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   UNUSED(hopamp);
+ 315              		.loc 1 512 3 view .LVU85
+ 513:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 514:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+ 515:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****             the function "HAL_OPAMP_MspDeInit()" must be implemented in the user file.
+ 516:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****    */
+ 517:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 316              		.loc 1 517 1 is_stmt 0 view .LVU86
+ 317 0000 7047     		bx	lr
+ 318              		.cfi_endproc
+ 319              	.LFE289:
+ARM GAS  /tmp/cci58Y56.s 			page 17
+
+
+ 321              		.section	.text.HAL_OPAMP_DeInit,"ax",%progbits
+ 322              		.align	1
+ 323              		.global	HAL_OPAMP_DeInit
+ 324              		.syntax unified
+ 325              		.thumb
+ 326              		.thumb_func
+ 327              		.fpu fpv4-sp-d16
+ 329              	HAL_OPAMP_DeInit:
+ 330              	.LVL15:
+ 331              	.LFB287:
+ 445:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 332              		.loc 1 445 1 is_stmt 1 view -0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 446:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 336              		.loc 1 446 3 view .LVU88
+ 450:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 337              		.loc 1 450 3 view .LVU89
+ 450:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 338              		.loc 1 450 5 is_stmt 0 view .LVU90
+ 339 0000 E0B1     		cbz	r0, .L26
+ 445:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 340              		.loc 1 445 1 view .LVU91
+ 341 0002 10B5     		push	{r4, lr}
+ 342              	.LCFI3:
+ 343              		.cfi_def_cfa_offset 8
+ 344              		.cfi_offset 4, -8
+ 345              		.cfi_offset 14, -4
+ 346 0004 0446     		mov	r4, r0
+ 454:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 347              		.loc 1 454 8 is_stmt 1 view .LVU92
+ 454:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 348              		.loc 1 454 17 is_stmt 0 view .LVU93
+ 349 0006 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 350 000a DBB2     		uxtb	r3, r3
+ 454:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 351              		.loc 1 454 10 view .LVU94
+ 352 000c 022B     		cmp	r3, #2
+ 353 000e 01D1     		bne	.L32
+ 456:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 354              		.loc 1 456 12 view .LVU95
+ 355 0010 0120     		movs	r0, #1
+ 356              	.LVL16:
+ 357              	.L25:
+ 484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 358              		.loc 1 484 5 is_stmt 1 discriminator 1 view .LVU96
+ 486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 359              		.loc 1 486 3 discriminator 1 view .LVU97
+ 487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 360              		.loc 1 487 1 is_stmt 0 discriminator 1 view .LVU98
+ 361 0012 10BD     		pop	{r4, pc}
+ 362              	.LVL17:
+ 363              	.L32:
+ 461:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 364              		.loc 1 461 5 is_stmt 1 view .LVU99
+ 466:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_RESET_BITS, OPAMP_CSR_RESET_VALUE);
+ARM GAS  /tmp/cci58Y56.s 			page 18
+
+
+ 365              		.loc 1 466 5 view .LVU100
+ 366 0014 0268     		ldr	r2, [r0]
+ 367 0016 1368     		ldr	r3, [r2]
+ 368 0018 23F00103 		bic	r3, r3, #1
+ 369 001c 1360     		str	r3, [r2]
+ 467:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 370              		.loc 1 467 5 view .LVU101
+ 371 001e 0268     		ldr	r2, [r0]
+ 372 0020 1368     		ldr	r3, [r2]
+ 373 0022 23F4AE43 		bic	r3, r3, #22272
+ 374 0026 23F03F03 		bic	r3, r3, #63
+ 375 002a 1360     		str	r3, [r2]
+ 478:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #endif /* USE_HAL_OPAMP_REGISTER_CALLBACKS */
+ 376              		.loc 1 478 5 view .LVU102
+ 377 002c FFF7FEFF 		bl	HAL_OPAMP_MspDeInit
+ 378              	.LVL18:
+ 481:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 379              		.loc 1 481 5 view .LVU103
+ 481:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 380              		.loc 1 481 19 is_stmt 0 view .LVU104
+ 381 0030 0020     		movs	r0, #0
+ 382 0032 84F83200 		strb	r0, [r4, #50]
+ 484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 383              		.loc 1 484 5 is_stmt 1 view .LVU105
+ 484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 384              		.loc 1 484 5 view .LVU106
+ 385 0036 84F83100 		strb	r0, [r4, #49]
+ 386 003a EAE7     		b	.L25
+ 387              	.LVL19:
+ 388              	.L26:
+ 389              	.LCFI4:
+ 390              		.cfi_def_cfa_offset 0
+ 391              		.cfi_restore 4
+ 392              		.cfi_restore 14
+ 452:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 393              		.loc 1 452 12 is_stmt 0 view .LVU107
+ 394 003c 0120     		movs	r0, #1
+ 395              	.LVL20:
+ 484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 396              		.loc 1 484 5 is_stmt 1 view .LVU108
+ 486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 397              		.loc 1 486 3 view .LVU109
+ 487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 398              		.loc 1 487 1 is_stmt 0 view .LVU110
+ 399 003e 7047     		bx	lr
+ 400              		.cfi_endproc
+ 401              	.LFE287:
+ 403              		.section	.text.HAL_OPAMP_Start,"ax",%progbits
+ 404              		.align	1
+ 405              		.global	HAL_OPAMP_Start
+ 406              		.syntax unified
+ 407              		.thumb
+ 408              		.thumb_func
+ 409              		.fpu fpv4-sp-d16
+ 411              	HAL_OPAMP_Start:
+ 412              	.LVL21:
+ 413              	.LFB290:
+ARM GAS  /tmp/cci58Y56.s 			page 19
+
+
+ 518:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 519:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 520:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @}
+ 521:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 522:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 523:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 524:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions_Group2 IO operation functions
+ 525:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *  @brief   IO operation functions
+ 526:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *
+ 527:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @verbatim
+ 528:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 529:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                         ##### IO operation functions #####
+ 530:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 531:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..]
+ 532:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     This subsection provides a set of functions allowing to manage the OPAMP
+ 533:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     start, stop and calibration actions.
+ 534:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 535:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @endverbatim
+ 536:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 537:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 538:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 539:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 540:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Start the OPAMP.
+ 541:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 542:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 544:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_Start(OPAMP_HandleTypeDef *hopamp)
+ 546:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 414              		.loc 1 546 1 is_stmt 1 view -0
+ 415              		.cfi_startproc
+ 416              		@ args = 0, pretend = 0, frame = 0
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418              		@ link register save eliminated.
+ 547:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 419              		.loc 1 547 3 view .LVU112
+ 548:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 549:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 550:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check if OPAMP locked */
+ 551:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 420              		.loc 1 551 3 view .LVU113
+ 421              		.loc 1 551 5 is_stmt 0 view .LVU114
+ 422 0000 A8B1     		cbz	r0, .L35
+ 552:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 553:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 554:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 555:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSYLOCKED)
+ 423              		.loc 1 555 8 is_stmt 1 view .LVU115
+ 424              		.loc 1 555 17 is_stmt 0 view .LVU116
+ 425 0002 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 426 0006 DBB2     		uxtb	r3, r3
+ 427              		.loc 1 555 10 view .LVU117
+ 428 0008 052B     		cmp	r3, #5
+ 429 000a 12D0     		beq	.L36
+ 556:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 557:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 558:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ARM GAS  /tmp/cci58Y56.s 			page 20
+
+
+ 559:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 560:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 561:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 562:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 430              		.loc 1 562 5 is_stmt 1 view .LVU118
+ 563:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 564:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->State == HAL_OPAMP_STATE_READY)
+ 431              		.loc 1 564 5 view .LVU119
+ 432              		.loc 1 564 14 is_stmt 0 view .LVU120
+ 433 000c 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 434 0010 DBB2     		uxtb	r3, r3
+ 435              		.loc 1 564 7 view .LVU121
+ 436 0012 012B     		cmp	r3, #1
+ 437 0014 01D0     		beq	.L38
+ 565:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 566:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Enable the selected opamp */
+ 567:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_OPAMPxEN);
+ 568:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 569:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Update the OPAMP state*/
+ 570:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* From HAL_OPAMP_STATE_READY to HAL_OPAMP_STATE_BUSY */
+ 571:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->State = HAL_OPAMP_STATE_BUSY;
+ 572:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 573:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     else
+ 574:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 575:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       status = HAL_ERROR;
+ 438              		.loc 1 575 14 view .LVU122
+ 439 0016 0120     		movs	r0, #1
+ 440              	.LVL22:
+ 576:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 577:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 578:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****    }
+ 579:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
+ 441              		.loc 1 579 3 is_stmt 1 view .LVU123
+ 580:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 442              		.loc 1 580 1 is_stmt 0 view .LVU124
+ 443 0018 7047     		bx	lr
+ 444              	.LVL23:
+ 445              	.L38:
+ 567:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 446              		.loc 1 567 7 is_stmt 1 view .LVU125
+ 447 001a 0168     		ldr	r1, [r0]
+ 448 001c 0B68     		ldr	r3, [r1]
+ 449 001e 43F00103 		orr	r3, r3, #1
+ 450 0022 0B60     		str	r3, [r1]
+ 571:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 451              		.loc 1 571 7 view .LVU126
+ 571:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 452              		.loc 1 571 21 is_stmt 0 view .LVU127
+ 453 0024 0423     		movs	r3, #4
+ 454 0026 80F83230 		strb	r3, [r0, #50]
+ 547:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 455              		.loc 1 547 21 view .LVU128
+ 456 002a 0020     		movs	r0, #0
+ 457              	.LVL24:
+ 547:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 458              		.loc 1 547 21 view .LVU129
+ 459 002c 7047     		bx	lr
+ARM GAS  /tmp/cci58Y56.s 			page 21
+
+
+ 460              	.LVL25:
+ 461              	.L35:
+ 553:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 462              		.loc 1 553 12 view .LVU130
+ 463 002e 0120     		movs	r0, #1
+ 464              	.LVL26:
+ 553:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 465              		.loc 1 553 12 view .LVU131
+ 466 0030 7047     		bx	lr
+ 467              	.LVL27:
+ 468              	.L36:
+ 557:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 469              		.loc 1 557 12 view .LVU132
+ 470 0032 0120     		movs	r0, #1
+ 471              	.LVL28:
+ 557:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 472              		.loc 1 557 12 view .LVU133
+ 473 0034 7047     		bx	lr
+ 474              		.cfi_endproc
+ 475              	.LFE290:
+ 477              		.section	.text.HAL_OPAMP_Stop,"ax",%progbits
+ 478              		.align	1
+ 479              		.global	HAL_OPAMP_Stop
+ 480              		.syntax unified
+ 481              		.thumb
+ 482              		.thumb_func
+ 483              		.fpu fpv4-sp-d16
+ 485              	HAL_OPAMP_Stop:
+ 486              	.LVL29:
+ 487              	.LFB291:
+ 581:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 582:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 583:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Stop the OPAMP.
+ 584:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 585:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 586:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 587:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_Stop(OPAMP_HandleTypeDef *hopamp)
+ 588:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 488              		.loc 1 588 1 is_stmt 1 view -0
+ 489              		.cfi_startproc
+ 490              		@ args = 0, pretend = 0, frame = 0
+ 491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 492              		@ link register save eliminated.
+ 589:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 493              		.loc 1 589 3 view .LVU135
+ 590:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 591:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 592:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check if OPAMP locked */
+ 593:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check if OPAMP calibration ongoing */
+ 594:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 494              		.loc 1 594 3 view .LVU136
+ 495              		.loc 1 594 5 is_stmt 0 view .LVU137
+ 496 0000 D0B1     		cbz	r0, .L41
+ 595:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 597:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 598:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSYLOCKED)
+ARM GAS  /tmp/cci58Y56.s 			page 22
+
+
+ 497              		.loc 1 598 8 is_stmt 1 view .LVU138
+ 498              		.loc 1 598 17 is_stmt 0 view .LVU139
+ 499 0002 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 500 0006 DBB2     		uxtb	r3, r3
+ 501              		.loc 1 598 10 view .LVU140
+ 502 0008 052B     		cmp	r3, #5
+ 503 000a 17D0     		beq	.L42
+ 599:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 601:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 602:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_CALIBBUSY)
+ 504              		.loc 1 602 8 is_stmt 1 view .LVU141
+ 505              		.loc 1 602 17 is_stmt 0 view .LVU142
+ 506 000c 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 507 0010 DBB2     		uxtb	r3, r3
+ 508              		.loc 1 602 10 view .LVU143
+ 509 0012 022B     		cmp	r3, #2
+ 510 0014 14D0     		beq	.L43
+ 603:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 604:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 605:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 606:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 607:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 608:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 609:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 511              		.loc 1 609 5 is_stmt 1 view .LVU144
+ 610:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 611:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->State == HAL_OPAMP_STATE_BUSY)
+ 512              		.loc 1 611 5 view .LVU145
+ 513              		.loc 1 611 14 is_stmt 0 view .LVU146
+ 514 0016 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 515 001a DBB2     		uxtb	r3, r3
+ 516              		.loc 1 611 7 view .LVU147
+ 517 001c 042B     		cmp	r3, #4
+ 518 001e 01D0     		beq	.L45
+ 612:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 613:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Disable the selected opamp */
+ 614:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       CLEAR_BIT (hopamp->Instance->CSR, OPAMP_CSR_OPAMPxEN);
+ 615:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 616:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Update the OPAMP state*/
+ 617:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* From  HAL_OPAMP_STATE_BUSY to HAL_OPAMP_STATE_READY*/
+ 618:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->State = HAL_OPAMP_STATE_READY;
+ 619:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 620:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     else
+ 621:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 622:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       status = HAL_ERROR;
+ 519              		.loc 1 622 14 view .LVU148
+ 520 0020 0120     		movs	r0, #1
+ 521              	.LVL30:
+ 623:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 624:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 625:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
+ 522              		.loc 1 625 3 is_stmt 1 view .LVU149
+ 626:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 523              		.loc 1 626 1 is_stmt 0 view .LVU150
+ 524 0022 7047     		bx	lr
+ 525              	.LVL31:
+ARM GAS  /tmp/cci58Y56.s 			page 23
+
+
+ 526              	.L45:
+ 614:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 527              		.loc 1 614 7 is_stmt 1 view .LVU151
+ 528 0024 0168     		ldr	r1, [r0]
+ 529 0026 0B68     		ldr	r3, [r1]
+ 530 0028 23F00103 		bic	r3, r3, #1
+ 531 002c 0B60     		str	r3, [r1]
+ 618:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 532              		.loc 1 618 7 view .LVU152
+ 618:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 533              		.loc 1 618 21 is_stmt 0 view .LVU153
+ 534 002e 0123     		movs	r3, #1
+ 535 0030 80F83230 		strb	r3, [r0, #50]
+ 589:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 536              		.loc 1 589 21 view .LVU154
+ 537 0034 0020     		movs	r0, #0
+ 538              	.LVL32:
+ 589:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 539              		.loc 1 589 21 view .LVU155
+ 540 0036 7047     		bx	lr
+ 541              	.LVL33:
+ 542              	.L41:
+ 596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 543              		.loc 1 596 12 view .LVU156
+ 544 0038 0120     		movs	r0, #1
+ 545              	.LVL34:
+ 596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 546              		.loc 1 596 12 view .LVU157
+ 547 003a 7047     		bx	lr
+ 548              	.LVL35:
+ 549              	.L42:
+ 600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 550              		.loc 1 600 12 view .LVU158
+ 551 003c 0120     		movs	r0, #1
+ 552              	.LVL36:
+ 600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 553              		.loc 1 600 12 view .LVU159
+ 554 003e 7047     		bx	lr
+ 555              	.LVL37:
+ 556              	.L43:
+ 604:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 557              		.loc 1 604 12 view .LVU160
+ 558 0040 0120     		movs	r0, #1
+ 559              	.LVL38:
+ 604:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 560              		.loc 1 604 12 view .LVU161
+ 561 0042 7047     		bx	lr
+ 562              		.cfi_endproc
+ 563              	.LFE291:
+ 565              		.section	.text.HAL_OPAMP_SelfCalibrate,"ax",%progbits
+ 566              		.align	1
+ 567              		.global	HAL_OPAMP_SelfCalibrate
+ 568              		.syntax unified
+ 569              		.thumb
+ 570              		.thumb_func
+ 571              		.fpu fpv4-sp-d16
+ 573              	HAL_OPAMP_SelfCalibrate:
+ARM GAS  /tmp/cci58Y56.s 			page 24
+
+
+ 574              	.LVL39:
+ 575              	.LFB292:
+ 627:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 628:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 629:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Run the self calibration of one OPAMP.
+ 630:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   Calibration is performed in the mode specified in OPAMP init
+ 631:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         structure (mode normal or low-power). To perform calibration for
+ 632:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         both modes, repeat this function twice after OPAMP init structure
+ 633:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         accordingly updated.
+ 634:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   Calibration runs about 10 ms.
+ 635:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp handle
+ 636:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval Updated offset trimming values (PMOS & NMOS), user trimming is enabled
+ 637:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 638:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 639:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 640:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 641:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_SelfCalibrate(OPAMP_HandleTypeDef *hopamp)
+ 642:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 576              		.loc 1 642 1 is_stmt 1 view -0
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 0, uses_anonymous_args = 0
+ 643:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 644:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 580              		.loc 1 644 3 view .LVU163
+ 645:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 646:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t trimmingvaluen;
+ 581              		.loc 1 646 3 view .LVU164
+ 647:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t trimmingvaluep;
+ 582              		.loc 1 647 3 view .LVU165
+ 648:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t delta;
+ 583              		.loc 1 648 3 view .LVU166
+ 649:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   uint32_t opampmode;
+ 584              		.loc 1 649 3 view .LVU167
+ 650:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 651:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   __IO uint32_t* tmp_opamp_reg_trimming;   /* Selection of register of trimming depending on power 
+ 585              		.loc 1 651 3 view .LVU168
+ 652:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 653:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 654:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check if OPAMP locked */
+ 655:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 586              		.loc 1 655 3 view .LVU169
+ 587              		.loc 1 655 5 is_stmt 0 view .LVU170
+ 588 0000 0028     		cmp	r0, #0
+ 589 0002 00F0B280 		beq	.L62
+ 642:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 590              		.loc 1 642 1 view .LVU171
+ 591 0006 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 592              	.LCFI5:
+ 593              		.cfi_def_cfa_offset 32
+ 594              		.cfi_offset 3, -32
+ 595              		.cfi_offset 4, -28
+ 596              		.cfi_offset 5, -24
+ 597              		.cfi_offset 6, -20
+ 598              		.cfi_offset 7, -16
+ 599              		.cfi_offset 8, -12
+ 600              		.cfi_offset 9, -8
+ARM GAS  /tmp/cci58Y56.s 			page 25
+
+
+ 601              		.cfi_offset 14, -4
+ 602 000a 0446     		mov	r4, r0
+ 656:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 658:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 659:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSYLOCKED)
+ 603              		.loc 1 659 8 is_stmt 1 view .LVU172
+ 604              		.loc 1 659 17 is_stmt 0 view .LVU173
+ 605 000c 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 606 0010 DBB2     		uxtb	r3, r3
+ 607              		.loc 1 659 10 view .LVU174
+ 608 0012 052B     		cmp	r3, #5
+ 609 0014 00F0AB80 		beq	.L63
+ 660:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 661:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 662:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 663:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 664:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 665:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check if OPAMP in calibration mode and calibration not yet enable */
+ 666:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->State ==  HAL_OPAMP_STATE_READY)
+ 610              		.loc 1 666 5 is_stmt 1 view .LVU175
+ 611              		.loc 1 666 14 is_stmt 0 view .LVU176
+ 612 0018 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 613 001c DBB2     		uxtb	r3, r3
+ 614              		.loc 1 666 7 view .LVU177
+ 615 001e 012B     		cmp	r3, #1
+ 616 0020 02D0     		beq	.L69
+ 667:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 668:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Check the parameter */
+ 669:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 670:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_POWERMODE(hopamp->Init.PowerMode));
+ 671:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 672:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Save OPAMP mode as in                                       */
+ 673:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* STM32L471xx STM32L475xx STM32L476xx STM32L485xx STM32L486xx */
+ 674:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* the calibration is not working in PGA mode                  */
+ 675:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       opampmode = READ_BIT(hopamp->Instance->CSR,OPAMP_CSR_OPAMODE);
+ 676:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 677:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Use of standalone mode */
+ 678:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_OPAMODE, OPAMP_STANDALONE_MODE);
+ 679:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 680:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /*  user trimming values are used for offset calibration */
+ 681:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT(hopamp->Instance->CSR, OPAMP_CSR_USERTRIM);
+ 682:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 683:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Select trimming settings depending on power mode */
+ 684:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (hopamp->Init.PowerMode == OPAMP_POWERMODE_NORMAL)
+ 685:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 686:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         tmp_opamp_reg_trimming = &hopamp->Instance->OTR;
+ 687:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 688:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       else
+ 689:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 690:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         tmp_opamp_reg_trimming = &hopamp->Instance->LPOTR;
+ 691:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 692:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 693:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Enable calibration */
+ 694:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALON);
+ 695:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 696:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* 1st calibration - N */
+ARM GAS  /tmp/cci58Y56.s 			page 26
+
+
+ 697:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       CLEAR_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALSEL);
+ 698:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 699:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Enable the selected opamp */
+ 700:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_OPAMPxEN);
+ 701:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 702:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Init trimming counter */
+ 703:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Medium value */
+ 704:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       trimmingvaluen = 16U;
+ 705:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 706:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       while (delta != 0U)
+ 708:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 709:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set candidate trimming */
+ 710:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_POWERMODE_NORMAL */
+ 711:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen);
+ 712:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 713:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */
+ 714:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Offset trim time: during calibration, minimum time needed between */
+ 715:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* two steps to have 1 mV accuracy */
+ 716:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         HAL_Delay(OPAMP_TRIMMING_DELAY);
+ 717:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 718:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         if (READ_BIT(hopamp->Instance->CSR, OPAMP_CSR_CALOUT) != 0U)
+ 719:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 720:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           /* OPAMP_CSR_CALOUT is HIGH try higher trimming */
+ 721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           trimmingvaluen -= delta;
+ 722:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 723:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         else
+ 724:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 725:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           /* OPAMP_CSR_CALOUT is LOW try lower trimming */
+ 726:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           trimmingvaluen += delta;
+ 727:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 728:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Divide range by 2 to continue dichotomy sweep */
+ 729:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         delta >>= 1U;
+ 730:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 731:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 732:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Still need to check if right calibration is current value or one step below */
+ 733:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Indeed the first value that causes the OUTCAL bit to change from 0 to 1  */
+ 734:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Set candidate trimming */
+ 735:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen);
+ 736:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 737:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */
+ 738:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Offset trim time: during calibration, minimum time needed between */
+ 739:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* two steps to have 1 mV accuracy */
+ 740:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       HAL_Delay(OPAMP_TRIMMING_DELAY);
+ 741:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 742:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if ((READ_BIT(hopamp->Instance->CSR, OPAMP_CSR_CALOUT)) == 0U)
+ 743:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 744:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Trimming value is actually one value more */
+ 745:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         trimmingvaluen++;
+ 746:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set right trimming */
+ 747:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen);
+ 748:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 749:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 750:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* 2nd calibration - P */
+ 751:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALSEL);
+ 752:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 753:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Init trimming counter */
+ARM GAS  /tmp/cci58Y56.s 			page 27
+
+
+ 754:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Medium value */
+ 755:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       trimmingvaluep = 16U;
+ 756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 757:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 758:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       while (delta != 0U)
+ 759:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 760:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set candidate trimming */
+ 761:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_POWERMODE_NORMAL */
+ 762:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep<<OPAMP_INPUT_NON
+ 763:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 764:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */
+ 765:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Offset trim time: during calibration, minimum time needed between */
+ 766:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* two steps to have 1 mV accuracy */
+ 767:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         HAL_Delay(OPAMP_TRIMMING_DELAY);
+ 768:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 769:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         if (READ_BIT(hopamp->Instance->CSR, OPAMP_CSR_CALOUT) != 0U)
+ 770:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 771:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           /* OPAMP_CSR_CALOUT is HIGH try higher trimming */
+ 772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           trimmingvaluep += delta;
+ 773:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 774:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         else
+ 775:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 776:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           /* OPAMP_CSR_CALOUT  is LOW try lower trimming */
+ 777:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           trimmingvaluep -= delta;
+ 778:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 779:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 780:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Divide range by 2 to continue dichotomy sweep */
+ 781:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         delta >>= 1U;
+ 782:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 783:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 784:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Still need to check if right calibration is current value or one step below */
+ 785:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Indeed the first value that causes the OUTCAL bit to change from 1 to 0  */
+ 786:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Set candidate trimming */
+ 787:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep<<OPAMP_INPUT_NONIN
+ 788:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 789:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */
+ 790:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Offset trim time: during calibration, minimum time needed between */
+ 791:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* two steps to have 1 mV accuracy */
+ 792:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       HAL_Delay(OPAMP_TRIMMING_DELAY);
+ 793:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 794:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (READ_BIT(hopamp->Instance->CSR, OPAMP_CSR_CALOUT) != 0U)
+ 795:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 796:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Trimming value is actually one value more */
+ 797:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         trimmingvaluep++;
+ 798:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep<<OPAMP_INPUT_NON
+ 799:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 800:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 801:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Disable the OPAMP */
+ 802:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       CLEAR_BIT (hopamp->Instance->CSR, OPAMP_CSR_OPAMPxEN);
+ 803:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 804:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Disable calibration & set normal mode (operating mode) */
+ 805:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       CLEAR_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALON);
+ 806:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 807:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Self calibration is successful  */
+ 808:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Store calibration(user trimming) results in init structure. */
+ 809:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 810:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Set user trimming mode */
+ARM GAS  /tmp/cci58Y56.s 			page 28
+
+
+ 811:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->Init.UserTrimming = OPAMP_TRIMMING_USER;
+ 812:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 813:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Affect calibration parameters depending on mode normal/low power */
+ 814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (hopamp->Init.PowerMode != OPAMP_POWERMODE_LOWPOWER)
+ 815:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 816:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result N */
+ 817:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         hopamp->Init.TrimmingValueN = trimmingvaluen;
+ 818:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 819:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         hopamp->Init.TrimmingValueP = trimmingvaluep;
+ 820:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 821:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       else
+ 822:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 823:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result N */
+ 824:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         hopamp->Init.TrimmingValueNLowPower = trimmingvaluen;
+ 825:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 826:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         hopamp->Init.TrimmingValuePLowPower = trimmingvaluep;
+ 827:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 828:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 829:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Restore OPAMP mode after calibration */
+ 830:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_OPAMODE, opampmode);
+ 831:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 832:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     else
+ 833:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 834:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* OPAMP can not be calibrated from this mode */
+ 835:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       status = HAL_ERROR;
+ 617              		.loc 1 835 14 view .LVU178
+ 618 0022 0120     		movs	r0, #1
+ 619              	.LVL40:
+ 620              	.L47:
+ 836:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 837:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 838:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
+ 621              		.loc 1 838 3 is_stmt 1 view .LVU179
+ 839:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 622              		.loc 1 839 1 is_stmt 0 view .LVU180
+ 623 0024 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 624              	.LVL41:
+ 625              	.L69:
+ 669:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       assert_param(IS_OPAMP_POWERMODE(hopamp->Init.PowerMode));
+ 626              		.loc 1 669 7 is_stmt 1 view .LVU181
+ 670:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 627              		.loc 1 670 7 view .LVU182
+ 675:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 628              		.loc 1 675 7 view .LVU183
+ 675:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 629              		.loc 1 675 19 is_stmt 0 view .LVU184
+ 630 0028 0368     		ldr	r3, [r0]
+ 631 002a 1A68     		ldr	r2, [r3]
+ 675:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 632              		.loc 1 675 17 view .LVU185
+ 633 002c 02F00C09 		and	r9, r2, #12
+ 634              	.LVL42:
+ 678:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 635              		.loc 1 678 7 is_stmt 1 view .LVU186
+ 636 0030 1A68     		ldr	r2, [r3]
+ 637 0032 22F00C02 		bic	r2, r2, #12
+ 638 0036 1A60     		str	r2, [r3]
+ARM GAS  /tmp/cci58Y56.s 			page 29
+
+
+ 681:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 639              		.loc 1 681 7 view .LVU187
+ 640 0038 0268     		ldr	r2, [r0]
+ 641 003a 1368     		ldr	r3, [r2]
+ 642 003c 43F48043 		orr	r3, r3, #16384
+ 643 0040 1360     		str	r3, [r2]
+ 684:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 644              		.loc 1 684 7 view .LVU188
+ 684:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 645              		.loc 1 684 23 is_stmt 0 view .LVU189
+ 646 0042 8368     		ldr	r3, [r0, #8]
+ 684:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 647              		.loc 1 684 10 view .LVU190
+ 648 0044 A3B9     		cbnz	r3, .L48
+ 686:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 649              		.loc 1 686 9 is_stmt 1 view .LVU191
+ 686:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 650              		.loc 1 686 41 is_stmt 0 view .LVU192
+ 651 0046 0568     		ldr	r5, [r0]
+ 686:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 652              		.loc 1 686 32 view .LVU193
+ 653 0048 0435     		adds	r5, r5, #4
+ 654              	.LVL43:
+ 655              	.L49:
+ 694:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 656              		.loc 1 694 7 is_stmt 1 view .LVU194
+ 657 004a 2268     		ldr	r2, [r4]
+ 658 004c 1368     		ldr	r3, [r2]
+ 659 004e 43F48053 		orr	r3, r3, #4096
+ 660 0052 1360     		str	r3, [r2]
+ 697:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 661              		.loc 1 697 7 view .LVU195
+ 662 0054 2268     		ldr	r2, [r4]
+ 663 0056 1368     		ldr	r3, [r2]
+ 664 0058 23F40053 		bic	r3, r3, #8192
+ 665 005c 1360     		str	r3, [r2]
+ 700:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 666              		.loc 1 700 7 view .LVU196
+ 667 005e 2268     		ldr	r2, [r4]
+ 668 0060 1368     		ldr	r3, [r2]
+ 669 0062 43F00103 		orr	r3, r3, #1
+ 670 0066 1360     		str	r3, [r2]
+ 704:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 671              		.loc 1 704 7 view .LVU197
+ 672              	.LVL44:
+ 705:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 673              		.loc 1 705 7 view .LVU198
+ 707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 674              		.loc 1 707 7 view .LVU199
+ 705:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 675              		.loc 1 705 13 is_stmt 0 view .LVU200
+ 676 0068 0826     		movs	r6, #8
+ 704:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 677              		.loc 1 704 22 view .LVU201
+ 678 006a 4FF01008 		mov	r8, #16
+ 707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 679              		.loc 1 707 13 view .LVU202
+ARM GAS  /tmp/cci58Y56.s 			page 30
+
+
+ 680 006e 04E0     		b	.L50
+ 681              	.LVL45:
+ 682              	.L48:
+ 690:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 683              		.loc 1 690 9 is_stmt 1 view .LVU203
+ 690:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 684              		.loc 1 690 41 is_stmt 0 view .LVU204
+ 685 0070 0568     		ldr	r5, [r0]
+ 690:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 686              		.loc 1 690 32 view .LVU205
+ 687 0072 0835     		adds	r5, r5, #8
+ 688              	.LVL46:
+ 690:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 689              		.loc 1 690 32 view .LVU206
+ 690 0074 E9E7     		b	.L49
+ 691              	.LVL47:
+ 692              	.L51:
+ 726:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 693              		.loc 1 726 11 is_stmt 1 view .LVU207
+ 726:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 694              		.loc 1 726 26 is_stmt 0 view .LVU208
+ 695 0076 B044     		add	r8, r8, r6
+ 696              	.LVL48:
+ 697              	.L52:
+ 729:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 698              		.loc 1 729 9 is_stmt 1 view .LVU209
+ 729:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 699              		.loc 1 729 15 is_stmt 0 view .LVU210
+ 700 0078 7608     		lsrs	r6, r6, #1
+ 701              	.LVL49:
+ 702              	.L50:
+ 707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 703              		.loc 1 707 13 is_stmt 1 view .LVU211
+ 704 007a 86B1     		cbz	r6, .L70
+ 711:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 705              		.loc 1 711 9 view .LVU212
+ 706 007c 2B68     		ldr	r3, [r5]
+ 707 007e 23F01F03 		bic	r3, r3, #31
+ 708 0082 43EA0803 		orr	r3, r3, r8
+ 709 0086 2B60     		str	r3, [r5]
+ 716:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 710              		.loc 1 716 9 view .LVU213
+ 711 0088 0120     		movs	r0, #1
+ 712 008a FFF7FEFF 		bl	HAL_Delay
+ 713              	.LVL50:
+ 718:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 714              		.loc 1 718 9 view .LVU214
+ 718:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 715              		.loc 1 718 13 is_stmt 0 view .LVU215
+ 716 008e 2368     		ldr	r3, [r4]
+ 717 0090 1B68     		ldr	r3, [r3]
+ 718:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 718              		.loc 1 718 12 view .LVU216
+ 719 0092 13F4004F 		tst	r3, #32768
+ 720 0096 EED0     		beq	.L51
+ 721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 721              		.loc 1 721 11 is_stmt 1 view .LVU217
+ARM GAS  /tmp/cci58Y56.s 			page 31
+
+
+ 721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 722              		.loc 1 721 26 is_stmt 0 view .LVU218
+ 723 0098 A8EB0608 		sub	r8, r8, r6
+ 724              	.LVL51:
+ 721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 725              		.loc 1 721 26 view .LVU219
+ 726 009c ECE7     		b	.L52
+ 727              	.L70:
+ 735:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 728              		.loc 1 735 7 is_stmt 1 view .LVU220
+ 729 009e 2B68     		ldr	r3, [r5]
+ 730 00a0 23F01F03 		bic	r3, r3, #31
+ 731 00a4 43EA0803 		orr	r3, r3, r8
+ 732 00a8 2B60     		str	r3, [r5]
+ 740:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 733              		.loc 1 740 7 view .LVU221
+ 734 00aa 0120     		movs	r0, #1
+ 735 00ac FFF7FEFF 		bl	HAL_Delay
+ 736              	.LVL52:
+ 742:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 737              		.loc 1 742 7 view .LVU222
+ 742:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 738              		.loc 1 742 12 is_stmt 0 view .LVU223
+ 739 00b0 2368     		ldr	r3, [r4]
+ 740 00b2 1B68     		ldr	r3, [r3]
+ 742:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 741              		.loc 1 742 10 view .LVU224
+ 742 00b4 13F4004F 		tst	r3, #32768
+ 743 00b8 07D1     		bne	.L54
+ 745:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set right trimming */
+ 744              		.loc 1 745 9 is_stmt 1 view .LVU225
+ 745:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Set right trimming */
+ 745              		.loc 1 745 23 is_stmt 0 view .LVU226
+ 746 00ba 08F10108 		add	r8, r8, #1
+ 747              	.LVL53:
+ 747:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 748              		.loc 1 747 9 is_stmt 1 view .LVU227
+ 749 00be 2B68     		ldr	r3, [r5]
+ 750 00c0 23F01F03 		bic	r3, r3, #31
+ 751 00c4 43EA0803 		orr	r3, r3, r8
+ 752 00c8 2B60     		str	r3, [r5]
+ 753              	.L54:
+ 751:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 754              		.loc 1 751 7 view .LVU228
+ 755 00ca 2268     		ldr	r2, [r4]
+ 756 00cc 1368     		ldr	r3, [r2]
+ 757 00ce 43F40053 		orr	r3, r3, #8192
+ 758 00d2 1360     		str	r3, [r2]
+ 755:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 759              		.loc 1 755 7 view .LVU229
+ 760              	.LVL54:
+ 756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 761              		.loc 1 756 7 view .LVU230
+ 758:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 762              		.loc 1 758 7 view .LVU231
+ 756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 763              		.loc 1 756 13 is_stmt 0 view .LVU232
+ARM GAS  /tmp/cci58Y56.s 			page 32
+
+
+ 764 00d4 0826     		movs	r6, #8
+ 755:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       delta = 8U;
+ 765              		.loc 1 755 22 view .LVU233
+ 766 00d6 1027     		movs	r7, #16
+ 758:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 767              		.loc 1 758 13 view .LVU234
+ 768 00d8 01E0     		b	.L55
+ 769              	.LVL55:
+ 770              	.L56:
+ 777:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 771              		.loc 1 777 11 is_stmt 1 view .LVU235
+ 777:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 772              		.loc 1 777 26 is_stmt 0 view .LVU236
+ 773 00da BF1B     		subs	r7, r7, r6
+ 774              	.LVL56:
+ 775              	.L57:
+ 781:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 776              		.loc 1 781 9 is_stmt 1 view .LVU237
+ 781:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 777              		.loc 1 781 15 is_stmt 0 view .LVU238
+ 778 00dc 7608     		lsrs	r6, r6, #1
+ 779              	.LVL57:
+ 780              	.L55:
+ 758:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 781              		.loc 1 758 13 is_stmt 1 view .LVU239
+ 782 00de 7EB1     		cbz	r6, .L71
+ 762:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 783              		.loc 1 762 9 view .LVU240
+ 784 00e0 2B68     		ldr	r3, [r5]
+ 785 00e2 23F4F853 		bic	r3, r3, #7936
+ 786 00e6 43EA0723 		orr	r3, r3, r7, lsl #8
+ 787 00ea 2B60     		str	r3, [r5]
+ 767:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 788              		.loc 1 767 9 view .LVU241
+ 789 00ec 0120     		movs	r0, #1
+ 790 00ee FFF7FEFF 		bl	HAL_Delay
+ 791              	.LVL58:
+ 769:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 792              		.loc 1 769 9 view .LVU242
+ 769:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 793              		.loc 1 769 13 is_stmt 0 view .LVU243
+ 794 00f2 2368     		ldr	r3, [r4]
+ 795 00f4 1B68     		ldr	r3, [r3]
+ 769:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         {
+ 796              		.loc 1 769 12 view .LVU244
+ 797 00f6 13F4004F 		tst	r3, #32768
+ 798 00fa EED0     		beq	.L56
+ 772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 799              		.loc 1 772 11 is_stmt 1 view .LVU245
+ 772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 800              		.loc 1 772 26 is_stmt 0 view .LVU246
+ 801 00fc 3744     		add	r7, r7, r6
+ 802              	.LVL59:
+ 772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
+ 803              		.loc 1 772 26 view .LVU247
+ 804 00fe EDE7     		b	.L57
+ 805              	.L71:
+ARM GAS  /tmp/cci58Y56.s 			page 33
+
+
+ 787:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 806              		.loc 1 787 7 is_stmt 1 view .LVU248
+ 807 0100 2B68     		ldr	r3, [r5]
+ 808 0102 23F4F853 		bic	r3, r3, #7936
+ 809 0106 43EA0723 		orr	r3, r3, r7, lsl #8
+ 810 010a 2B60     		str	r3, [r5]
+ 792:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 811              		.loc 1 792 7 view .LVU249
+ 812 010c 0120     		movs	r0, #1
+ 813 010e FFF7FEFF 		bl	HAL_Delay
+ 814              	.LVL60:
+ 794:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 815              		.loc 1 794 7 view .LVU250
+ 794:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 816              		.loc 1 794 11 is_stmt 0 view .LVU251
+ 817 0112 2368     		ldr	r3, [r4]
+ 818 0114 1B68     		ldr	r3, [r3]
+ 794:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 819              		.loc 1 794 10 view .LVU252
+ 820 0116 13F4004F 		tst	r3, #32768
+ 821 011a 06D0     		beq	.L59
+ 797:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep<<OPAMP_INPUT_NON
+ 822              		.loc 1 797 9 is_stmt 1 view .LVU253
+ 797:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(*tmp_opamp_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep<<OPAMP_INPUT_NON
+ 823              		.loc 1 797 23 is_stmt 0 view .LVU254
+ 824 011c 0137     		adds	r7, r7, #1
+ 825              	.LVL61:
+ 798:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 826              		.loc 1 798 9 is_stmt 1 view .LVU255
+ 827 011e 2B68     		ldr	r3, [r5]
+ 828 0120 23F4F853 		bic	r3, r3, #7936
+ 829 0124 43EA0723 		orr	r3, r3, r7, lsl #8
+ 830 0128 2B60     		str	r3, [r5]
+ 831              	.L59:
+ 802:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 832              		.loc 1 802 7 view .LVU256
+ 833 012a 2268     		ldr	r2, [r4]
+ 834 012c 1368     		ldr	r3, [r2]
+ 835 012e 23F00103 		bic	r3, r3, #1
+ 836 0132 1360     		str	r3, [r2]
+ 805:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 837              		.loc 1 805 7 view .LVU257
+ 838 0134 2268     		ldr	r2, [r4]
+ 839 0136 1368     		ldr	r3, [r2]
+ 840 0138 23F48053 		bic	r3, r3, #4096
+ 841 013c 1360     		str	r3, [r2]
+ 811:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 842              		.loc 1 811 7 view .LVU258
+ 811:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 843              		.loc 1 811 33 is_stmt 0 view .LVU259
+ 844 013e 4FF48043 		mov	r3, #16384
+ 845 0142 E361     		str	r3, [r4, #28]
+ 814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 846              		.loc 1 814 7 is_stmt 1 view .LVU260
+ 814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 847              		.loc 1 814 23 is_stmt 0 view .LVU261
+ 848 0144 A368     		ldr	r3, [r4, #8]
+ARM GAS  /tmp/cci58Y56.s 			page 34
+
+
+ 814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 849              		.loc 1 814 10 view .LVU262
+ 850 0146 022B     		cmp	r3, #2
+ 851 0148 0BD0     		beq	.L60
+ 817:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 852              		.loc 1 817 9 is_stmt 1 view .LVU263
+ 817:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 853              		.loc 1 817 37 is_stmt 0 view .LVU264
+ 854 014a C4F82480 		str	r8, [r4, #36]
+ 819:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 855              		.loc 1 819 9 is_stmt 1 view .LVU265
+ 819:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 856              		.loc 1 819 37 is_stmt 0 view .LVU266
+ 857 014e 2762     		str	r7, [r4, #32]
+ 858              	.L61:
+ 830:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 859              		.loc 1 830 5 is_stmt 1 view .LVU267
+ 860 0150 2268     		ldr	r2, [r4]
+ 861 0152 1368     		ldr	r3, [r2]
+ 862 0154 23F00C03 		bic	r3, r3, #12
+ 863 0158 43EA0903 		orr	r3, r3, r9
+ 864 015c 1360     		str	r3, [r2]
+ 644:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 865              		.loc 1 644 21 is_stmt 0 view .LVU268
+ 866 015e 0020     		movs	r0, #0
+ 867 0160 60E7     		b	.L47
+ 868              	.L60:
+ 824:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 869              		.loc 1 824 9 is_stmt 1 view .LVU269
+ 824:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* Write calibration result P */
+ 870              		.loc 1 824 45 is_stmt 0 view .LVU270
+ 871 0162 C4F82C80 		str	r8, [r4, #44]
+ 826:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 872              		.loc 1 826 9 is_stmt 1 view .LVU271
+ 826:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 873              		.loc 1 826 45 is_stmt 0 view .LVU272
+ 874 0166 A762     		str	r7, [r4, #40]
+ 875 0168 F2E7     		b	.L61
+ 876              	.LVL62:
+ 877              	.L62:
+ 878              	.LCFI6:
+ 879              		.cfi_def_cfa_offset 0
+ 880              		.cfi_restore 3
+ 881              		.cfi_restore 4
+ 882              		.cfi_restore 5
+ 883              		.cfi_restore 6
+ 884              		.cfi_restore 7
+ 885              		.cfi_restore 8
+ 886              		.cfi_restore 9
+ 887              		.cfi_restore 14
+ 657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 888              		.loc 1 657 12 view .LVU273
+ 889 016a 0120     		movs	r0, #1
+ 890              	.LVL63:
+ 838:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 891              		.loc 1 838 3 is_stmt 1 view .LVU274
+ 892              		.loc 1 839 1 is_stmt 0 view .LVU275
+ARM GAS  /tmp/cci58Y56.s 			page 35
+
+
+ 893 016c 7047     		bx	lr
+ 894              	.LVL64:
+ 895              	.L63:
+ 896              	.LCFI7:
+ 897              		.cfi_def_cfa_offset 32
+ 898              		.cfi_offset 3, -32
+ 899              		.cfi_offset 4, -28
+ 900              		.cfi_offset 5, -24
+ 901              		.cfi_offset 6, -20
+ 902              		.cfi_offset 7, -16
+ 903              		.cfi_offset 8, -12
+ 904              		.cfi_offset 9, -8
+ 905              		.cfi_offset 14, -4
+ 661:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 906              		.loc 1 661 12 view .LVU276
+ 907 016e 0120     		movs	r0, #1
+ 908              	.LVL65:
+ 661:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 909              		.loc 1 661 12 view .LVU277
+ 910 0170 58E7     		b	.L47
+ 911              		.cfi_endproc
+ 912              	.LFE292:
+ 914              		.section	.text.HAL_OPAMP_Lock,"ax",%progbits
+ 915              		.align	1
+ 916              		.global	HAL_OPAMP_Lock
+ 917              		.syntax unified
+ 918              		.thumb
+ 919              		.thumb_func
+ 920              		.fpu fpv4-sp-d16
+ 922              	HAL_OPAMP_Lock:
+ 923              	.LVL66:
+ 924              	.LFB293:
+ 840:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 841:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 842:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @}
+ 843:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 844:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 845:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions_Group3 Peripheral Control functions
+ 846:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *  @brief   Peripheral Control functions
+ 847:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *
+ 848:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @verbatim
+ 849:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 850:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                       ##### Peripheral Control functions #####
+ 851:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 852:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..]
+ 853:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     This subsection provides a set of functions allowing to control the OPAMP data
+ 854:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     transfers.
+ 855:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 856:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 857:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 858:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @endverbatim
+ 859:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 860:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 861:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 862:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 863:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Lock the selected OPAMP configuration.
+ 864:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   On STM32L4, HAL OPAMP lock is software lock only (in
+ARM GAS  /tmp/cci58Y56.s 			page 36
+
+
+ 865:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         contrast of hardware lock available on some other STM32
+ 866:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         devices).
+ 867:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp OPAMP handle
+ 868:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL status
+ 869:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 870:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_StatusTypeDef HAL_OPAMP_Lock(OPAMP_HandleTypeDef *hopamp)
+ 871:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 925              		.loc 1 871 1 is_stmt 1 view -0
+ 926              		.cfi_startproc
+ 927              		@ args = 0, pretend = 0, frame = 0
+ 928              		@ frame_needed = 0, uses_anonymous_args = 0
+ 929              		@ link register save eliminated.
+ 872:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 930              		.loc 1 872 3 view .LVU279
+ 873:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 874:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 875:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check if OPAMP locked */
+ 876:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* OPAMP can be locked when enabled and running in normal mode */
+ 877:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /*   It is meaningless otherwise */
+ 878:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 931              		.loc 1 878 3 view .LVU280
+ 932              		.loc 1 878 5 is_stmt 0 view .LVU281
+ 933 0000 58B1     		cbz	r0, .L74
+ 879:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 880:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 881:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 882:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSY)
+ 934              		.loc 1 882 8 is_stmt 1 view .LVU282
+ 935              		.loc 1 882 17 is_stmt 0 view .LVU283
+ 936 0002 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 937 0006 DBB2     		uxtb	r3, r3
+ 938              		.loc 1 882 10 view .LVU284
+ 939 0008 042B     		cmp	r3, #4
+ 940 000a 01D0     		beq	.L76
+ 883:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 884:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 885:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 886:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 887:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****    /* OPAMP state changed to locked */
+ 888:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     hopamp->State = HAL_OPAMP_STATE_BUSYLOCKED;
+ 889:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 890:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 891:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 892:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
+ 941              		.loc 1 892 12 view .LVU285
+ 942 000c 0120     		movs	r0, #1
+ 943              	.LVL67:
+ 893:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 894:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
+ 944              		.loc 1 894 3 is_stmt 1 view .LVU286
+ 895:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 945              		.loc 1 895 1 is_stmt 0 view .LVU287
+ 946 000e 7047     		bx	lr
+ 947              	.LVL68:
+ 948              	.L76:
+ 885:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 949              		.loc 1 885 5 is_stmt 1 view .LVU288
+ARM GAS  /tmp/cci58Y56.s 			page 37
+
+
+ 888:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 950              		.loc 1 888 5 view .LVU289
+ 888:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 951              		.loc 1 888 19 is_stmt 0 view .LVU290
+ 952 0010 0523     		movs	r3, #5
+ 953 0012 80F83230 		strb	r3, [r0, #50]
+ 872:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 954              		.loc 1 872 21 view .LVU291
+ 955 0016 0020     		movs	r0, #0
+ 956              	.LVL69:
+ 872:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 957              		.loc 1 872 21 view .LVU292
+ 958 0018 7047     		bx	lr
+ 959              	.LVL70:
+ 960              	.L74:
+ 880:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 961              		.loc 1 880 12 view .LVU293
+ 962 001a 0120     		movs	r0, #1
+ 963              	.LVL71:
+ 880:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 964              		.loc 1 880 12 view .LVU294
+ 965 001c 7047     		bx	lr
+ 966              		.cfi_endproc
+ 967              	.LFE293:
+ 969              		.section	.text.HAL_OPAMP_GetTrimOffset,"ax",%progbits
+ 970              		.align	1
+ 971              		.global	HAL_OPAMP_GetTrimOffset
+ 972              		.syntax unified
+ 973              		.thumb
+ 974              		.thumb_func
+ 975              		.fpu fpv4-sp-d16
+ 977              	HAL_OPAMP_GetTrimOffset:
+ 978              	.LVL72:
+ 979              	.LFB294:
+ 896:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 897:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 898:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Return the OPAMP factory trimming value.
+ 899:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note            On STM32L4 OPAMP, user can retrieve factory trimming if
+ 900:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  OPAMP has never been set to user trimming before.
+ 901:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  Therefore, this function must be called when OPAMP init
+ 902:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  parameter "UserTrimming" is set to trimming factory,
+ 903:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  and before OPAMP  calibration (function
+ 904:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  "HAL_OPAMP_SelfCalibrate()").
+ 905:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  Otherwise, factory trimming value cannot be retrieved and
+ 906:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *                  error status is returned.
+ 907:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp : OPAMP handle
+ 908:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  trimmingoffset : Trimming offset (P or N)
+ 909:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         This parameter must be a value of @ref OPAMP_FactoryTrimming
+ 910:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   Calibration parameter retrieved is corresponding to the mode
+ 911:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         specified in OPAMP init structure (mode normal or low-power).
+ 912:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         To retrieve calibration parameters for both modes, repeat this
+ 913:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         function after OPAMP init structure accordingly updated.
+ 914:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval Trimming value (P or N): range: 0->31
+ 915:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         or OPAMP_FACTORYTRIMMING_DUMMY if trimming value is not available
+ 916:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
+ 917:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 918:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ARM GAS  /tmp/cci58Y56.s 			page 38
+
+
+ 919:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_OPAMP_TrimmingValueTypeDef HAL_OPAMP_GetTrimOffset (OPAMP_HandleTypeDef *hopamp, uint32_t trimm
+ 920:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 980              		.loc 1 920 1 is_stmt 1 view -0
+ 981              		.cfi_startproc
+ 982              		@ args = 0, pretend = 0, frame = 0
+ 983              		@ frame_needed = 0, uses_anonymous_args = 0
+ 984              		@ link register save eliminated.
+ 921:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   HAL_OPAMP_TrimmingValueTypeDef trimmingvalue;
+ 985              		.loc 1 921 3 view .LVU296
+ 922:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   __IO uint32_t* tmp_opamp_reg_trimming;  /* Selection of register of trimming depending on power m
+ 986              		.loc 1 922 3 view .LVU297
+ 923:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 924:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 925:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Value can be retrieved in HAL_OPAMP_STATE_READY state */
+ 926:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 987              		.loc 1 926 3 view .LVU298
+ 988              		.loc 1 926 5 is_stmt 0 view .LVU299
+ 989 0000 C0B1     		cbz	r0, .L81
+ 927:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 928:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return OPAMP_FACTORYTRIMMING_DUMMY;
+ 929:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 930:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 931:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+ 932:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Value can be retrieved in HAL_OPAMP_STATE_READY state */
+ 933:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp->State == HAL_OPAMP_STATE_READY)
+ 990              		.loc 1 933 3 is_stmt 1 view .LVU300
+ 991              		.loc 1 933 12 is_stmt 0 view .LVU301
+ 992 0002 90F83230 		ldrb	r3, [r0, #50]	@ zero_extendqisi2
+ 993 0006 DBB2     		uxtb	r3, r3
+ 994              		.loc 1 933 5 view .LVU302
+ 995 0008 012B     		cmp	r3, #1
+ 996 000a 16D1     		bne	.L82
+ 934:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 935:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the parameter */
+ 936:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 997              		.loc 1 936 5 is_stmt 1 view .LVU303
+ 937:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_FACTORYTRIMMING(trimmingoffset));
+ 998              		.loc 1 937 5 view .LVU304
+ 938:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     assert_param(IS_OPAMP_POWERMODE(hopamp->Init.PowerMode));
+ 999              		.loc 1 938 5 view .LVU305
+ 939:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 940:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Check the trimming mode */
+ 941:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (READ_BIT(hopamp->Instance->CSR,OPAMP_CSR_USERTRIM) != 0U)
+ 1000              		.loc 1 941 5 view .LVU306
+ 1001              		.loc 1 941 9 is_stmt 0 view .LVU307
+ 1002 000c 0368     		ldr	r3, [r0]
+ 1003 000e 1B68     		ldr	r3, [r3]
+ 1004              		.loc 1 941 8 view .LVU308
+ 1005 0010 13F4804F 		tst	r3, #16384
+ 1006 0014 14D1     		bne	.L83
+ 942:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 943:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* This function must called when OPAMP init parameter "UserTrimming"   */
+ 944:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* is set to trimming factory, and before OPAMP calibration (function   */
+ 945:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* "HAL_OPAMP_SelfCalibrate()").                                        */
+ 946:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Otherwise, factory trimming value cannot be retrieved and error       */
+ 947:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* status is returned.                                                  */
+ 948:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       trimmingvalue = OPAMP_FACTORYTRIMMING_DUMMY;
+ARM GAS  /tmp/cci58Y56.s 			page 39
+
+
+ 949:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 950:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     else
+ 951:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
+ 952:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Select trimming settings depending on power mode */
+ 953:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (hopamp->Init.PowerMode == OPAMP_POWERMODE_NORMAL)
+ 1007              		.loc 1 953 7 is_stmt 1 view .LVU309
+ 1008              		.loc 1 953 23 is_stmt 0 view .LVU310
+ 1009 0016 8368     		ldr	r3, [r0, #8]
+ 1010              		.loc 1 953 10 view .LVU311
+ 1011 0018 33B9     		cbnz	r3, .L84
+ 954:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 955:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         tmp_opamp_reg_trimming = &OPAMP->OTR;
+ 1012              		.loc 1 955 32 view .LVU312
+ 1013 001a 0B4B     		ldr	r3, .L86
+ 1014              	.L79:
+ 1015              	.LVL73:
+ 956:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 957:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       else
+ 958:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 959:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         tmp_opamp_reg_trimming = &OPAMP->LPOTR;
+ 960:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 961:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 962:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Get factory trimming  */
+ 963:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       if (trimmingoffset == OPAMP_FACTORYTRIMMING_P)
+ 1016              		.loc 1 963 7 is_stmt 1 view .LVU313
+ 1017              		.loc 1 963 10 is_stmt 0 view .LVU314
+ 1018 001c 0129     		cmp	r1, #1
+ 1019 001e 05D0     		beq	.L85
+ 964:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 965:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_FACTORYTRIMMING_P */
+ 966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         trimmingvalue = ((*tmp_opamp_reg_trimming) & OPAMP_OTR_TRIMOFFSETP) >> OPAMP_INPUT_NONINVER
+ 967:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 968:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       else
+ 969:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
+ 970:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         /* OPAMP_FACTORYTRIMMING_N */
+ 971:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         trimmingvalue = (*tmp_opamp_reg_trimming) & OPAMP_OTR_TRIMOFFSETN;
+ 1020              		.loc 1 971 9 is_stmt 1 view .LVU315
+ 1021              		.loc 1 971 26 is_stmt 0 view .LVU316
+ 1022 0020 1868     		ldr	r0, [r3]
+ 1023              	.LVL74:
+ 1024              		.loc 1 971 23 view .LVU317
+ 1025 0022 00F01F00 		and	r0, r0, #31
+ 1026              	.LVL75:
+ 1027              		.loc 1 971 23 view .LVU318
+ 1028 0026 7047     		bx	lr
+ 1029              	.LVL76:
+ 1030              	.L84:
+ 959:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 1031              		.loc 1 959 32 view .LVU319
+ 1032 0028 084B     		ldr	r3, .L86+4
+ 1033 002a F7E7     		b	.L79
+ 1034              	.LVL77:
+ 1035              	.L85:
+ 966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 1036              		.loc 1 966 9 is_stmt 1 view .LVU320
+ 966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 1037              		.loc 1 966 27 is_stmt 0 view .LVU321
+ARM GAS  /tmp/cci58Y56.s 			page 40
+
+
+ 1038 002c 1868     		ldr	r0, [r3]
+ 1039              	.LVL78:
+ 966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 1040              		.loc 1 966 23 view .LVU322
+ 1041 002e C0F30420 		ubfx	r0, r0, #8, #5
+ 1042              	.LVL79:
+ 966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 1043              		.loc 1 966 23 view .LVU323
+ 1044 0032 7047     		bx	lr
+ 1045              	.LVL80:
+ 1046              	.L81:
+ 928:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 1047              		.loc 1 928 12 view .LVU324
+ 1048 0034 4FF0FF30 		mov	r0, #-1
+ 1049              	.LVL81:
+ 928:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 1050              		.loc 1 928 12 view .LVU325
+ 1051 0038 7047     		bx	lr
+ 1052              	.LVL82:
+ 1053              	.L82:
+ 972:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
+ 973:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 974:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 975:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
+ 976:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+ 977:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return OPAMP_FACTORYTRIMMING_DUMMY;
+ 1054              		.loc 1 977 12 view .LVU326
+ 1055 003a 4FF0FF30 		mov	r0, #-1
+ 1056              	.LVL83:
+ 1057              		.loc 1 977 12 view .LVU327
+ 1058 003e 7047     		bx	lr
+ 1059              	.LVL84:
+ 1060              	.L83:
+ 948:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
+ 1061              		.loc 1 948 21 view .LVU328
+ 1062 0040 4FF0FF30 		mov	r0, #-1
+ 1063              	.LVL85:
+ 978:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 979:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return trimmingvalue;
+ 980:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 1064              		.loc 1 980 1 view .LVU329
+ 1065 0044 7047     		bx	lr
+ 1066              	.L87:
+ 1067 0046 00BF     		.align	2
+ 1068              	.L86:
+ 1069 0048 04780040 		.word	1073772548
+ 1070 004c 08780040 		.word	1073772552
+ 1071              		.cfi_endproc
+ 1072              	.LFE294:
+ 1074              		.section	.text.HAL_OPAMP_GetState,"ax",%progbits
+ 1075              		.align	1
+ 1076              		.global	HAL_OPAMP_GetState
+ 1077              		.syntax unified
+ 1078              		.thumb
+ 1079              		.thumb_func
+ 1080              		.fpu fpv4-sp-d16
+ 1082              	HAL_OPAMP_GetState:
+ARM GAS  /tmp/cci58Y56.s 			page 41
+
+
+ 1083              	.LVL86:
+ 1084              	.LFB295:
+ 981:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 982:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+ 983:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @}
+ 984:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+ 985:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 986:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 987:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions_Group4 Peripheral State functions
+ 988:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *  @brief   Peripheral State functions
+ 989:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  *
+ 990:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @verbatim
+ 991:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 992:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                       ##### Peripheral State functions #####
+ 993:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****  ===============================================================================
+ 994:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     [..]
+ 995:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     This subsection permits to get in run-time the status of the peripheral.
+ 996:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+ 997:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** @endverbatim
+ 998:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
+ 999:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+1000:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+1001:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
+1002:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Return the OPAMP handle state.
+1003:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @param  hopamp : OPAMP handle
+1004:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @retval HAL state
+1005:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
+1006:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_OPAMP_StateTypeDef HAL_OPAMP_GetState(OPAMP_HandleTypeDef *hopamp)
+1007:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** {
+ 1085              		.loc 1 1007 1 is_stmt 1 view -0
+ 1086              		.cfi_startproc
+ 1087              		@ args = 0, pretend = 0, frame = 0
+ 1088              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1089              		@ link register save eliminated.
+1008:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the OPAMP handle allocation */
+1009:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   if(hopamp == NULL)
+ 1090              		.loc 1 1009 3 view .LVU331
+ 1091              		.loc 1 1009 5 is_stmt 0 view .LVU332
+ 1092 0000 18B1     		cbz	r0, .L90
+1010:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
+1011:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     return HAL_OPAMP_STATE_RESET;
+1012:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+1013:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+1014:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Check the parameter */
+1015:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
+ 1093              		.loc 1 1015 3 is_stmt 1 view .LVU333
+1016:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
+1017:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   /* Return OPAMP handle state */
+1018:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return hopamp->State;
+ 1094              		.loc 1 1018 3 view .LVU334
+ 1095              		.loc 1 1018 16 is_stmt 0 view .LVU335
+ 1096 0002 90F83200 		ldrb	r0, [r0, #50]	@ zero_extendqisi2
+ 1097              	.LVL87:
+ 1098              		.loc 1 1018 16 view .LVU336
+ 1099 0006 C0B2     		uxtb	r0, r0
+ 1100 0008 7047     		bx	lr
+ 1101              	.LVL88:
+ARM GAS  /tmp/cci58Y56.s 			page 42
+
+
+ 1102              	.L90:
+1011:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
+ 1103              		.loc 1 1011 12 view .LVU337
+ 1104 000a 0020     		movs	r0, #0
+ 1105              	.LVL89:
+1019:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
+ 1106              		.loc 1 1019 1 view .LVU338
+ 1107 000c 7047     		bx	lr
+ 1108              		.cfi_endproc
+ 1109              	.LFE295:
+ 1111              		.text
+ 1112              	.Letext0:
+ 1113              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
+ 1114              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 1115              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1116              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 1117              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
+ 1118              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 1119              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 1120              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
+ 1121              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ARM GAS  /tmp/cci58Y56.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32l4xx_hal_opamp.c
+     /tmp/cci58Y56.s:18     .text.HAL_OPAMP_MspInit:0000000000000000 $t
+     /tmp/cci58Y56.s:26     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
+     /tmp/cci58Y56.s:42     .text.HAL_OPAMP_Init:0000000000000000 $t
+     /tmp/cci58Y56.s:49     .text.HAL_OPAMP_Init:0000000000000000 HAL_OPAMP_Init
+     /tmp/cci58Y56.s:295    .text.HAL_OPAMP_Init:000000000000011c $d
+     /tmp/cci58Y56.s:300    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
+     /tmp/cci58Y56.s:307    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
+     /tmp/cci58Y56.s:322    .text.HAL_OPAMP_DeInit:0000000000000000 $t
+     /tmp/cci58Y56.s:329    .text.HAL_OPAMP_DeInit:0000000000000000 HAL_OPAMP_DeInit
+     /tmp/cci58Y56.s:404    .text.HAL_OPAMP_Start:0000000000000000 $t
+     /tmp/cci58Y56.s:411    .text.HAL_OPAMP_Start:0000000000000000 HAL_OPAMP_Start
+     /tmp/cci58Y56.s:478    .text.HAL_OPAMP_Stop:0000000000000000 $t
+     /tmp/cci58Y56.s:485    .text.HAL_OPAMP_Stop:0000000000000000 HAL_OPAMP_Stop
+     /tmp/cci58Y56.s:566    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 $t
+     /tmp/cci58Y56.s:573    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 HAL_OPAMP_SelfCalibrate
+     /tmp/cci58Y56.s:915    .text.HAL_OPAMP_Lock:0000000000000000 $t
+     /tmp/cci58Y56.s:922    .text.HAL_OPAMP_Lock:0000000000000000 HAL_OPAMP_Lock
+     /tmp/cci58Y56.s:970    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 $t
+     /tmp/cci58Y56.s:977    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 HAL_OPAMP_GetTrimOffset
+     /tmp/cci58Y56.s:1069   .text.HAL_OPAMP_GetTrimOffset:0000000000000048 $d
+     /tmp/cci58Y56.s:1075   .text.HAL_OPAMP_GetState:0000000000000000 $t
+     /tmp/cci58Y56.s:1082   .text.HAL_OPAMP_GetState:0000000000000000 HAL_OPAMP_GetState
+
+UNDEFINED SYMBOLS
+HAL_Delay

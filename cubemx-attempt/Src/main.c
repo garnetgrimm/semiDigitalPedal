@@ -59,7 +59,7 @@ static void MX_ADC1_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
-uint16_t ADCValue=0;
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/

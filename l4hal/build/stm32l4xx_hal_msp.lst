@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccIC2TOZ.s 			page 1
+ARM GAS  /tmp/ccglS3eD.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
   28:Src/stm32l4xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
   29:Src/stm32l4xx_hal_msp.c **** /* USER CODE BEGIN TD */
   30:Src/stm32l4xx_hal_msp.c **** 
-ARM GAS  /tmp/ccIC2TOZ.s 			page 2
+ARM GAS  /tmp/ccglS3eD.s 			page 2
 
 
   31:Src/stm32l4xx_hal_msp.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
   43 0006 42F00102 		orr	r2, r2, #1
   44 000a 1A66     		str	r2, [r3, #96]
   45              		.loc 1 70 3 view .LVU4
-ARM GAS  /tmp/ccIC2TOZ.s 			page 3
+ARM GAS  /tmp/ccglS3eD.s 			page 3
 
 
   46 000c 1A6E     		ldr	r2, [r3, #96]
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
   81:Src/stm32l4xx_hal_msp.c **** * @brief ADC MSP Initialization
   82:Src/stm32l4xx_hal_msp.c **** * This function configures the hardware resources used in this example
   83:Src/stm32l4xx_hal_msp.c **** * @param hadc: ADC handle pointer
-ARM GAS  /tmp/ccIC2TOZ.s 			page 4
+ARM GAS  /tmp/ccglS3eD.s 			page 4
 
 
   84:Src/stm32l4xx_hal_msp.c **** * @retval None
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  108:Src/stm32l4xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(ADC1_IRQn);
  109:Src/stm32l4xx_hal_msp.c ****   /* USER CODE BEGIN ADC1_MspInit 1 */
  110:Src/stm32l4xx_hal_msp.c **** 
-ARM GAS  /tmp/ccIC2TOZ.s 			page 5
+ARM GAS  /tmp/ccglS3eD.s 			page 5
 
 
  111:Src/stm32l4xx_hal_msp.c ****   /* USER CODE END ADC1_MspInit 1 */
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  161              		.loc 1 97 5 view .LVU32
  162 0046 029B     		ldr	r3, [sp, #8]
  163              	.LBE5:
-ARM GAS  /tmp/ccIC2TOZ.s 			page 6
+ARM GAS  /tmp/ccglS3eD.s 			page 6
 
 
   97:Src/stm32l4xx_hal_msp.c ****     /**ADC1 GPIO Configuration    
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  208              		.thumb_func
  209              		.fpu fpv4-sp-d16
  211              	HAL_ADC_MspDeInit:
-ARM GAS  /tmp/ccIC2TOZ.s 			page 7
+ARM GAS  /tmp/ccglS3eD.s 			page 7
 
 
  212              	.LVL7:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  236              	.L14:
  130:Src/stm32l4xx_hal_msp.c ****   
  237              		.loc 1 130 5 is_stmt 1 view .LVU51
-ARM GAS  /tmp/ccIC2TOZ.s 			page 8
+ARM GAS  /tmp/ccglS3eD.s 			page 8
 
 
  238 000c 074A     		ldr	r2, .L15+4
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  282              		.cfi_offset 14, -4
  283 0002 89B0     		sub	sp, sp, #36
  284              	.LCFI8:
-ARM GAS  /tmp/ccIC2TOZ.s 			page 9
+ARM GAS  /tmp/ccglS3eD.s 			page 9
 
 
  285              		.cfi_def_cfa_offset 40
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  314              		.loc 1 161 5 is_stmt 1 view .LVU64
  315              	.LBB6:
  161:Src/stm32l4xx_hal_msp.c ****   
-ARM GAS  /tmp/ccIC2TOZ.s 			page 10
+ARM GAS  /tmp/ccglS3eD.s 			page 10
 
 
  316              		.loc 1 161 5 view .LVU65
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  354              		.loc 1 169 26 is_stmt 0 view .LVU81
  355 004e 0023     		movs	r3, #0
  356 0050 0593     		str	r3, [sp, #20]
-ARM GAS  /tmp/ccIC2TOZ.s 			page 11
+ARM GAS  /tmp/ccglS3eD.s 			page 11
 
 
  170:Src/stm32l4xx_hal_msp.c **** 
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  401              	.LVL19:
  402              	.L23:
  188:Src/stm32l4xx_hal_msp.c ****   {
-ARM GAS  /tmp/ccIC2TOZ.s 			page 12
+ARM GAS  /tmp/ccglS3eD.s 			page 12
 
 
  189:Src/stm32l4xx_hal_msp.c ****   /* USER CODE BEGIN DAC1_MspDeInit 0 */
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  439              	.LFB291:
  206:Src/stm32l4xx_hal_msp.c **** 
  207:Src/stm32l4xx_hal_msp.c **** /**
-ARM GAS  /tmp/ccIC2TOZ.s 			page 13
+ARM GAS  /tmp/ccglS3eD.s 			page 13
 
 
  208:Src/stm32l4xx_hal_msp.c **** * @brief UART MSP Initialization
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  230:Src/stm32l4xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  231:Src/stm32l4xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
  232:Src/stm32l4xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-ARM GAS  /tmp/ccIC2TOZ.s 			page 14
+ARM GAS  /tmp/ccglS3eD.s 			page 14
 
 
  233:Src/stm32l4xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  224:Src/stm32l4xx_hal_msp.c ****     /**USART2 GPIO Configuration    
  502              		.loc 1 224 5 view .LVU111
  503 0032 DA6C     		ldr	r2, [r3, #76]
-ARM GAS  /tmp/ccIC2TOZ.s 			page 15
+ARM GAS  /tmp/ccglS3eD.s 			page 15
 
 
  504 0034 42F00102 		orr	r2, r2, #1
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  236:Src/stm32l4xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  542              		.loc 1 236 25 is_stmt 0 view .LVU128
  543 0062 4FF40043 		mov	r3, #32768
-ARM GAS  /tmp/ccIC2TOZ.s 			page 16
+ARM GAS  /tmp/ccglS3eD.s 			page 16
 
 
  544 0066 0393     		str	r3, [sp, #12]
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  582              		.loc 1 257 1 is_stmt 1 view -0
  583              		.cfi_startproc
  584              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccIC2TOZ.s 			page 17
+ARM GAS  /tmp/ccglS3eD.s 			page 17
 
 
  585              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  616              	.LVL33:
  617              		.loc 1 277 1 view .LVU148
  618 0022 F2E7     		b	.L35
-ARM GAS  /tmp/ccIC2TOZ.s 			page 18
+ARM GAS  /tmp/ccglS3eD.s 			page 18
 
 
  619              	.L40:
@@ -1031,55 +1031,59 @@ ARM GAS  /tmp/ccIC2TOZ.s 			page 1
  627              		.comm	hdac1,20,4
  628              		.comm	hadc1,100,4
  629              		.comm	huart2,128,4
- 630              		.comm	adc_value,2,2
- 631              		.text
- 632              	.Letext0:
- 633              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
- 634              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
- 635              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 636              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
- 637              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
- 638              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
- 639              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 640              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
- 641              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 642              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 643              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
- 644              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
- 645              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
- 646              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 647              		.file 16 "Inc/main.h"
- 648              		.file 17 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
-ARM GAS  /tmp/ccIC2TOZ.s 			page 19
+ 630              		.comm	value_dac,4,4
+ 631              		.comm	trig,4,4
+ 632              		.comm	value_adc,4,4
+ 633              		.text
+ 634              	.Letext0:
+ 635              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
+ 636              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 637              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 638              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 639              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
+ 640              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
+ 641              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 642              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 643              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 644              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+ 645              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
+ 646              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 647              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
+ 648              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 649              		.file 16 "Inc/main.h"
+ 650              		.file 17 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ARM GAS  /tmp/ccglS3eD.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_msp.c
-     /tmp/ccIC2TOZ.s:18     .text.HAL_MspInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:26     .text.HAL_MspInit:0000000000000000 HAL_MspInit
-     /tmp/ccIC2TOZ.s:77     .text.HAL_MspInit:000000000000002c $d
-     /tmp/ccIC2TOZ.s:82     .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:89     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccIC2TOZ.s:199    .text.HAL_ADC_MspInit:0000000000000070 $d
-     /tmp/ccIC2TOZ.s:204    .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:211    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccIC2TOZ.s:258    .text.HAL_ADC_MspDeInit:0000000000000028 $d
-     /tmp/ccIC2TOZ.s:264    .text.HAL_DAC_MspInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:271    .text.HAL_DAC_MspInit:0000000000000000 HAL_DAC_MspInit
-     /tmp/ccIC2TOZ.s:369    .text.HAL_DAC_MspInit:0000000000000060 $d
-     /tmp/ccIC2TOZ.s:374    .text.HAL_DAC_MspDeInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:381    .text.HAL_DAC_MspDeInit:0000000000000000 HAL_DAC_MspDeInit
-     /tmp/ccIC2TOZ.s:424    .text.HAL_DAC_MspDeInit:0000000000000024 $d
-     /tmp/ccIC2TOZ.s:430    .text.HAL_UART_MspInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:437    .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
-     /tmp/ccIC2TOZ.s:567    .text.HAL_UART_MspInit:000000000000007c $d
-     /tmp/ccIC2TOZ.s:572    .text.HAL_UART_MspDeInit:0000000000000000 $t
-     /tmp/ccIC2TOZ.s:579    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
-     /tmp/ccIC2TOZ.s:622    .text.HAL_UART_MspDeInit:0000000000000024 $d
+     /tmp/ccglS3eD.s:18     .text.HAL_MspInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:26     .text.HAL_MspInit:0000000000000000 HAL_MspInit
+     /tmp/ccglS3eD.s:77     .text.HAL_MspInit:000000000000002c $d
+     /tmp/ccglS3eD.s:82     .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:89     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/ccglS3eD.s:199    .text.HAL_ADC_MspInit:0000000000000070 $d
+     /tmp/ccglS3eD.s:204    .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:211    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/ccglS3eD.s:258    .text.HAL_ADC_MspDeInit:0000000000000028 $d
+     /tmp/ccglS3eD.s:264    .text.HAL_DAC_MspInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:271    .text.HAL_DAC_MspInit:0000000000000000 HAL_DAC_MspInit
+     /tmp/ccglS3eD.s:369    .text.HAL_DAC_MspInit:0000000000000060 $d
+     /tmp/ccglS3eD.s:374    .text.HAL_DAC_MspDeInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:381    .text.HAL_DAC_MspDeInit:0000000000000000 HAL_DAC_MspDeInit
+     /tmp/ccglS3eD.s:424    .text.HAL_DAC_MspDeInit:0000000000000024 $d
+     /tmp/ccglS3eD.s:430    .text.HAL_UART_MspInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:437    .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
+     /tmp/ccglS3eD.s:567    .text.HAL_UART_MspInit:000000000000007c $d
+     /tmp/ccglS3eD.s:572    .text.HAL_UART_MspDeInit:0000000000000000 $t
+     /tmp/ccglS3eD.s:579    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
+     /tmp/ccglS3eD.s:622    .text.HAL_UART_MspDeInit:0000000000000024 $d
                             *COM*:0000000000000014 hdac1
                             *COM*:0000000000000064 hadc1
                             *COM*:0000000000000080 huart2
-                            *COM*:0000000000000002 adc_value
+                            *COM*:0000000000000004 value_dac
+                            *COM*:0000000000000004 trig
+                            *COM*:0000000000000004 value_adc
 
 UNDEFINED SYMBOLS
 HAL_GPIO_Init

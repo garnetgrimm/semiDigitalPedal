@@ -62,7 +62,7 @@ extern ADC_HandleTypeDef hadc1;
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M4 Processor Interruption and Exception Handlers          */
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -215,12 +215,13 @@ void ADC1_IRQHandler(void)
 //uint32_t trig = 0;
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-    adc_value = HAL_ADC_GetValue(&hadc1);
-    HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, adc_value);
-    //trig = (trig != 0) ? 0 : 4095;
-    //char buf[32];
-    //sprintf(buf, "%d", trig);
-    //debugPrintln(&huart2,buf);
+  value_adc = HAL_ADC_GetValue(&hadc1);
+  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_adc);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, trig);
+  trig = (trig != 0) ? 0 : 4095;
+  //char buf[32];
+  //sprintf(buf, "%d", value_adc);
+  //debugPrintln(&huart2,buf);
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
