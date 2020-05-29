@@ -29,6 +29,7 @@ class graphFFT {
     int playingAudio;
     AudioFile<double> audioFile;
     float FFTtime;
+    int avgMax;
     float highestFreq;
     int running;
     std::chrono::time_point<std::chrono::high_resolution_clock> audioStart;

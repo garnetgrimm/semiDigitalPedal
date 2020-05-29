@@ -1,6 +1,6 @@
 CXX=clang++
 CFLAGS=-I.
-DEPS = AudioFile.h FFT.h GraphFFT.h
+DEPS = AudioFile.h FFT.h GraphFFT.h effects.h
 OBJ = main.o GraphFFT.o FFT.o AudioFile.o
 
 %.o: %.c $(DEPS)

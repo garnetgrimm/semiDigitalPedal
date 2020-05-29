@@ -55,13 +55,14 @@ void graphFFT::drawRect(SDL_Renderer* rend, float x, float y, float width, float
 
 void graphFFT::playAudio(SDL_AudioDeviceID deviceId, uint32_t wavLength, uint8_t *wavBuffer) {
   int success = SDL_QueueAudio(deviceId, wavBuffer, wavLength);
-  SDL_PauseAudioDevice(deviceId, 0);
+  //SDL_PauseAudioDevice(deviceId, 0);
   audioStart = std::chrono::high_resolution_clock::now();
   playingAudio = 1;
 }
 
 void graphFFT::drawGraph(char* filename) {
     audioFile.load(filename);
+    avgMax = 0;
 
     SDL_Window *window;                    // Declare a pointer
     SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL2
@@ -105,9 +106,14 @@ void graphFFT::drawGraph(char* filename) {
       double playTime = std::chrono::duration<double>(now-audioStart).count();
       getDataFFT(vec, playTime);
       organizeFFT(vec, samples);
+      int max = 0;
       for(int row = 0; row < sCount; row++) {
+        if(samples[row].amplitude > max) max = row;
         if(playingAudio) drawRect(rend,row*(WINDOW_WIDTH/sCount),WINDOW_HEIGHT,(WINDOW_WIDTH/sCount),-(samples[row].amplitude*WINDOW_HEIGHT)/MAX_VOL,0xff00ff);
       }
+      avgMax = (avgMax + max) / 2;
+      cout << avgMax << endl;
+      if(playingAudio) drawRect(rend,avgMax*(WINDOW_WIDTH/sCount),WINDOW_HEIGHT,(WINDOW_WIDTH/sCount),-(samples[avgMax].amplitude*WINDOW_HEIGHT)/MAX_VOL,0x00ff00);
       SDL_RenderPresent(rend);
 
       SDL_Event event;
