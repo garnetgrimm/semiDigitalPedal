@@ -20,7 +20,7 @@ int main() {
     auto start = high_resolution_clock::now();
     for (int i = 0; i < audioFile.getNumSamplesPerChannel(); i++)
     {
-        //abstract class!
+        //TODO - abstract class!
         //myreverb.step(&audioFile.samples[channel][i]);
         //myfuzz.step(&audioFile.samples[channel][i]);
         myoctave.step(&audioFile.samples[channel][i]);

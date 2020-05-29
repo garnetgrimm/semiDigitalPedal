@@ -77,7 +77,7 @@ typedef struct octave {
     bufferB = (double*) calloc(bufferSize, sizeof(double));
   };
   octave(uint32_t bufferSize, int8_t octChange):
-  bufferSize(bufferSize)
+  bufferSize(bufferSize),
   octChange(octChange)
   {
       bufferA = (double*) calloc(bufferSize, sizeof(double));
