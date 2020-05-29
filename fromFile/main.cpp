@@ -16,6 +16,7 @@ int main() {
     reverb myreverb = reverb();
     fuzz myfuzz = fuzz(1,1);
     octave myoctave = octave();
+    overdrive myoverdrive = overdrive(60,100);
     cout << "Beginning transformation" << endl;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < audioFile.getNumSamplesPerChannel(); i++)
@@ -23,7 +24,8 @@ int main() {
         //TODO - abstract class!
         //myreverb.step(&audioFile.samples[channel][i]);
         //myfuzz.step(&audioFile.samples[channel][i]);
-        myoctave.step(&audioFile.samples[channel][i]);
+        //myoctave.step(&audioFile.samples[channel][i]);
+        myoverdrive.step(&audioFile.samples[channel][i]);
     }
     auto end = high_resolution_clock::now();
     double durr = std::chrono::duration<double>(end-start).count();
