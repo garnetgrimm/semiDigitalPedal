@@ -41,9 +41,20 @@ typedef struct fuzz {
 } _fuzz;
 
 typedef struct overdrive {
+  float gain;
+  float volume;
   overdrive() {
+    gain = 60;
+    volume = 100;
   };
+  overdrive(float gain, float volume):
+  gain(gain), 
+  volume(volume)
+  {};
   void step(double* sample) {
+    double threshold = 1 / gain;
+    *sample = atan(*sample * (10 / M_PI)) * threshold * (2.0 / M_PI);
+    *sample *= volume;
   }
 } _overdrive;
 
@@ -94,6 +105,7 @@ typedef struct octave {
 
     //when sample = 0 is uncommented, only the octave goes through, no clean
     //*sample = 0;
+
     *sample += bufferA[(int)readIdxA % bufferSize];
     *sample += bufferB[(int)readIdxB % bufferSize];
 
