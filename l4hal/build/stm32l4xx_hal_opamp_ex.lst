@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccc8S43z.s 			page 1
+ARM GAS  /tmp/ccsAL85U.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
   27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /* Includes ------------------------------------------------------------------*/
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** #include "stm32l4xx_hal.h"
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
-ARM GAS  /tmp/ccc8S43z.s 			page 2
+ARM GAS  /tmp/ccsAL85U.s 			page 2
 
 
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /** @addtogroup STM32L4xx_HAL_Driver
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
   84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   *         and N transistors: 10 steps with 1 ms for each step).
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * @param  hopamp1 handle
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * @param  hopamp2 handle
-ARM GAS  /tmp/ccc8S43z.s 			page 3
+ARM GAS  /tmp/ccsAL85U.s 			page 3
 
 
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * @retval HAL status
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     SET_BIT(hopamp2->Instance->CSR, OPAMP_CSR_USERTRIM);
  142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     /* Select trimming settings depending on power mode */
-ARM GAS  /tmp/ccc8S43z.s 			page 4
+ARM GAS  /tmp/ccsAL85U.s 			page 4
 
 
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     if (hopamp1->Init.PowerMode == OPAMP_POWERMODE_NORMAL)
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  198:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       {
  199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* OPAMP_CSR_CALOUT is LOW try higher trimming */
  200:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         trimmingvaluen1 += delta;
-ARM GAS  /tmp/ccc8S43z.s 			page 5
+ARM GAS  /tmp/ccsAL85U.s 			page 5
 
 
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       }
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  255:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       /* OPAMP_POWERMODE_NORMAL */
  256:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       MODIFY_REG(*tmp_opamp1_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep1<<OPAMP_INPUT_NON
  257:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       MODIFY_REG(*tmp_opamp2_reg_trimming, OPAMP_OTR_TRIMOFFSETP, (trimmingvaluep2<<OPAMP_INPUT_NON
-ARM GAS  /tmp/ccc8S43z.s 			page 6
+ARM GAS  /tmp/ccsAL85U.s 			page 6
 
 
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  312:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     }
  313:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  314:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     /* Disable the OPAMPs */
-ARM GAS  /tmp/ccc8S43z.s 			page 7
+ARM GAS  /tmp/ccsAL85U.s 			page 7
 
 
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     CLEAR_BIT (hopamp1->Instance->CSR, OPAMP_CSR_OPAMPxEN);
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  369:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** }
  370:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  371:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /**
-ARM GAS  /tmp/ccc8S43z.s 			page 8
+ARM GAS  /tmp/ccsAL85U.s 			page 8
 
 
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * @}
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
  410:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   {
  411:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     /* Check the parameter */
  412:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****     assert_param(IS_OPAMP_ALL_INSTANCE(hopamp->Instance));
-ARM GAS  /tmp/ccc8S43z.s 			page 9
+ARM GAS  /tmp/ccsAL85U.s 			page 9
 
 
  413:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
@@ -537,12 +537,12 @@ ARM GAS  /tmp/ccc8S43z.s 			page 1
   82              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
   83              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
   84              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /tmp/ccc8S43z.s 			page 10
+ARM GAS  /tmp/ccsAL85U.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_opamp_ex.c
-     /tmp/ccc8S43z.s:18     .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
-     /tmp/ccc8S43z.s:26     .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
+     /tmp/ccsAL85U.s:18     .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
+     /tmp/ccsAL85U.s:26     .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
 
 NO UNDEFINED SYMBOLS

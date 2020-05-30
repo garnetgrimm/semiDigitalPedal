@@ -62,7 +62,7 @@ extern ADC_HandleTypeDef hadc1;
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -216,12 +216,17 @@ void ADC1_IRQHandler(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   value_adc = HAL_ADC_GetValue(&hadc1);
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_adc);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, trig);
-  trig = (trig != 0) ? 0 : 4095;
-  //char buf[32];
-  //sprintf(buf, "%d", value_adc);
-  //debugPrintln(&huart2,buf);
+  int to_dac = value_adc;
+  step_reverb(&r, &to_dac);
+  step_octave(&o, &to_dac);
+  //                    time in milli/1000 * freq inc per sec % max
+  //float freq = (((float)HAL_GetTick()/1000)*10) % 1000;
+  //value_adc = ((4095/2)*sin(((float)HAL_GetTick()*2*3.1415926535*freq)/1000))+(4095/2);
+  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, to_dac);
+  //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, trig);
+  //set output data register directly
+  GPIOB -> ODR ^= GPIO_PIN_0;
+  //trig = (trig != 0) ? 0 : 4095;
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cci58Y56.s 			page 1
+ARM GAS  /tmp/cc0JpgWG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
   27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (#) The OPAMP(s) provide(s) several exclusive running modes.
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Standalone mode
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Programmable Gain Amplifier (PGA) mode (Resistor feedback output)
-ARM GAS  /tmp/cci58Y56.s 			page 2
+ARM GAS  /tmp/cc0JpgWG.s 			page 2
 
 
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****        (++) Follower mode
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
   84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Configure the OPAMP using HAL_OPAMP_Init() function:
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Select OPAMP_POWERSUPPLY_LOW (VDDA lower than 2.4V)
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (++) Otherwise select OPAMP_POWERSUPPLY_HIGH (VDDA higher than 2.4V)
-ARM GAS  /tmp/cci58Y56.s 			page 3
+ARM GAS  /tmp/cc0JpgWG.s 			page 3
 
 
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Disable the OPAMP using HAL_OPAMP_Stop() function.
  142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       (#) Lock the OPAMP in running mode using HAL_OPAMP_Lock() function.
-ARM GAS  /tmp/cci58Y56.s 			page 4
+ARM GAS  /tmp/cc0JpgWG.s 			page 4
 
 
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****           Caution: On STM32L4, HAL OPAMP lock is software lock only (not
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  198:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
  199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * All rights reserved.</center></h2>
  200:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
-ARM GAS  /tmp/cci58Y56.s 			page 5
+ARM GAS  /tmp/cc0JpgWG.s 			page 5
 
 
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * This software component is licensed by ST under BSD 3-Clause license,
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  255:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  256:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /** @defgroup OPAMP_Exported_Functions OPAMP Exported Functions
  257:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @{
-ARM GAS  /tmp/cci58Y56.s 			page 6
+ARM GAS  /tmp/cc0JpgWG.s 			page 6
 
 
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  312:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** #if (USE_HAL_OPAMP_REGISTER_CALLBACKS == 1)
  313:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if(hopamp->MspInitCallback == NULL)
  314:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
-ARM GAS  /tmp/cci58Y56.s 			page 7
+ARM GAS  /tmp/cc0JpgWG.s 			page 7
 
 
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->MspInitCallback               = HAL_OPAMP_MspInit;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  369:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PowerMode | \
  370:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.Mode | \
  371:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.PgaGain | \
-ARM GAS  /tmp/cci58Y56.s 			page 8
+ARM GAS  /tmp/cc0JpgWG.s 			page 8
 
 
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****                                         hopamp->Init.InvertingInput    | \
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  426:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Update the OPAMP state*/
  427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     if (hopamp->State == HAL_OPAMP_STATE_RESET)
  428:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
-ARM GAS  /tmp/cci58Y56.s 			page 9
+ARM GAS  /tmp/cc0JpgWG.s 			page 9
 
 
  429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* From RESET state to READY State */
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  483:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     /* Process unlocked */
  484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     __HAL_UNLOCK(hopamp);
  485:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
-ARM GAS  /tmp/cci58Y56.s 			page 10
+ARM GAS  /tmp/cc0JpgWG.s 			page 10
 
 
  486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   return status;
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
   63 0006 10B5     		push	{r4, lr}
   64              	.LCFI0:
   65              		.cfi_def_cfa_offset 8
-ARM GAS  /tmp/cci58Y56.s 			page 11
+ARM GAS  /tmp/cc0JpgWG.s 			page 11
 
 
   66              		.cfi_offset 4, -8
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  336:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
   99              		.loc 1 336 5 view .LVU30
  345:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         assert_param(IS_OPAMP_TRIMMINGVALUE(hopamp->Init.TrimmingValueNLowPower));
-ARM GAS  /tmp/cci58Y56.s 			page 12
+ARM GAS  /tmp/cc0JpgWG.s 			page 12
 
 
  100              		.loc 1 345 9 view .LVU31
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  137              		.loc 1 387 21 is_stmt 0 view .LVU48
  138 0048 E368     		ldr	r3, [r4, #12]
  387:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     {
-ARM GAS  /tmp/cci58Y56.s 			page 13
+ARM GAS  /tmp/cc0JpgWG.s 			page 13
 
 
  139              		.loc 1 387 8 view .LVU49
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
  182              		.loc 1 433 12 is_stmt 0 view .LVU61
  183 008e 0020     		movs	r0, #0
-ARM GAS  /tmp/cci58Y56.s 			page 14
+ARM GAS  /tmp/cc0JpgWG.s 			page 14
 
 
  184              	.L3:
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  230              		.loc 1 406 41 is_stmt 0 view .LVU69
  231 00dc 226A     		ldr	r2, [r4, #32]
  407:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         MODIFY_REG(hopamp->Instance->OTR, OPAMP_OTR_TRIMOFFSETN | OPAMP_OTR_TRIMOFFSETP, updateotrl
-ARM GAS  /tmp/cci58Y56.s 			page 15
+ARM GAS  /tmp/cc0JpgWG.s 			page 15
 
 
  232              		.loc 1 407 41 view .LVU70
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  277              		.cfi_def_cfa_offset 8
  278              		.cfi_offset 4, -8
  279              		.cfi_offset 14, -4
-ARM GAS  /tmp/cci58Y56.s 			page 16
+ARM GAS  /tmp/cc0JpgWG.s 			page 16
 
 
  293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  317 0000 7047     		bx	lr
  318              		.cfi_endproc
  319              	.LFE289:
-ARM GAS  /tmp/cci58Y56.s 			page 17
+ARM GAS  /tmp/cc0JpgWG.s 			page 17
 
 
  321              		.section	.text.HAL_OPAMP_DeInit,"ax",%progbits
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  461:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  364              		.loc 1 461 5 is_stmt 1 view .LVU99
  466:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     MODIFY_REG(hopamp->Instance->CSR, OPAMP_CSR_RESET_BITS, OPAMP_CSR_RESET_VALUE);
-ARM GAS  /tmp/cci58Y56.s 			page 18
+ARM GAS  /tmp/cc0JpgWG.s 			page 18
 
 
  365              		.loc 1 466 5 view .LVU100
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  411              	HAL_OPAMP_Start:
  412              	.LVL21:
  413              	.LFB290:
-ARM GAS  /tmp/cci58Y56.s 			page 19
+ARM GAS  /tmp/cc0JpgWG.s 			page 19
 
 
  518:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  556:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   {
  557:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
  558:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
-ARM GAS  /tmp/cci58Y56.s 			page 20
+ARM GAS  /tmp/cc0JpgWG.s 			page 20
 
 
  559:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  547:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  458              		.loc 1 547 21 view .LVU129
  459 002c 7047     		bx	lr
-ARM GAS  /tmp/cci58Y56.s 			page 21
+ARM GAS  /tmp/cc0JpgWG.s 			page 21
 
 
  460              	.LVL25:
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     status = HAL_ERROR;
  597:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
  598:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   else if(hopamp->State == HAL_OPAMP_STATE_BUSYLOCKED)
-ARM GAS  /tmp/cci58Y56.s 			page 22
+ARM GAS  /tmp/cc0JpgWG.s 			page 22
 
 
  497              		.loc 1 598 8 is_stmt 1 view .LVU138
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  523              		.loc 1 626 1 is_stmt 0 view .LVU150
  524 0022 7047     		bx	lr
  525              	.LVL31:
-ARM GAS  /tmp/cci58Y56.s 			page 23
+ARM GAS  /tmp/cc0JpgWG.s 			page 23
 
 
  526              	.L45:
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  570              		.thumb_func
  571              		.fpu fpv4-sp-d16
  573              	HAL_OPAMP_SelfCalibrate:
-ARM GAS  /tmp/cci58Y56.s 			page 24
+ARM GAS  /tmp/cc0JpgWG.s 			page 24
 
 
  574              	.LVL39:
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  598              		.cfi_offset 7, -16
  599              		.cfi_offset 8, -12
  600              		.cfi_offset 9, -8
-ARM GAS  /tmp/cci58Y56.s 			page 25
+ARM GAS  /tmp/cc0JpgWG.s 			page 25
 
 
  601              		.cfi_offset 14, -4
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  694:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALON);
  695:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  696:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* 1st calibration - N */
-ARM GAS  /tmp/cci58Y56.s 			page 26
+ARM GAS  /tmp/cc0JpgWG.s 			page 26
 
 
  697:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       CLEAR_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALSEL);
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  751:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       SET_BIT (hopamp->Instance->CSR, OPAMP_CSR_CALSEL);
  752:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  753:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Init trimming counter */
-ARM GAS  /tmp/cci58Y56.s 			page 27
+ARM GAS  /tmp/cc0JpgWG.s 			page 27
 
 
  754:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Medium value */
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  808:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Store calibration(user trimming) results in init structure. */
  809:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  810:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Set user trimming mode */
-ARM GAS  /tmp/cci58Y56.s 			page 28
+ARM GAS  /tmp/cc0JpgWG.s 			page 28
 
 
  811:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       hopamp->Init.UserTrimming = OPAMP_TRIMMING_USER;
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  636 0030 1A68     		ldr	r2, [r3]
  637 0032 22F00C02 		bic	r2, r2, #12
  638 0036 1A60     		str	r2, [r3]
-ARM GAS  /tmp/cci58Y56.s 			page 29
+ARM GAS  /tmp/cc0JpgWG.s 			page 29
 
 
  681:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  678 006a 4FF01008 		mov	r8, #16
  707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
  679              		.loc 1 707 13 view .LVU202
-ARM GAS  /tmp/cci58Y56.s 			page 30
+ARM GAS  /tmp/cc0JpgWG.s 			page 30
 
 
  680 006e 04E0     		b	.L50
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  720 0096 EED0     		beq	.L51
  721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
  721              		.loc 1 721 11 is_stmt 1 view .LVU217
-ARM GAS  /tmp/cci58Y56.s 			page 31
+ARM GAS  /tmp/cc0JpgWG.s 			page 31
 
 
  721:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****         }
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  762              		.loc 1 758 7 view .LVU231
  756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  763              		.loc 1 756 13 is_stmt 0 view .LVU232
-ARM GAS  /tmp/cci58Y56.s 			page 32
+ARM GAS  /tmp/cc0JpgWG.s 			page 32
 
 
  764 00d4 0826     		movs	r6, #8
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  803              		.loc 1 772 26 view .LVU247
  804 00fe EDE7     		b	.L57
  805              	.L71:
-ARM GAS  /tmp/cci58Y56.s 			page 33
+ARM GAS  /tmp/cc0JpgWG.s 			page 33
 
 
  787:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
  847              		.loc 1 814 23 is_stmt 0 view .LVU261
  848 0144 A368     		ldr	r3, [r4, #8]
-ARM GAS  /tmp/cci58Y56.s 			page 34
+ARM GAS  /tmp/cc0JpgWG.s 			page 34
 
 
  814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       {
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  838:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** }
  891              		.loc 1 838 3 is_stmt 1 view .LVU274
  892              		.loc 1 839 1 is_stmt 0 view .LVU275
-ARM GAS  /tmp/cci58Y56.s 			page 35
+ARM GAS  /tmp/cc0JpgWG.s 			page 35
 
 
  893 016c 7047     		bx	lr
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  862:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** /**
  863:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @brief  Lock the selected OPAMP configuration.
  864:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   * @note   On STM32L4, HAL OPAMP lock is software lock only (in
-ARM GAS  /tmp/cci58Y56.s 			page 36
+ARM GAS  /tmp/cc0JpgWG.s 			page 36
 
 
  865:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *         contrast of hardware lock available on some other STM32
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  948              	.L76:
  885:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
  949              		.loc 1 885 5 is_stmt 1 view .LVU288
-ARM GAS  /tmp/cci58Y56.s 			page 37
+ARM GAS  /tmp/cc0JpgWG.s 			page 37
 
 
  888:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   }
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  916:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   *
  917:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****   */
  918:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** 
-ARM GAS  /tmp/cci58Y56.s 			page 38
+ARM GAS  /tmp/cc0JpgWG.s 			page 38
 
 
  919:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c **** HAL_OPAMP_TrimmingValueTypeDef HAL_OPAMP_GetTrimOffset (OPAMP_HandleTypeDef *hopamp, uint32_t trimm
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  946:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* Otherwise, factory trimming value cannot be retrieved and error       */
  947:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       /* status is returned.                                                  */
  948:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       trimmingvalue = OPAMP_FACTORYTRIMMING_DUMMY;
-ARM GAS  /tmp/cci58Y56.s 			page 39
+ARM GAS  /tmp/cc0JpgWG.s 			page 39
 
 
  949:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****     }
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  1036              		.loc 1 966 9 is_stmt 1 view .LVU320
  966:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c ****       }
  1037              		.loc 1 966 27 is_stmt 0 view .LVU321
-ARM GAS  /tmp/cci58Y56.s 			page 40
+ARM GAS  /tmp/cc0JpgWG.s 			page 40
 
 
  1038 002c 1868     		ldr	r0, [r3]
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  1079              		.thumb_func
  1080              		.fpu fpv4-sp-d16
  1082              	HAL_OPAMP_GetState:
-ARM GAS  /tmp/cci58Y56.s 			page 41
+ARM GAS  /tmp/cc0JpgWG.s 			page 41
 
 
  1083              	.LVL86:
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  1099 0006 C0B2     		uxtb	r0, r0
  1100 0008 7047     		bx	lr
  1101              	.LVL88:
-ARM GAS  /tmp/cci58Y56.s 			page 42
+ARM GAS  /tmp/cc0JpgWG.s 			page 42
 
 
  1102              	.L90:
@@ -2482,33 +2482,33 @@ ARM GAS  /tmp/cci58Y56.s 			page 1
  1119              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
  1120              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
  1121              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /tmp/cci58Y56.s 			page 43
+ARM GAS  /tmp/cc0JpgWG.s 			page 43
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_opamp.c
-     /tmp/cci58Y56.s:18     .text.HAL_OPAMP_MspInit:0000000000000000 $t
-     /tmp/cci58Y56.s:26     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
-     /tmp/cci58Y56.s:42     .text.HAL_OPAMP_Init:0000000000000000 $t
-     /tmp/cci58Y56.s:49     .text.HAL_OPAMP_Init:0000000000000000 HAL_OPAMP_Init
-     /tmp/cci58Y56.s:295    .text.HAL_OPAMP_Init:000000000000011c $d
-     /tmp/cci58Y56.s:300    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
-     /tmp/cci58Y56.s:307    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
-     /tmp/cci58Y56.s:322    .text.HAL_OPAMP_DeInit:0000000000000000 $t
-     /tmp/cci58Y56.s:329    .text.HAL_OPAMP_DeInit:0000000000000000 HAL_OPAMP_DeInit
-     /tmp/cci58Y56.s:404    .text.HAL_OPAMP_Start:0000000000000000 $t
-     /tmp/cci58Y56.s:411    .text.HAL_OPAMP_Start:0000000000000000 HAL_OPAMP_Start
-     /tmp/cci58Y56.s:478    .text.HAL_OPAMP_Stop:0000000000000000 $t
-     /tmp/cci58Y56.s:485    .text.HAL_OPAMP_Stop:0000000000000000 HAL_OPAMP_Stop
-     /tmp/cci58Y56.s:566    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 $t
-     /tmp/cci58Y56.s:573    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 HAL_OPAMP_SelfCalibrate
-     /tmp/cci58Y56.s:915    .text.HAL_OPAMP_Lock:0000000000000000 $t
-     /tmp/cci58Y56.s:922    .text.HAL_OPAMP_Lock:0000000000000000 HAL_OPAMP_Lock
-     /tmp/cci58Y56.s:970    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 $t
-     /tmp/cci58Y56.s:977    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 HAL_OPAMP_GetTrimOffset
-     /tmp/cci58Y56.s:1069   .text.HAL_OPAMP_GetTrimOffset:0000000000000048 $d
-     /tmp/cci58Y56.s:1075   .text.HAL_OPAMP_GetState:0000000000000000 $t
-     /tmp/cci58Y56.s:1082   .text.HAL_OPAMP_GetState:0000000000000000 HAL_OPAMP_GetState
+     /tmp/cc0JpgWG.s:18     .text.HAL_OPAMP_MspInit:0000000000000000 $t
+     /tmp/cc0JpgWG.s:26     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
+     /tmp/cc0JpgWG.s:42     .text.HAL_OPAMP_Init:0000000000000000 $t
+     /tmp/cc0JpgWG.s:49     .text.HAL_OPAMP_Init:0000000000000000 HAL_OPAMP_Init
+     /tmp/cc0JpgWG.s:295    .text.HAL_OPAMP_Init:000000000000011c $d
+     /tmp/cc0JpgWG.s:300    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
+     /tmp/cc0JpgWG.s:307    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
+     /tmp/cc0JpgWG.s:322    .text.HAL_OPAMP_DeInit:0000000000000000 $t
+     /tmp/cc0JpgWG.s:329    .text.HAL_OPAMP_DeInit:0000000000000000 HAL_OPAMP_DeInit
+     /tmp/cc0JpgWG.s:404    .text.HAL_OPAMP_Start:0000000000000000 $t
+     /tmp/cc0JpgWG.s:411    .text.HAL_OPAMP_Start:0000000000000000 HAL_OPAMP_Start
+     /tmp/cc0JpgWG.s:478    .text.HAL_OPAMP_Stop:0000000000000000 $t
+     /tmp/cc0JpgWG.s:485    .text.HAL_OPAMP_Stop:0000000000000000 HAL_OPAMP_Stop
+     /tmp/cc0JpgWG.s:566    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 $t
+     /tmp/cc0JpgWG.s:573    .text.HAL_OPAMP_SelfCalibrate:0000000000000000 HAL_OPAMP_SelfCalibrate
+     /tmp/cc0JpgWG.s:915    .text.HAL_OPAMP_Lock:0000000000000000 $t
+     /tmp/cc0JpgWG.s:922    .text.HAL_OPAMP_Lock:0000000000000000 HAL_OPAMP_Lock
+     /tmp/cc0JpgWG.s:970    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 $t
+     /tmp/cc0JpgWG.s:977    .text.HAL_OPAMP_GetTrimOffset:0000000000000000 HAL_OPAMP_GetTrimOffset
+     /tmp/cc0JpgWG.s:1069   .text.HAL_OPAMP_GetTrimOffset:0000000000000048 $d
+     /tmp/cc0JpgWG.s:1075   .text.HAL_OPAMP_GetState:0000000000000000 $t
+     /tmp/cc0JpgWG.s:1082   .text.HAL_OPAMP_GetState:0000000000000000 HAL_OPAMP_GetState
 
 UNDEFINED SYMBOLS
 HAL_Delay

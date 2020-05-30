@@ -32,7 +32,8 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdlib.h>
+#include "effects.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -58,9 +59,12 @@ uint32_t value_adc;
 uint32_t trig;
 uint32_t value_dac;
 void debugPrintln(UART_HandleTypeDef *huart, char _out[]);
-UART_HandleTypeDef huart2;
 ADC_HandleTypeDef hadc1;
 DAC_HandleTypeDef hdac1;
+OPAMP_HandleTypeDef hopamp1;
+UART_HandleTypeDef huart2;
+reverb r;
+octave o;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

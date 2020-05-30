@@ -28,6 +28,8 @@ build/stm32l4xx_hal.o: Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h \
+ Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h \
+ Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp_ex.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
@@ -94,6 +96,10 @@ Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h:
 Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h:
 
 Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h:
+
+Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h:
+
+Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp_ex.h:
 
 Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h:
 
