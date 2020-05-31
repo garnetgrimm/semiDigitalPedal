@@ -58,6 +58,7 @@ void Error_Handler(void);
 uint32_t value_adc;
 uint32_t trig;
 uint32_t value_dac;
+volatile uint16_t adc_data[1];
 void debugPrintln(UART_HandleTypeDef *huart, char _out[]);
 ADC_HandleTypeDef hadc1;
 DAC_HandleTypeDef hdac1;
@@ -65,6 +66,7 @@ OPAMP_HandleTypeDef hopamp1;
 UART_HandleTypeDef huart2;
 reverb r;
 octave o;
+fuzz f;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

@@ -47,6 +47,8 @@ DAC_HandleTypeDef hdac1;
 
 OPAMP_HandleTypeDef hopamp1;
 
+TIM_HandleTypeDef htim2;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
@@ -59,6 +61,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_DAC1_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_OPAMP1_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -102,15 +105,21 @@ int main(void)
   MX_DAC1_Init();
   MX_ADC1_Init();
   MX_OPAMP1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   debugPrintln(&huart2, (char*) "Setting effects....");
   default_init_reverb(&r);
   default_init_octave(&o);
+  default_init_fuzz(&f);
   debugPrintln(&huart2, (char*) "Setting up HAL....");
   HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
   HAL_OPAMP_Start(&hopamp1);
+  debugPrintln(&huart2, (char*) "(ADC IT)");
+  //HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adc_data, 1);
   //HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
   HAL_ADC_Start_IT(&hadc1);
+  debugPrintln(&huart2, (char*) "(TIM IT)");
+  HAL_TIM_Base_Start_IT(&htim2);
   debugPrintln(&huart2, (char*) "done!");
   /* USER CODE END 2 */
 
@@ -118,33 +127,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /*adc_value = HAL_ADC_GetValue(&hadc1);
-    char buf[32];
-    sprintf(buf, "%d", adc_value);
-    debugPrintln(&huart2,buf);*/
-    //value_adc = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
-    //HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_adc);
-    /*debugPrintln(&huart2,"----");
-    if (HAL_ADC_PollForConversion(&hadc1, 1000000) == HAL_OK) {
-        {
-            value_adc = HAL_ADC_GetValue(&hadc1);
-            HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, trig);
-            trig = (trig != 0) ? 0 : 4095;
-            char buf[32];
-            sprintf(buf, "%d", trig);
-            debugPrintln(&huart2,buf);
-            HAL_ADC_Stop(&hadc1);
-            HAL_ADC_Start(&hadc1);
-        }
-    }*/
-    //debugPrintln(&huart2,"...");
-    /*HAL_DAC_SetValue(&hadc1,DAC_CHANNEL_1,DAC_ALIGN_12B_R,value_dac);
-    if(value_dac<2047) {
-      value_dac++;
-    } else {
-      value_dac = 0;
-    }
-    HAL_Delay(10);*/
+    //char buf[32];
+    //sprintf(buf, "ADC: %d", value_adc);
+    //debugPrintln(&huart2,buf);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -167,7 +152,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_10;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -182,7 +167,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -190,8 +175,8 @@ void SystemClock_Config(void)
   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
   PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 2;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
   PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
   PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
   PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
@@ -228,7 +213,7 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
@@ -251,7 +236,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_10;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_24CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
   sConfig.OffsetNumber = ADC_OFFSET_NONE;
   sConfig.Offset = 0;
@@ -340,6 +325,51 @@ static void MX_OPAMP1_Init(void)
   /* USER CODE BEGIN OPAMP1_Init 2 */
 
   /* USER CODE END OPAMP1_Init 2 */
+
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 32;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 10;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
 
 }
 

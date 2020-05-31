@@ -1,6 +1,13 @@
 #ifndef _EFFECTS_H_
 #define _EFFECTS_H_
 
+typedef struct _fuzz {
+  int threshold;
+  int center;
+} fuzz;
+void default_init_fuzz(fuzz* f);
+void step_fuzz(fuzz* f, int* sample);
+
 typedef struct _reverb {
   int bufferSize;
   short* buffer;

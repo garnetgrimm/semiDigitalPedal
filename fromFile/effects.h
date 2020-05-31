@@ -1,7 +1,11 @@
 #ifndef _EFFECTS_H_
 #define _EFFECTS_H_
 
-typedef struct reverb {
+struct effect {
+  virtual void step(double* sample) = 0;
+};
+
+typedef struct reverb : effect {
   uint32_t bufferSize;
   double* buffer;
   uint32_t idx = 0;
@@ -14,14 +18,14 @@ typedef struct reverb {
   {
       buffer = (double*) calloc(bufferSize, sizeof(double));
   };
-  void step(double* sample) {
+  void step(double* sample) override {
       *sample += (buffer[idx % bufferSize] * .3);
       buffer[idx % bufferSize] = *sample;
       idx++;
   }
 } _reverb;
 
-typedef struct fuzz {
+typedef struct fuzz : effect {
   float gain;
   float volume;
   fuzz() {
@@ -32,7 +36,7 @@ typedef struct fuzz {
   gain(gain),
   volume(volume)
   {};
-  void step(double* sample) {
+  void step(double* sample) override {
     double threshold = 1/gain;
     if(*sample < -threshold) *sample = -threshold;
     if(*sample > threshold) *sample = threshold;
@@ -40,7 +44,7 @@ typedef struct fuzz {
   }
 } _fuzz;
 
-typedef struct overdrive {
+typedef struct overdrive : effect {
   float gain;
   float volume;
   overdrive() {
@@ -48,10 +52,10 @@ typedef struct overdrive {
     volume = 100;
   };
   overdrive(float gain, float volume):
-  gain(gain), 
+  gain(gain),
   volume(volume)
   {};
-  void step(double* sample) {
+  void step(double* sample) override {
     double threshold = 1 / gain;
     *sample = atan(*sample * (10 / M_PI)) * threshold * (2.0 / M_PI);
     *sample *= volume;
@@ -73,7 +77,7 @@ typedef struct tremolo {
   }
 } _tremolo;
 
-typedef struct octave {
+typedef struct octave: effect {
   uint32_t bufferSize = 5000;
   double* bufferA;
   double* bufferB;
@@ -94,7 +98,7 @@ typedef struct octave {
       bufferA = (double*) calloc(bufferSize, sizeof(double));
       bufferB = (double*) calloc(bufferSize, sizeof(double));
   };
-  void step(double* sample) {
+  void step(double* sample) override {
     //circular buffer
     //the incoming sample gets placed at the same index in each buffer
     //(reading each buffer is offset by buffSize/2)

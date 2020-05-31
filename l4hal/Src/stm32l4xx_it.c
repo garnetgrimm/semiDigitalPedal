@@ -57,6 +57,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern ADC_HandleTypeDef hadc1;
+extern TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -207,8 +208,21 @@ void ADC1_IRQHandler(void)
   /* USER CODE END ADC1_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
   /* USER CODE BEGIN ADC1_IRQn 1 */
-
   /* USER CODE END ADC1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM2 global interrupt.
+  */
+void TIM2_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM2_IRQn 0 */
+
+  /* USER CODE END TIM2_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim2);
+  /* USER CODE BEGIN TIM2_IRQn 1 */
+
+  /* USER CODE END TIM2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
@@ -216,17 +230,14 @@ void ADC1_IRQHandler(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   value_adc = HAL_ADC_GetValue(&hadc1);
-  int to_dac = value_adc;
-  step_reverb(&r, &to_dac);
-  step_octave(&o, &to_dac);
-  //                    time in milli/1000 * freq inc per sec % max
-  //float freq = (((float)HAL_GetTick()/1000)*10) % 1000;
-  //value_adc = ((4095/2)*sin(((float)HAL_GetTick()*2*3.1415926535*freq)/1000))+(4095/2);
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, to_dac);
-  //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, trig);
-  //set output data register directly
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   GPIOB -> ODR ^= GPIO_PIN_0;
-  //trig = (trig != 0) ? 0 : 4095;
+  value_dac = value_adc;
+  //step_octave(&o, &value_dac);
+  //step_reverb(&r, &value_dac);
+  step_fuzz(&f, &value_dac);
+  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_dac);
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

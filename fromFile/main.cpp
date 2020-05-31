@@ -13,19 +13,21 @@ int main() {
     audioFile.load ("res/clean.wav");
     if(!audioFile.isMono()) audioFile.samples.resize(1);
     int channel = 0;
-    reverb myreverb = reverb();
-    fuzz myfuzz = fuzz(1,1);
-    octave myoctave = octave();
+
+    reverb myreverb;
+    fuzz myfuzz;
+    octave myoctave;
+    effect* effect_list[3] = {&myreverb,&myfuzz,&myoctave};
+
+
     overdrive myoverdrive = overdrive(60,100);
     cout << "Beginning transformation" << endl;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < audioFile.getNumSamplesPerChannel(); i++)
     {
-        //TODO - abstract class!
-        //myreverb.step(&audioFile.samples[channel][i]);
-        //myfuzz.step(&audioFile.samples[channel][i]);
-        //myoctave.step(&audioFile.samples[channel][i]);
-        myoverdrive.step(&audioFile.samples[channel][i]);
+      for(effect* e : effect_list) {
+        e->step(&audioFile.samples[channel][i]);
+      }
     }
     auto end = high_resolution_clock::now();
     double durr = std::chrono::duration<double>(end-start).count();
