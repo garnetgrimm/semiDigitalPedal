@@ -235,9 +235,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   GPIOB -> ODR ^= GPIO_PIN_0;
   value_dac = value_adc;
   //step_octave(&o, &value_dac);
-  //step_reverb(&r, &value_dac);
   //step_fuzz(&f, &value_dac);
   step_chorus(&c, &value_dac);
+  step_reverb(&r, &value_dac);
   HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_dac);
 }
 /* USER CODE END 1 */

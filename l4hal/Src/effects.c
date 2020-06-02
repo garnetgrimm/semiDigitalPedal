@@ -1,6 +1,8 @@
 #include "effects.h"
 #include <stdlib.h>
-#include "math.h"
+#define ARM_MATH_CM4 1
+#define __FPU_PRESENT 1
+#include "../Drivers/CMSIS/DSP/Include/arm_math.h"
 
 void step_tremolo(tremolo* t, int* sample) {
   *sample *= sinf(2*PI*t->freq*((float)HAL_GetTick()/1000));
@@ -64,14 +66,19 @@ void default_init_octave(octave* o) {
 }
 
 void step_chorus(chorus* c, int* sample) {
-  c->buffer[c->writeIdx % c->bufferSize] = *sample;
+  c->buffer[c->writeIdx] = *sample;
   c->writeIdx++;
 
-  c->velocity = c->amp*sinf(2*PI*((float)HAL_GetTick()/1000)*c->freq)+c->amp+c->base;
+  float t = (HAL_GetTick() % (int)1000*(1/c->freq)) / 1000;
+
+  c->velocity = c->amp*sinf(2*PI*t*c->freq)+c->amp+c->base;
   *sample *= (1-c->wet);
-  *sample += c->wet*c->buffer[(int)c->readIdx % c->bufferSize];
+  *sample += c->wet*c->buffer[(int)c->readIdx];
 
   c->readIdx += c->velocity;
+
+  if((int)c->writeIdx > c->bufferSize) c->writeIdx = 0;
+  if((int)c->readIdx > c->bufferSize) c->readIdx = 0;
 }
 
 void default_init_chorus(chorus* c) {

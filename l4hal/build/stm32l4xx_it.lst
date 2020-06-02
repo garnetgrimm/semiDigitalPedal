@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccDkr6vg.s 			page 1
+ARM GAS  /tmp/cc7qHfWM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
   28:Src/stm32l4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Src/stm32l4xx_it.c **** /* USER CODE BEGIN TD */
   30:Src/stm32l4xx_it.c **** 
-ARM GAS  /tmp/ccDkr6vg.s 			page 2
+ARM GAS  /tmp/cc7qHfWM.s 			page 2
 
 
   31:Src/stm32l4xx_it.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
   34              		.loc 1 79 1 view .LVU1
   35 0000 7047     		bx	lr
   36              		.cfi_endproc
-ARM GAS  /tmp/ccDkr6vg.s 			page 3
+ARM GAS  /tmp/cc7qHfWM.s 			page 3
 
 
   37              	.LFE286:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
   73              		.loc 1 100 1 view -0
   74              		.cfi_startproc
   75              		@ Volatile: function does not return.
-ARM GAS  /tmp/ccDkr6vg.s 			page 4
+ARM GAS  /tmp/cc7qHfWM.s 			page 4
 
 
   76              		@ args = 0, pretend = 0, frame = 0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  107 0000 FEE7     		b	.L7
  108              		.cfi_endproc
  109              	.LFE289:
-ARM GAS  /tmp/ccDkr6vg.s 			page 5
+ARM GAS  /tmp/cc7qHfWM.s 			page 5
 
 
  111              		.section	.text.UsageFault_Handler,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  145              		.loc 1 145 1 view -0
  146              		.cfi_startproc
  147              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccDkr6vg.s 			page 6
+ARM GAS  /tmp/cc7qHfWM.s 			page 6
 
 
  148              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  167:Src/stm32l4xx_it.c **** /**
  168:Src/stm32l4xx_it.c ****   * @brief This function handles Pendable request for system service.
  169:Src/stm32l4xx_it.c ****   */
-ARM GAS  /tmp/ccDkr6vg.s 			page 7
+ARM GAS  /tmp/cc7qHfWM.s 			page 7
 
 
  170:Src/stm32l4xx_it.c **** void PendSV_Handler(void)
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  218 0006 08BD     		pop	{r3, pc}
  219              		.cfi_endproc
  220              	.LFE294:
-ARM GAS  /tmp/ccDkr6vg.s 			page 8
+ARM GAS  /tmp/cc7qHfWM.s 			page 8
 
 
  222              		.section	.text.ADC1_IRQHandler,"ax",%progbits
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  258              		.thumb
  259              		.thumb_func
  260              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccDkr6vg.s 			page 9
+ARM GAS  /tmp/cc7qHfWM.s 			page 9
 
 
  262              	TIM2_IRQHandler:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  299              		@ args = 0, pretend = 0, frame = 0
  300              		@ frame_needed = 0, uses_anonymous_args = 0
  301              		.loc 1 231 1 is_stmt 0 view .LVU34
-ARM GAS  /tmp/ccDkr6vg.s 			page 10
+ARM GAS  /tmp/cc7qHfWM.s 			page 10
 
 
  302 0000 08B5     		push	{r3, lr}
@@ -591,138 +591,144 @@ ARM GAS  /tmp/ccDkr6vg.s 			page 1
  235:Src/stm32l4xx_it.c ****   GPIOB -> ODR ^= GPIO_PIN_0;
  348              		.loc 1 235 3 is_stmt 1 view .LVU42
  349              		.loc 1 235 16 is_stmt 0 view .LVU43
- 350 0002 0A4A     		ldr	r2, .L29
+ 350 0002 0C4A     		ldr	r2, .L29
  351 0004 5369     		ldr	r3, [r2, #20]
  352 0006 83F00103 		eor	r3, r3, #1
  353 000a 5361     		str	r3, [r2, #20]
  236:Src/stm32l4xx_it.c ****   value_dac = value_adc;
  354              		.loc 1 236 3 is_stmt 1 view .LVU44
  355              		.loc 1 236 13 is_stmt 0 view .LVU45
-ARM GAS  /tmp/ccDkr6vg.s 			page 11
+ARM GAS  /tmp/cc7qHfWM.s 			page 11
 
 
- 356 000c 084C     		ldr	r4, .L29+4
- 357 000e 094B     		ldr	r3, .L29+8
+ 356 000c 0A4C     		ldr	r4, .L29+4
+ 357 000e 0B4B     		ldr	r3, .L29+8
  358 0010 1B68     		ldr	r3, [r3]
  359 0012 2360     		str	r3, [r4]
  237:Src/stm32l4xx_it.c ****   //step_octave(&o, &value_dac);
- 238:Src/stm32l4xx_it.c ****   //step_reverb(&r, &value_dac);
- 239:Src/stm32l4xx_it.c ****   //step_fuzz(&f, &value_dac);
- 240:Src/stm32l4xx_it.c ****   step_chorus(&c, &value_dac);
- 360              		.loc 1 240 3 is_stmt 1 view .LVU46
+ 238:Src/stm32l4xx_it.c ****   //step_fuzz(&f, &value_dac);
+ 239:Src/stm32l4xx_it.c ****   step_chorus(&c, &value_dac);
+ 360              		.loc 1 239 3 is_stmt 1 view .LVU46
  361 0014 2146     		mov	r1, r4
- 362 0016 0848     		ldr	r0, .L29+12
+ 362 0016 0A48     		ldr	r0, .L29+12
  363              	.LVL7:
- 364              		.loc 1 240 3 is_stmt 0 view .LVU47
+ 364              		.loc 1 239 3 is_stmt 0 view .LVU47
  365 0018 FFF7FEFF 		bl	step_chorus
  366              	.LVL8:
+ 240:Src/stm32l4xx_it.c ****   step_reverb(&r, &value_dac);
+ 367              		.loc 1 240 3 is_stmt 1 view .LVU48
+ 368 001c 2146     		mov	r1, r4
+ 369 001e 0948     		ldr	r0, .L29+16
+ 370 0020 FFF7FEFF 		bl	step_reverb
+ 371              	.LVL9:
  241:Src/stm32l4xx_it.c ****   HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_dac);
- 367              		.loc 1 241 3 is_stmt 1 view .LVU48
- 368 001c 2368     		ldr	r3, [r4]
- 369 001e 0022     		movs	r2, #0
- 370 0020 1146     		mov	r1, r2
- 371 0022 0648     		ldr	r0, .L29+16
- 372 0024 FFF7FEFF 		bl	HAL_DAC_SetValue
- 373              	.LVL9:
+ 372              		.loc 1 241 3 view .LVU49
+ 373 0024 2368     		ldr	r3, [r4]
+ 374 0026 0022     		movs	r2, #0
+ 375 0028 1146     		mov	r1, r2
+ 376 002a 0748     		ldr	r0, .L29+20
+ 377 002c FFF7FEFF 		bl	HAL_DAC_SetValue
+ 378              	.LVL10:
  242:Src/stm32l4xx_it.c **** }
- 374              		.loc 1 242 1 is_stmt 0 view .LVU49
- 375 0028 10BD     		pop	{r4, pc}
- 376              	.L30:
- 377 002a 00BF     		.align	2
- 378              	.L29:
- 379 002c 00040048 		.word	1207960576
- 380 0030 00000000 		.word	value_dac
- 381 0034 00000000 		.word	value_adc
- 382 0038 00000000 		.word	c
- 383 003c 00000000 		.word	hdac1
- 384              		.cfi_endproc
- 385              	.LFE298:
- 387              		.comm	c,36,4
- 388              		.comm	od,8,4
- 389              		.comm	t,2,4
- 390              		.comm	f,4,4
- 391              		.comm	o,20,4
- 392              		.comm	r,24,8
- 393              		.comm	huart2,128,4
- 394              		.comm	hopamp1,52,4
- 395              		.comm	hdac1,20,4
- 396              		.comm	hadc1,100,4
- 397              		.comm	adc_data,2,4
- 398              		.comm	value_dac,4,4
- 399              		.comm	trig,4,4
- 400              		.comm	value_adc,4,4
- 401              		.text
- 402              	.Letext0:
- 403              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
- 404              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
- 405              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 406              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
- 407              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
-ARM GAS  /tmp/ccDkr6vg.s 			page 12
+ 379              		.loc 1 242 1 is_stmt 0 view .LVU50
+ 380 0030 10BD     		pop	{r4, pc}
+ 381              	.L30:
+ 382 0032 00BF     		.align	2
+ 383              	.L29:
+ 384 0034 00040048 		.word	1207960576
+ 385 0038 00000000 		.word	value_dac
+ 386 003c 00000000 		.word	value_adc
+ 387 0040 00000000 		.word	c
+ 388 0044 00000000 		.word	r
+ 389 0048 00000000 		.word	hdac1
+ 390              		.cfi_endproc
+ 391              	.LFE298:
+ 393              		.comm	c,36,4
+ 394              		.comm	od,8,4
+ 395              		.comm	t,2,4
+ 396              		.comm	f,4,4
+ 397              		.comm	o,20,4
+ 398              		.comm	r,24,8
+ 399              		.comm	huart2,128,4
+ 400              		.comm	hopamp1,52,4
+ 401              		.comm	hdac1,20,4
+ 402              		.comm	hadc1,100,4
+ 403              		.comm	adc_data,2,4
+ 404              		.comm	value_dac,4,4
+ 405              		.comm	trig,4,4
+ 406              		.comm	value_adc,4,4
+ 407              		.text
+ARM GAS  /tmp/cc7qHfWM.s 			page 12
 
 
- 408              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
- 409              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 410              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 411              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 412              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
- 413              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
- 414              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
- 415              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h"
- 416              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
- 417              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 418              		.file 17 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
- 419              		.file 18 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
- 420              		.file 19 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stdde
- 421              		.file 20 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
- 422              		.file 21 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
- 423              		.file 22 "Inc/effects.h"
- 424              		.file 23 "Inc/main.h"
-ARM GAS  /tmp/ccDkr6vg.s 			page 13
+ 408              	.Letext0:
+ 409              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
+ 410              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 411              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 412              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 413              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
+ 414              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
+ 415              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 416              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 417              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+ 418              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
+ 419              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 420              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
+ 421              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h"
+ 422              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
+ 423              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 424              		.file 17 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
+ 425              		.file 18 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
+ 426              		.file 19 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stdde
+ 427              		.file 20 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
+ 428              		.file 21 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
+ 429              		.file 22 "Inc/effects.h"
+ 430              		.file 23 "Inc/main.h"
+ARM GAS  /tmp/cc7qHfWM.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_it.c
-     /tmp/ccDkr6vg.s:18     .text.NMI_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
-     /tmp/ccDkr6vg.s:40     .text.HardFault_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
-     /tmp/ccDkr6vg.s:64     .text.MemManage_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:71     .text.MemManage_Handler:0000000000000000 MemManage_Handler
-     /tmp/ccDkr6vg.s:88     .text.BusFault_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:95     .text.BusFault_Handler:0000000000000000 BusFault_Handler
-     /tmp/ccDkr6vg.s:112    .text.UsageFault_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
-     /tmp/ccDkr6vg.s:136    .text.SVC_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:143    .text.SVC_Handler:0000000000000000 SVC_Handler
-     /tmp/ccDkr6vg.s:156    .text.DebugMon_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:163    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
-     /tmp/ccDkr6vg.s:176    .text.PendSV_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:183    .text.PendSV_Handler:0000000000000000 PendSV_Handler
-     /tmp/ccDkr6vg.s:196    .text.SysTick_Handler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:203    .text.SysTick_Handler:0000000000000000 SysTick_Handler
-     /tmp/ccDkr6vg.s:223    .text.ADC1_IRQHandler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:230    .text.ADC1_IRQHandler:0000000000000000 ADC1_IRQHandler
-     /tmp/ccDkr6vg.s:250    .text.ADC1_IRQHandler:000000000000000c $d
+     /tmp/cc7qHfWM.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/cc7qHfWM.s:40     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/cc7qHfWM.s:64     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:71     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/cc7qHfWM.s:88     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:95     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/cc7qHfWM.s:112    .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/cc7qHfWM.s:136    .text.SVC_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:143    .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/cc7qHfWM.s:156    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:163    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/cc7qHfWM.s:176    .text.PendSV_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:183    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+     /tmp/cc7qHfWM.s:196    .text.SysTick_Handler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:203    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/cc7qHfWM.s:223    .text.ADC1_IRQHandler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:230    .text.ADC1_IRQHandler:0000000000000000 ADC1_IRQHandler
+     /tmp/cc7qHfWM.s:250    .text.ADC1_IRQHandler:000000000000000c $d
                             *COM*:0000000000000064 hadc1
-     /tmp/ccDkr6vg.s:255    .text.TIM2_IRQHandler:0000000000000000 $t
-     /tmp/ccDkr6vg.s:262    .text.TIM2_IRQHandler:0000000000000000 TIM2_IRQHandler
-     /tmp/ccDkr6vg.s:282    .text.TIM2_IRQHandler:000000000000000c $d
-     /tmp/ccDkr6vg.s:287    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccDkr6vg.s:294    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccDkr6vg.s:322    .text.HAL_ADC_ConvCpltCallback:0000000000000010 $d
+     /tmp/cc7qHfWM.s:255    .text.TIM2_IRQHandler:0000000000000000 $t
+     /tmp/cc7qHfWM.s:262    .text.TIM2_IRQHandler:0000000000000000 TIM2_IRQHandler
+     /tmp/cc7qHfWM.s:282    .text.TIM2_IRQHandler:000000000000000c $d
+     /tmp/cc7qHfWM.s:287    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/cc7qHfWM.s:294    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/cc7qHfWM.s:322    .text.HAL_ADC_ConvCpltCallback:0000000000000010 $d
                             *COM*:0000000000000004 value_adc
-     /tmp/ccDkr6vg.s:328    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
-     /tmp/ccDkr6vg.s:335    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccDkr6vg.s:379    .text.HAL_TIM_PeriodElapsedCallback:000000000000002c $d
+     /tmp/cc7qHfWM.s:328    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+     /tmp/cc7qHfWM.s:335    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/cc7qHfWM.s:384    .text.HAL_TIM_PeriodElapsedCallback:0000000000000034 $d
                             *COM*:0000000000000004 value_dac
                             *COM*:0000000000000024 c
+                            *COM*:0000000000000018 r
                             *COM*:0000000000000014 hdac1
                             *COM*:0000000000000008 od
                             *COM*:0000000000000002 t
                             *COM*:0000000000000004 f
                             *COM*:0000000000000014 o
-                            *COM*:0000000000000018 r
                             *COM*:0000000000000080 huart2
                             *COM*:0000000000000034 hopamp1
                             *COM*:0000000000000002 adc_data
@@ -735,4 +741,5 @@ HAL_TIM_IRQHandler
 htim2
 HAL_ADC_GetValue
 step_chorus
+step_reverb
 HAL_DAC_SetValue

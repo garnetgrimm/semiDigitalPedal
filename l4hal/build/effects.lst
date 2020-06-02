@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccXlQGvu.s 			page 1
+ARM GAS  /tmp/ccyP2jDx.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -31,18 +31,20 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
   28              		.fpu fpv4-sp-d16
   30              	step_tremolo:
   31              	.LVL0:
-  32              	.LFB0:
+  32              	.LFB135:
   33              		.file 1 "Src/effects.c"
    1:Src/effects.c **** #include "effects.h"
    2:Src/effects.c **** #include <stdlib.h>
-   3:Src/effects.c **** #include "math.h"
-   4:Src/effects.c **** 
-   5:Src/effects.c **** void step_tremolo(tremolo* t, int* sample) {
-  34              		.loc 1 5 44 view -0
+   3:Src/effects.c **** #define ARM_MATH_CM4 1
+   4:Src/effects.c **** #define __FPU_PRESENT 1
+   5:Src/effects.c **** #include "../Drivers/CMSIS/DSP/Include/arm_math.h"
+   6:Src/effects.c **** 
+   7:Src/effects.c **** void step_tremolo(tremolo* t, int* sample) {
+  34              		.loc 1 7 44 view -0
   35              		.cfi_startproc
   36              		@ args = 0, pretend = 0, frame = 0
   37              		@ frame_needed = 0, uses_anonymous_args = 0
-  38              		.loc 1 5 44 is_stmt 0 view .LVU1
+  38              		.loc 1 7 44 is_stmt 0 view .LVU1
   39 0000 D0B5     		push	{r4, r6, r7, lr}
   40              	.LCFI0:
   41              		.cfi_def_cfa_offset 16
@@ -51,31 +53,31 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
   44              		.cfi_offset 7, -8
   45              		.cfi_offset 14, -4
   46 0002 0C46     		mov	r4, r1
-   6:Src/effects.c ****   *sample *= sinf(2*PI*t->freq*((float)HAL_GetTick()/1000));
-  47              		.loc 1 6 3 is_stmt 1 view .LVU2
-  48              		.loc 1 6 23 is_stmt 0 view .LVU3
+   8:Src/effects.c ****   *sample *= sinf(2*PI*t->freq*((float)HAL_GetTick()/1000));
+  47              		.loc 1 8 3 is_stmt 1 view .LVU2
+  48              		.loc 1 8 23 is_stmt 0 view .LVU3
   49 0004 B0F90000 		ldrsh	r0, [r0]
   50              	.LVL1:
-  51              		.loc 1 6 23 view .LVU4
+ARM GAS  /tmp/ccyP2jDx.s 			page 2
+
+
+  51              		.loc 1 8 23 view .LVU4
   52 0008 FFF7FEFF 		bl	__aeabi_i2d
-ARM GAS  /tmp/ccXlQGvu.s 			page 2
-
-
   53              	.LVL2:
-  54              		.loc 1 6 23 view .LVU5
+  54              		.loc 1 8 23 view .LVU5
   55 000c 17A3     		adr	r3, .L3+4
   56 000e D3E90023 		ldrd	r2, [r3]
   57 0012 FFF7FEFF 		bl	__aeabi_dmul
   58              	.LVL3:
   59 0016 0646     		mov	r6, r0
   60 0018 0F46     		mov	r7, r1
-  61              		.loc 1 6 40 view .LVU6
+  61              		.loc 1 8 40 view .LVU6
   62 001a FFF7FEFF 		bl	HAL_GetTick
   63              	.LVL4:
   64 001e 07EE900A 		vmov	s15, r0	@ int
-  65              		.loc 1 6 33 view .LVU7
+  65              		.loc 1 8 33 view .LVU7
   66 0022 F8EEE77A 		vcvt.f32.s32	s15, s15
-  67              		.loc 1 6 53 view .LVU8
+  67              		.loc 1 8 53 view .LVU8
   68 0026 9FED107A 		vldr.32	s14, .L3
   69 002a C7EE877A 		vdiv.f32	s15, s15, s14
   70 002e 17EE900A 		vmov	r0, s15
@@ -83,66 +85,66 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
   72              	.LVL5:
   73 0036 0246     		mov	r2, r0
   74 0038 0B46     		mov	r3, r1
-  75              		.loc 1 6 31 view .LVU9
+  75              		.loc 1 8 31 view .LVU9
   76 003a 3046     		mov	r0, r6
   77 003c 3946     		mov	r1, r7
   78 003e FFF7FEFF 		bl	__aeabi_dmul
   79              	.LVL6:
-  80              		.loc 1 6 14 view .LVU10
+  80              		.loc 1 8 14 view .LVU10
   81 0042 FFF7FEFF 		bl	__aeabi_d2f
   82              	.LVL7:
   83 0046 00EE100A 		vmov	s0, r0
   84 004a FFF7FEFF 		bl	sinf
   85              	.LVL8:
-  86              		.loc 1 6 11 view .LVU11
+  86              		.loc 1 8 11 view .LVU11
   87 004e D4ED007A 		vldr.32	s15, [r4]	@ int
   88 0052 F8EEE77A 		vcvt.f32.s32	s15, s15
   89 0056 67EE807A 		vmul.f32	s15, s15, s0
   90 005a FDEEE77A 		vcvt.s32.f32	s15, s15
   91 005e C4ED007A 		vstr.32	s15, [r4]	@ int
-   7:Src/effects.c **** }
-  92              		.loc 1 7 1 view .LVU12
+   9:Src/effects.c **** }
+  92              		.loc 1 9 1 view .LVU12
   93 0062 D0BD     		pop	{r4, r6, r7, pc}
   94              	.LVL9:
   95              	.L4:
-  96              		.loc 1 7 1 view .LVU13
+  96              		.loc 1 9 1 view .LVU13
   97 0064 AFF30080 		.align	3
   98              	.L3:
   99 0068 00007A44 		.word	1148846080
  100 006c 182D4454 		.word	1413754136
  101 0070 FB211940 		.word	1075388923
  102              		.cfi_endproc
- 103              	.LFE0:
+ 103              	.LFE135:
  105              		.section	.text.default_init_tremolo,"ax",%progbits
  106              		.align	1
  107              		.global	default_init_tremolo
+ARM GAS  /tmp/ccyP2jDx.s 			page 3
+
+
  108              		.syntax unified
  109              		.thumb
-ARM GAS  /tmp/ccXlQGvu.s 			page 3
-
-
  110              		.thumb_func
  111              		.fpu fpv4-sp-d16
  113              	default_init_tremolo:
  114              	.LVL10:
- 115              	.LFB1:
-   8:Src/effects.c **** 
-   9:Src/effects.c **** void default_init_tremolo(tremolo *t) {
- 116              		.loc 1 9 39 is_stmt 1 view -0
+ 115              	.LFB136:
+  10:Src/effects.c **** 
+  11:Src/effects.c **** void default_init_tremolo(tremolo *t) {
+ 116              		.loc 1 11 39 is_stmt 1 view -0
  117              		.cfi_startproc
  118              		@ args = 0, pretend = 0, frame = 0
  119              		@ frame_needed = 0, uses_anonymous_args = 0
  120              		@ link register save eliminated.
-  10:Src/effects.c ****   t->freq = 4;
- 121              		.loc 1 10 3 view .LVU15
- 122              		.loc 1 10 11 is_stmt 0 view .LVU16
+  12:Src/effects.c ****   t->freq = 4;
+ 121              		.loc 1 12 3 view .LVU15
+ 122              		.loc 1 12 11 is_stmt 0 view .LVU16
  123 0000 0423     		movs	r3, #4
  124 0002 0380     		strh	r3, [r0]	@ movhi
-  11:Src/effects.c **** }
- 125              		.loc 1 11 1 view .LVU17
+  13:Src/effects.c **** }
+ 125              		.loc 1 13 1 view .LVU17
  126 0004 7047     		bx	lr
  127              		.cfi_endproc
- 128              	.LFE1:
+ 128              	.LFE136:
  130              		.global	__aeabi_ddiv
  131              		.global	__aeabi_dadd
  132              		.global	__aeabi_d2iz
@@ -155,14 +157,14 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  139              		.fpu fpv4-sp-d16
  141              	step_overdrive:
  142              	.LVL11:
- 143              	.LFB2:
-  12:Src/effects.c **** 
-  13:Src/effects.c **** void step_overdrive(overdrive* o, int* sample) {
- 144              		.loc 1 13 48 is_stmt 1 view -0
+ 143              	.LFB137:
+  14:Src/effects.c **** 
+  15:Src/effects.c **** void step_overdrive(overdrive* o, int* sample) {
+ 144              		.loc 1 15 48 is_stmt 1 view -0
  145              		.cfi_startproc
  146              		@ args = 0, pretend = 0, frame = 0
  147              		@ frame_needed = 0, uses_anonymous_args = 0
- 148              		.loc 1 13 48 is_stmt 0 view .LVU19
+ 148              		.loc 1 15 48 is_stmt 0 view .LVU19
  149 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
  150              	.LCFI1:
  151              		.cfi_def_cfa_offset 24
@@ -174,35 +176,35 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  157              		.cfi_offset 14, -4
  158 0002 0746     		mov	r7, r0
  159 0004 0E46     		mov	r6, r1
-  14:Src/effects.c ****   *sample = (o->threshold*2/PI)*atanf((*sample-VOLUME_CENTER)/o->softness) + VOLUME_CENTER;
- 160              		.loc 1 14 3 is_stmt 1 view .LVU20
- 161              		.loc 1 14 15 is_stmt 0 view .LVU21
+  16:Src/effects.c ****   *sample = (o->threshold*2/PI)*atanf((*sample-VOLUME_CENTER)/o->softness) + VOLUME_CENTER;
+ 160              		.loc 1 16 3 is_stmt 1 view .LVU20
+ARM GAS  /tmp/ccyP2jDx.s 			page 4
+
+
+ 161              		.loc 1 16 15 is_stmt 0 view .LVU21
  162 0006 0068     		ldr	r0, [r0]
-ARM GAS  /tmp/ccXlQGvu.s 			page 4
-
-
  163              	.LVL12:
- 164              		.loc 1 14 28 view .LVU22
+ 164              		.loc 1 16 28 view .LVU22
  165 0008 4000     		lsls	r0, r0, #1
  166 000a FFF7FEFF 		bl	__aeabi_i2d
  167              	.LVL13:
- 168              		.loc 1 14 28 view .LVU23
+ 168              		.loc 1 16 28 view .LVU23
  169 000e 14A3     		adr	r3, .L8
  170 0010 D3E90023 		ldrd	r2, [r3]
  171 0014 FFF7FEFF 		bl	__aeabi_ddiv
  172              	.LVL14:
  173 0018 0446     		mov	r4, r0
  174 001a 0D46     		mov	r5, r1
- 175              		.loc 1 14 40 view .LVU24
+ 175              		.loc 1 16 40 view .LVU24
  176 001c 3368     		ldr	r3, [r6]
- 177              		.loc 1 14 47 view .LVU25
+ 177              		.loc 1 16 47 view .LVU25
  178 001e A3F2FF73 		subw	r3, r3, #2047
- 179              		.loc 1 14 64 view .LVU26
+ 179              		.loc 1 16 64 view .LVU26
  180 0022 7A68     		ldr	r2, [r7, #4]
- 181              		.loc 1 14 62 view .LVU27
+ 181              		.loc 1 16 62 view .LVU27
  182 0024 93FBF2F3 		sdiv	r3, r3, r2
  183 0028 00EE103A 		vmov	s0, r3	@ int
- 184              		.loc 1 14 33 view .LVU28
+ 184              		.loc 1 16 33 view .LVU28
  185 002c B8EEC00A 		vcvt.f32.s32	s0, s0
  186 0030 FFF7FEFF 		bl	atanf
  187              	.LVL15:
@@ -211,38 +213,38 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  190              	.LVL16:
  191 003c 0246     		mov	r2, r0
  192 003e 0B46     		mov	r3, r1
- 193              		.loc 1 14 32 view .LVU29
+ 193              		.loc 1 16 32 view .LVU29
  194 0040 2046     		mov	r0, r4
  195 0042 2946     		mov	r1, r5
  196 0044 FFF7FEFF 		bl	__aeabi_dmul
  197              	.LVL17:
- 198              		.loc 1 14 76 view .LVU30
+ 198              		.loc 1 16 76 view .LVU30
  199 0048 07A3     		adr	r3, .L8+8
  200 004a D3E90023 		ldrd	r2, [r3]
  201 004e FFF7FEFF 		bl	__aeabi_dadd
  202              	.LVL18:
- 203              		.loc 1 14 11 view .LVU31
+ 203              		.loc 1 16 11 view .LVU31
  204 0052 FFF7FEFF 		bl	__aeabi_d2iz
  205              	.LVL19:
  206 0056 3060     		str	r0, [r6]
-  15:Src/effects.c **** }
- 207              		.loc 1 15 1 view .LVU32
+  17:Src/effects.c **** }
+ 207              		.loc 1 17 1 view .LVU32
  208 0058 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
  209              	.LVL20:
  210              	.L9:
- 211              		.loc 1 15 1 view .LVU33
+ 211              		.loc 1 17 1 view .LVU33
  212 005a 00BFAFF3 		.align	3
  212      0080
  213              	.L8:
  214 0060 182D4454 		.word	1413754136
  215 0064 FB210940 		.word	1074340347
+ARM GAS  /tmp/ccyP2jDx.s 			page 5
+
+
  216 0068 00000000 		.word	0
  217 006c 00FC9F40 		.word	1084226560
-ARM GAS  /tmp/ccXlQGvu.s 			page 5
-
-
  218              		.cfi_endproc
- 219              	.LFE2:
+ 219              	.LFE137:
  221              		.section	.text.default_init_overdrive,"ax",%progbits
  222              		.align	1
  223              		.global	default_init_overdrive
@@ -252,29 +254,29 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  227              		.fpu fpv4-sp-d16
  229              	default_init_overdrive:
  230              	.LVL21:
- 231              	.LFB3:
-  16:Src/effects.c **** 
-  17:Src/effects.c **** void default_init_overdrive(overdrive* o) {
- 232              		.loc 1 17 43 is_stmt 1 view -0
+ 231              	.LFB138:
+  18:Src/effects.c **** 
+  19:Src/effects.c **** void default_init_overdrive(overdrive* o) {
+ 232              		.loc 1 19 43 is_stmt 1 view -0
  233              		.cfi_startproc
  234              		@ args = 0, pretend = 0, frame = 0
  235              		@ frame_needed = 0, uses_anonymous_args = 0
  236              		@ link register save eliminated.
-  18:Src/effects.c ****   o->threshold = VOLUME_CENTER;
- 237              		.loc 1 18 3 view .LVU35
- 238              		.loc 1 18 16 is_stmt 0 view .LVU36
+  20:Src/effects.c ****   o->threshold = VOLUME_CENTER;
+ 237              		.loc 1 20 3 view .LVU35
+ 238              		.loc 1 20 16 is_stmt 0 view .LVU36
  239 0000 40F2FF73 		movw	r3, #2047
  240 0004 0360     		str	r3, [r0]
-  19:Src/effects.c ****   o->softness = 500;
- 241              		.loc 1 19 3 is_stmt 1 view .LVU37
- 242              		.loc 1 19 15 is_stmt 0 view .LVU38
+  21:Src/effects.c ****   o->softness = 500;
+ 241              		.loc 1 21 3 is_stmt 1 view .LVU37
+ 242              		.loc 1 21 15 is_stmt 0 view .LVU38
  243 0006 4FF4FA73 		mov	r3, #500
  244 000a 4360     		str	r3, [r0, #4]
-  20:Src/effects.c **** }
- 245              		.loc 1 20 1 view .LVU39
+  22:Src/effects.c **** }
+ 245              		.loc 1 22 1 view .LVU39
  246 000c 7047     		bx	lr
  247              		.cfi_endproc
- 248              	.LFE3:
+ 248              	.LFE138:
  250              		.section	.text.step_fuzz,"ax",%progbits
  251              		.align	1
  252              		.global	step_fuzz
@@ -284,55 +286,55 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  256              		.fpu fpv4-sp-d16
  258              	step_fuzz:
  259              	.LVL22:
- 260              	.LFB4:
-  21:Src/effects.c **** 
-  22:Src/effects.c **** void init_overdrive();
+ 260              	.LFB139:
   23:Src/effects.c **** 
-  24:Src/effects.c **** void step_fuzz(fuzz* f, int* sample) {
- 261              		.loc 1 24 38 is_stmt 1 view -0
+  24:Src/effects.c **** void init_overdrive();
+  25:Src/effects.c **** 
+  26:Src/effects.c **** void step_fuzz(fuzz* f, int* sample) {
+ 261              		.loc 1 26 38 is_stmt 1 view -0
  262              		.cfi_startproc
  263              		@ args = 0, pretend = 0, frame = 0
  264              		@ frame_needed = 0, uses_anonymous_args = 0
  265              		@ link register save eliminated.
-  25:Src/effects.c ****   if(*sample < VOLUME_CENTER-f->threshold) *sample = VOLUME_CENTER-f->threshold;
- 266              		.loc 1 25 3 view .LVU41
- 267              		.loc 1 25 6 is_stmt 0 view .LVU42
+  27:Src/effects.c ****   if(*sample < VOLUME_CENTER-f->threshold) *sample = VOLUME_CENTER-f->threshold;
+ 266              		.loc 1 27 3 view .LVU41
+ARM GAS  /tmp/ccyP2jDx.s 			page 6
+
+
+ 267              		.loc 1 27 6 is_stmt 0 view .LVU42
  268 0000 0A68     		ldr	r2, [r1]
-ARM GAS  /tmp/ccXlQGvu.s 			page 6
-
-
- 269              		.loc 1 25 31 view .LVU43
+ 269              		.loc 1 27 31 view .LVU43
  270 0002 0368     		ldr	r3, [r0]
- 271              		.loc 1 25 29 view .LVU44
+ 271              		.loc 1 27 29 view .LVU44
  272 0004 C3F5FF63 		rsb	r3, r3, #2040
  273 0008 0733     		adds	r3, r3, #7
- 274              		.loc 1 25 5 view .LVU45
+ 274              		.loc 1 27 5 view .LVU45
  275 000a 9A42     		cmp	r2, r3
  276 000c 00DA     		bge	.L12
- 277              		.loc 1 25 44 is_stmt 1 discriminator 1 view .LVU46
- 278              		.loc 1 25 52 is_stmt 0 discriminator 1 view .LVU47
+ 277              		.loc 1 27 44 is_stmt 1 discriminator 1 view .LVU46
+ 278              		.loc 1 27 52 is_stmt 0 discriminator 1 view .LVU47
  279 000e 0B60     		str	r3, [r1]
  280              	.L12:
-  26:Src/effects.c ****   if(*sample > VOLUME_CENTER+f->threshold) *sample = VOLUME_CENTER+f->threshold;
- 281              		.loc 1 26 3 is_stmt 1 view .LVU48
- 282              		.loc 1 26 6 is_stmt 0 view .LVU49
+  28:Src/effects.c ****   if(*sample > VOLUME_CENTER+f->threshold) *sample = VOLUME_CENTER+f->threshold;
+ 281              		.loc 1 28 3 is_stmt 1 view .LVU48
+ 282              		.loc 1 28 6 is_stmt 0 view .LVU49
  283 0010 0A68     		ldr	r2, [r1]
- 284              		.loc 1 26 31 view .LVU50
+ 284              		.loc 1 28 31 view .LVU50
  285 0012 0368     		ldr	r3, [r0]
- 286              		.loc 1 26 29 view .LVU51
+ 286              		.loc 1 28 29 view .LVU51
  287 0014 03F2FF73 		addw	r3, r3, #2047
- 288              		.loc 1 26 5 view .LVU52
+ 288              		.loc 1 28 5 view .LVU52
  289 0018 9A42     		cmp	r2, r3
  290 001a 00DD     		ble	.L11
- 291              		.loc 1 26 44 is_stmt 1 discriminator 1 view .LVU53
- 292              		.loc 1 26 52 is_stmt 0 discriminator 1 view .LVU54
+ 291              		.loc 1 28 44 is_stmt 1 discriminator 1 view .LVU53
+ 292              		.loc 1 28 52 is_stmt 0 discriminator 1 view .LVU54
  293 001c 0B60     		str	r3, [r1]
  294              	.L11:
-  27:Src/effects.c **** }
- 295              		.loc 1 27 1 view .LVU55
+  29:Src/effects.c **** }
+ 295              		.loc 1 29 1 view .LVU55
  296 001e 7047     		bx	lr
  297              		.cfi_endproc
- 298              	.LFE4:
+ 298              	.LFE139:
  300              		.section	.text.default_init_fuzz,"ax",%progbits
  301              		.align	1
  302              		.global	default_init_fuzz
@@ -342,27 +344,27 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  306              		.fpu fpv4-sp-d16
  308              	default_init_fuzz:
  309              	.LVL23:
- 310              	.LFB5:
-  28:Src/effects.c **** 
-  29:Src/effects.c **** void default_init_fuzz(fuzz* f) {
- 311              		.loc 1 29 33 is_stmt 1 view -0
+ 310              	.LFB140:
+  30:Src/effects.c **** 
+  31:Src/effects.c **** void default_init_fuzz(fuzz* f) {
+ 311              		.loc 1 31 33 is_stmt 1 view -0
  312              		.cfi_startproc
  313              		@ args = 0, pretend = 0, frame = 0
  314              		@ frame_needed = 0, uses_anonymous_args = 0
  315              		@ link register save eliminated.
-  30:Src/effects.c ****   f->threshold = 650;
- 316              		.loc 1 30 3 view .LVU57
- 317              		.loc 1 30 16 is_stmt 0 view .LVU58
+  32:Src/effects.c ****   f->threshold = 650;
+ 316              		.loc 1 32 3 view .LVU57
+ 317              		.loc 1 32 16 is_stmt 0 view .LVU58
  318 0000 40F28A23 		movw	r3, #650
  319 0004 0360     		str	r3, [r0]
-  31:Src/effects.c **** }
- 320              		.loc 1 31 1 view .LVU59
+  33:Src/effects.c **** }
+ARM GAS  /tmp/ccyP2jDx.s 			page 7
+
+
+ 320              		.loc 1 33 1 view .LVU59
  321 0006 7047     		bx	lr
-ARM GAS  /tmp/ccXlQGvu.s 			page 7
-
-
  322              		.cfi_endproc
- 323              	.LFE5:
+ 323              	.LFE140:
  325              		.section	.text.step_reverb,"ax",%progbits
  326              		.align	1
  327              		.global	step_reverb
@@ -372,14 +374,14 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  331              		.fpu fpv4-sp-d16
  333              	step_reverb:
  334              	.LVL24:
- 335              	.LFB6:
-  32:Src/effects.c **** 
-  33:Src/effects.c **** void step_reverb(reverb* r, int* sample) {
- 336              		.loc 1 33 42 is_stmt 1 view -0
+ 335              	.LFB141:
+  34:Src/effects.c **** 
+  35:Src/effects.c **** void step_reverb(reverb* r, int* sample) {
+ 336              		.loc 1 35 42 is_stmt 1 view -0
  337              		.cfi_startproc
  338              		@ args = 0, pretend = 0, frame = 0
  339              		@ frame_needed = 0, uses_anonymous_args = 0
- 340              		.loc 1 33 42 is_stmt 0 view .LVU61
+ 340              		.loc 1 35 42 is_stmt 0 view .LVU61
  341 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
  342              	.LCFI2:
  343              		.cfi_def_cfa_offset 24
@@ -391,22 +393,22 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  349              		.cfi_offset 14, -4
  350 0002 0446     		mov	r4, r0
  351 0004 0D46     		mov	r5, r1
-  34:Src/effects.c ****   *sample += (r->buffer[r->idx % r->bufferSize] * r->fade);
- 352              		.loc 1 34 3 is_stmt 1 view .LVU62
- 353              		.loc 1 34 16 is_stmt 0 view .LVU63
+  36:Src/effects.c ****   *sample += (r->buffer[r->idx % r->bufferSize] * r->fade);
+ 352              		.loc 1 36 3 is_stmt 1 view .LVU62
+ 353              		.loc 1 36 16 is_stmt 0 view .LVU63
  354 0006 4068     		ldr	r0, [r0, #4]
  355              	.LVL25:
- 356              		.loc 1 34 26 view .LVU64
+ 356              		.loc 1 36 26 view .LVU64
  357 0008 A168     		ldr	r1, [r4, #8]
  358              	.LVL26:
- 359              		.loc 1 34 35 view .LVU65
+ 359              		.loc 1 36 35 view .LVU65
  360 000a 2268     		ldr	r2, [r4]
- 361              		.loc 1 34 32 view .LVU66
+ 361              		.loc 1 36 32 view .LVU66
  362 000c 91FBF2F3 		sdiv	r3, r1, r2
  363 0010 02FB1313 		mls	r3, r2, r3, r1
- 364              		.loc 1 34 52 view .LVU67
+ 364              		.loc 1 36 52 view .LVU67
  365 0014 D4E90467 		ldrd	r6, [r4, #16]
- 366              		.loc 1 34 49 view .LVU68
+ 366              		.loc 1 36 49 view .LVU68
  367 0018 30F91300 		ldrsh	r0, [r0, r3, lsl #1]
  368 001c FFF7FEFF 		bl	__aeabi_i2d
  369              	.LVL27:
@@ -416,11 +418,11 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  373              	.LVL28:
  374 0028 0646     		mov	r6, r0
  375 002a 0F46     		mov	r7, r1
- 376              		.loc 1 34 11 view .LVU69
+ARM GAS  /tmp/ccyP2jDx.s 			page 8
+
+
+ 376              		.loc 1 36 11 view .LVU69
  377 002c 2868     		ldr	r0, [r5]
-ARM GAS  /tmp/ccXlQGvu.s 			page 8
-
-
  378 002e FFF7FEFF 		bl	__aeabi_i2d
  379              	.LVL29:
  380 0032 3246     		mov	r2, r6
@@ -430,33 +432,33 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  384 003a FFF7FEFF 		bl	__aeabi_d2iz
  385              	.LVL31:
  386 003e 2860     		str	r0, [r5]
-  35:Src/effects.c ****   r->buffer[r->idx % r->bufferSize] = *sample;
- 387              		.loc 1 35 3 is_stmt 1 view .LVU70
- 388              		.loc 1 35 4 is_stmt 0 view .LVU71
+  37:Src/effects.c ****   r->buffer[r->idx % r->bufferSize] = *sample;
+ 387              		.loc 1 37 3 is_stmt 1 view .LVU70
+ 388              		.loc 1 37 4 is_stmt 0 view .LVU71
  389 0040 6568     		ldr	r5, [r4, #4]
  390              	.LVL32:
- 391              		.loc 1 35 14 view .LVU72
+ 391              		.loc 1 37 14 view .LVU72
  392 0042 A168     		ldr	r1, [r4, #8]
- 393              		.loc 1 35 23 view .LVU73
+ 393              		.loc 1 37 23 view .LVU73
  394 0044 2268     		ldr	r2, [r4]
- 395              		.loc 1 35 20 view .LVU74
+ 395              		.loc 1 37 20 view .LVU74
  396 0046 91FBF2F3 		sdiv	r3, r1, r2
  397 004a 02FB1313 		mls	r3, r2, r3, r1
- 398              		.loc 1 35 37 view .LVU75
+ 398              		.loc 1 37 37 view .LVU75
  399 004e 25F81300 		strh	r0, [r5, r3, lsl #1]	@ movhi
-  36:Src/effects.c ****   r->idx++;
- 400              		.loc 1 36 3 is_stmt 1 view .LVU76
- 401              		.loc 1 36 4 is_stmt 0 view .LVU77
+  38:Src/effects.c ****   r->idx++;
+ 400              		.loc 1 38 3 is_stmt 1 view .LVU76
+ 401              		.loc 1 38 4 is_stmt 0 view .LVU77
  402 0052 A368     		ldr	r3, [r4, #8]
- 403              		.loc 1 36 9 view .LVU78
+ 403              		.loc 1 38 9 view .LVU78
  404 0054 0133     		adds	r3, r3, #1
  405 0056 A360     		str	r3, [r4, #8]
-  37:Src/effects.c **** }
- 406              		.loc 1 37 1 view .LVU79
+  39:Src/effects.c **** }
+ 406              		.loc 1 39 1 view .LVU79
  407 0058 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 408              		.loc 1 37 1 view .LVU80
+ 408              		.loc 1 39 1 view .LVU80
  409              		.cfi_endproc
- 410              	.LFE6:
+ 410              	.LFE141:
  412              		.section	.text.default_init_reverb,"ax",%progbits
  413              		.align	1
  414              		.global	default_init_reverb
@@ -466,60 +468,60 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  418              		.fpu fpv4-sp-d16
  420              	default_init_reverb:
  421              	.LVL33:
- 422              	.LFB7:
-  38:Src/effects.c **** 
-  39:Src/effects.c **** void default_init_reverb(reverb* r) {
- 423              		.loc 1 39 37 is_stmt 1 view -0
+ 422              	.LFB142:
+  40:Src/effects.c **** 
+  41:Src/effects.c **** void default_init_reverb(reverb* r) {
+ 423              		.loc 1 41 37 is_stmt 1 view -0
  424              		.cfi_startproc
  425              		@ args = 0, pretend = 0, frame = 0
  426              		@ frame_needed = 0, uses_anonymous_args = 0
- 427              		.loc 1 39 37 is_stmt 0 view .LVU82
+ 427              		.loc 1 41 37 is_stmt 0 view .LVU82
  428 0000 10B5     		push	{r4, lr}
  429              	.LCFI3:
+ARM GAS  /tmp/ccyP2jDx.s 			page 9
+
+
  430              		.cfi_def_cfa_offset 8
  431              		.cfi_offset 4, -8
-ARM GAS  /tmp/ccXlQGvu.s 			page 9
-
-
  432              		.cfi_offset 14, -4
  433 0002 0446     		mov	r4, r0
-  40:Src/effects.c ****   r->idx = 0;
- 434              		.loc 1 40 3 is_stmt 1 view .LVU83
- 435              		.loc 1 40 10 is_stmt 0 view .LVU84
+  42:Src/effects.c ****   r->idx = 0;
+ 434              		.loc 1 42 3 is_stmt 1 view .LVU83
+ 435              		.loc 1 42 10 is_stmt 0 view .LVU84
  436 0004 0023     		movs	r3, #0
  437 0006 8360     		str	r3, [r0, #8]
-  41:Src/effects.c ****   r->bufferSize = 7500;
- 438              		.loc 1 41 3 is_stmt 1 view .LVU85
- 439              		.loc 1 41 17 is_stmt 0 view .LVU86
+  43:Src/effects.c ****   r->bufferSize = 7500;
+ 438              		.loc 1 43 3 is_stmt 1 view .LVU85
+ 439              		.loc 1 43 17 is_stmt 0 view .LVU86
  440 0008 41F64C50 		movw	r0, #7500
  441              	.LVL34:
- 442              		.loc 1 41 17 view .LVU87
+ 442              		.loc 1 43 17 view .LVU87
  443 000c 2060     		str	r0, [r4]
-  42:Src/effects.c ****   r->buffer = (short*) calloc(r->bufferSize, sizeof(short));
- 444              		.loc 1 42 3 is_stmt 1 view .LVU88
- 445              		.loc 1 42 24 is_stmt 0 view .LVU89
+  44:Src/effects.c ****   r->buffer = (short*) calloc(r->bufferSize, sizeof(short));
+ 444              		.loc 1 44 3 is_stmt 1 view .LVU88
+ 445              		.loc 1 44 24 is_stmt 0 view .LVU89
  446 000e 0221     		movs	r1, #2
  447 0010 FFF7FEFF 		bl	calloc
  448              	.LVL35:
- 449              		.loc 1 42 13 view .LVU90
+ 449              		.loc 1 44 13 view .LVU90
  450 0014 6060     		str	r0, [r4, #4]
-  43:Src/effects.c ****   r->fade = 0.5;
- 451              		.loc 1 43 3 is_stmt 1 view .LVU91
- 452              		.loc 1 43 11 is_stmt 0 view .LVU92
+  45:Src/effects.c ****   r->fade = 0.5;
+ 451              		.loc 1 45 3 is_stmt 1 view .LVU91
+ 452              		.loc 1 45 11 is_stmt 0 view .LVU92
  453 0016 0022     		movs	r2, #0
  454 0018 014B     		ldr	r3, .L19
  455 001a C4E90423 		strd	r2, [r4, #16]
-  44:Src/effects.c **** }
- 456              		.loc 1 44 1 view .LVU93
+  46:Src/effects.c **** }
+ 456              		.loc 1 46 1 view .LVU93
  457 001e 10BD     		pop	{r4, pc}
  458              	.LVL36:
  459              	.L20:
- 460              		.loc 1 44 1 view .LVU94
+ 460              		.loc 1 46 1 view .LVU94
  461              		.align	2
  462              	.L19:
  463 0020 0000E03F 		.word	1071644672
  464              		.cfi_endproc
- 465              	.LFE7:
+ 465              	.LFE142:
  467              		.section	.text.step_octave,"ax",%progbits
  468              		.align	1
  469              		.global	step_octave
@@ -529,105 +531,105 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  473              		.fpu fpv4-sp-d16
  475              	step_octave:
  476              	.LVL37:
- 477              	.LFB8:
-  45:Src/effects.c **** 
-  46:Src/effects.c **** void step_octave(octave* o, int* sample) {
- 478              		.loc 1 46 42 is_stmt 1 view -0
+ 477              	.LFB143:
+  47:Src/effects.c **** 
+  48:Src/effects.c **** void step_octave(octave* o, int* sample) {
+ 478              		.loc 1 48 42 is_stmt 1 view -0
  479              		.cfi_startproc
  480              		@ args = 0, pretend = 0, frame = 0
  481              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccyP2jDx.s 			page 10
+
+
  482              		@ link register save eliminated.
- 483              		.loc 1 46 42 is_stmt 0 view .LVU96
-ARM GAS  /tmp/ccXlQGvu.s 			page 10
-
-
+ 483              		.loc 1 48 42 is_stmt 0 view .LVU96
  484 0000 70B4     		push	{r4, r5, r6}
  485              	.LCFI4:
  486              		.cfi_def_cfa_offset 12
  487              		.cfi_offset 4, -12
  488              		.cfi_offset 5, -8
  489              		.cfi_offset 6, -4
-  47:Src/effects.c ****   o->buffer[o->writeIdx % o->bufferSize] = *sample;
- 490              		.loc 1 47 3 is_stmt 1 view .LVU97
- 491              		.loc 1 47 44 is_stmt 0 view .LVU98
+  49:Src/effects.c ****   o->buffer[o->writeIdx % o->bufferSize] = *sample;
+ 490              		.loc 1 49 3 is_stmt 1 view .LVU97
+ 491              		.loc 1 49 44 is_stmt 0 view .LVU98
  492 0002 0E68     		ldr	r6, [r1]
- 493              		.loc 1 47 4 view .LVU99
+ 493              		.loc 1 49 4 view .LVU99
  494 0004 4568     		ldr	r5, [r0, #4]
- 495              		.loc 1 47 14 view .LVU100
+ 495              		.loc 1 49 14 view .LVU100
  496 0006 C468     		ldr	r4, [r0, #12]
- 497              		.loc 1 47 28 view .LVU101
+ 497              		.loc 1 49 28 view .LVU101
  498 0008 0268     		ldr	r2, [r0]
- 499              		.loc 1 47 25 view .LVU102
+ 499              		.loc 1 49 25 view .LVU102
  500 000a 94FBF2F3 		sdiv	r3, r4, r2
  501 000e 02FB1343 		mls	r3, r2, r3, r4
- 502              		.loc 1 47 42 view .LVU103
+ 502              		.loc 1 49 42 view .LVU103
  503 0012 25F81360 		strh	r6, [r5, r3, lsl #1]	@ movhi
-  48:Src/effects.c ****   o->writeIdx++;
- 504              		.loc 1 48 3 is_stmt 1 view .LVU104
- 505              		.loc 1 48 4 is_stmt 0 view .LVU105
+  50:Src/effects.c ****   o->writeIdx++;
+ 504              		.loc 1 50 3 is_stmt 1 view .LVU104
+ 505              		.loc 1 50 4 is_stmt 0 view .LVU105
  506 0016 C368     		ldr	r3, [r0, #12]
- 507              		.loc 1 48 14 view .LVU106
+ 507              		.loc 1 50 14 view .LVU106
  508 0018 0133     		adds	r3, r3, #1
  509 001a C360     		str	r3, [r0, #12]
-  49:Src/effects.c ****   *sample = o->buffer[(int)o->readIdx % o->bufferSize];
- 510              		.loc 1 49 3 is_stmt 1 view .LVU107
- 511              		.loc 1 49 14 is_stmt 0 view .LVU108
+  51:Src/effects.c ****   *sample = o->buffer[(int)o->readIdx % o->bufferSize];
+ 510              		.loc 1 51 3 is_stmt 1 view .LVU107
+ 511              		.loc 1 51 14 is_stmt 0 view .LVU108
  512 001c 4568     		ldr	r5, [r0, #4]
- 513              		.loc 1 49 29 view .LVU109
+ 513              		.loc 1 51 29 view .LVU109
  514 001e D0ED027A 		vldr.32	s15, [r0, #8]
- 515              		.loc 1 49 23 view .LVU110
+ 515              		.loc 1 51 23 view .LVU110
  516 0022 FDEEE77A 		vcvt.s32.f32	s15, s15
  517 0026 17EE903A 		vmov	r3, s15	@ int
- 518              		.loc 1 49 42 view .LVU111
+ 518              		.loc 1 51 42 view .LVU111
  519 002a 0468     		ldr	r4, [r0]
- 520              		.loc 1 49 39 view .LVU112
+ 520              		.loc 1 51 39 view .LVU112
  521 002c 93FBF4F2 		sdiv	r2, r3, r4
  522 0030 04FB1233 		mls	r3, r4, r2, r3
- 523              		.loc 1 49 22 view .LVU113
+ 523              		.loc 1 51 22 view .LVU113
  524 0034 35F91330 		ldrsh	r3, [r5, r3, lsl #1]
- 525              		.loc 1 49 11 view .LVU114
+ 525              		.loc 1 51 11 view .LVU114
  526 0038 0B60     		str	r3, [r1]
-  50:Src/effects.c **** 
-  51:Src/effects.c ****   float scale = 0;
- 527              		.loc 1 51 3 is_stmt 1 view .LVU115
+  52:Src/effects.c **** 
+  53:Src/effects.c ****   float scale = 0;
+ 527              		.loc 1 53 3 is_stmt 1 view .LVU115
  528              	.LVL38:
-  52:Src/effects.c ****   if(o->octChange < 0) scale = -1.0f/(o->octChange-1);
- 529              		.loc 1 52 3 view .LVU116
- 530              		.loc 1 52 7 is_stmt 0 view .LVU117
+  54:Src/effects.c ****   if(o->octChange < 0) scale = -1.0f/(o->octChange-1);
+ 529              		.loc 1 54 3 view .LVU116
+ 530              		.loc 1 54 7 is_stmt 0 view .LVU117
  531 003a 0369     		ldr	r3, [r0, #16]
- 532              		.loc 1 52 5 view .LVU118
+ 532              		.loc 1 54 5 view .LVU118
+ARM GAS  /tmp/ccyP2jDx.s 			page 11
+
+
  533 003c 002B     		cmp	r3, #0
  534 003e 10DB     		blt	.L26
-ARM GAS  /tmp/ccXlQGvu.s 			page 11
-
-
-  51:Src/effects.c ****   if(o->octChange < 0) scale = -1.0f/(o->octChange-1);
- 535              		.loc 1 51 9 view .LVU119
+  53:Src/effects.c ****   if(o->octChange < 0) scale = -1.0f/(o->octChange-1);
+ 535              		.loc 1 53 9 view .LVU119
  536 0040 9FED0D7A 		vldr.32	s14, .L27
  537              	.LVL39:
  538              	.L22:
-  53:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 539              		.loc 1 53 3 is_stmt 1 view .LVU120
- 540              		.loc 1 53 5 is_stmt 0 view .LVU121
+  55:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 539              		.loc 1 55 3 is_stmt 1 view .LVU120
+ 540              		.loc 1 55 5 is_stmt 0 view .LVU121
  541 0044 002B     		cmp	r3, #0
  542 0046 04DB     		blt	.L23
- 543              		.loc 1 53 25 is_stmt 1 discriminator 1 view .LVU122
- 544              		.loc 1 53 45 is_stmt 0 discriminator 1 view .LVU123
+ 543              		.loc 1 55 25 is_stmt 1 discriminator 1 view .LVU122
+ 544              		.loc 1 55 45 is_stmt 0 discriminator 1 view .LVU123
  545 0048 0133     		adds	r3, r3, #1
- 546              		.loc 1 53 31 discriminator 1 view .LVU124
+ 546              		.loc 1 55 31 discriminator 1 view .LVU124
  547 004a 07EE903A 		vmov	s15, r3	@ int
  548 004e B8EEE77A 		vcvt.f32.s32	s14, s15
  549              	.LVL40:
  550              	.L23:
-  54:Src/effects.c **** 
-  55:Src/effects.c ****   o->readIdx += scale;
- 551              		.loc 1 55 3 is_stmt 1 view .LVU125
- 552              		.loc 1 55 14 is_stmt 0 view .LVU126
+  56:Src/effects.c **** 
+  57:Src/effects.c ****   o->readIdx += scale;
+ 551              		.loc 1 57 3 is_stmt 1 view .LVU125
+ 552              		.loc 1 57 14 is_stmt 0 view .LVU126
  553 0052 D0ED027A 		vldr.32	s15, [r0, #8]
  554 0056 77EE877A 		vadd.f32	s15, s15, s14
  555 005a C0ED027A 		vstr.32	s15, [r0, #8]
-  56:Src/effects.c **** }
- 556              		.loc 1 56 1 view .LVU127
+  58:Src/effects.c **** }
+ 556              		.loc 1 58 1 view .LVU127
  557 005e 70BC     		pop	{r4, r5, r6}
  558              	.LCFI5:
  559              		.cfi_remember_state
@@ -640,32 +642,32 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  566              	.L26:
  567              	.LCFI6:
  568              		.cfi_restore_state
-  52:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 569              		.loc 1 52 24 is_stmt 1 discriminator 1 view .LVU128
-  52:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 570              		.loc 1 52 51 is_stmt 0 discriminator 1 view .LVU129
+  54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 569              		.loc 1 54 24 is_stmt 1 discriminator 1 view .LVU128
+  54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 570              		.loc 1 54 51 is_stmt 0 discriminator 1 view .LVU129
  571 0062 5A1E     		subs	r2, r3, #1
  572 0064 07EE902A 		vmov	s15, r2	@ int
-  52:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 573              		.loc 1 52 37 discriminator 1 view .LVU130
+  54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 573              		.loc 1 54 37 discriminator 1 view .LVU130
  574 0068 F8EEE77A 		vcvt.f32.s32	s15, s15
-  52:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 575              		.loc 1 52 30 discriminator 1 view .LVU131
+  54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 575              		.loc 1 54 30 discriminator 1 view .LVU131
  576 006c FFEE006A 		vmov.f32	s13, #-1.0e+0
  577 0070 86EEA77A 		vdiv.f32	s14, s13, s15
  578              	.LVL42:
-  52:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
- 579              		.loc 1 52 30 discriminator 1 view .LVU132
+  54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
+ 579              		.loc 1 54 30 discriminator 1 view .LVU132
+ARM GAS  /tmp/ccyP2jDx.s 			page 12
+
+
  580 0074 E6E7     		b	.L22
  581              	.L28:
-ARM GAS  /tmp/ccXlQGvu.s 			page 12
-
-
  582 0076 00BF     		.align	2
  583              	.L27:
  584 0078 00000000 		.word	0
  585              		.cfi_endproc
- 586              	.LFE8:
+ 586              	.LFE143:
  588              		.section	.text.default_init_octave,"ax",%progbits
  589              		.align	1
  590              		.global	default_init_octave
@@ -675,64 +677,64 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  594              		.fpu fpv4-sp-d16
  596              	default_init_octave:
  597              	.LVL43:
- 598              	.LFB9:
-  57:Src/effects.c **** 
-  58:Src/effects.c **** void default_init_octave(octave* o) {
- 599              		.loc 1 58 37 is_stmt 1 view -0
+ 598              	.LFB144:
+  59:Src/effects.c **** 
+  60:Src/effects.c **** void default_init_octave(octave* o) {
+ 599              		.loc 1 60 37 is_stmt 1 view -0
  600              		.cfi_startproc
  601              		@ args = 0, pretend = 0, frame = 0
  602              		@ frame_needed = 0, uses_anonymous_args = 0
- 603              		.loc 1 58 37 is_stmt 0 view .LVU134
+ 603              		.loc 1 60 37 is_stmt 0 view .LVU134
  604 0000 10B5     		push	{r4, lr}
  605              	.LCFI7:
  606              		.cfi_def_cfa_offset 8
  607              		.cfi_offset 4, -8
  608              		.cfi_offset 14, -4
  609 0002 0446     		mov	r4, r0
-  59:Src/effects.c ****   o->bufferSize = 7500;
- 610              		.loc 1 59 3 is_stmt 1 view .LVU135
- 611              		.loc 1 59 17 is_stmt 0 view .LVU136
+  61:Src/effects.c ****   o->bufferSize = 7500;
+ 610              		.loc 1 61 3 is_stmt 1 view .LVU135
+ 611              		.loc 1 61 17 is_stmt 0 view .LVU136
  612 0004 41F64C50 		movw	r0, #7500
  613              	.LVL44:
- 614              		.loc 1 59 17 view .LVU137
+ 614              		.loc 1 61 17 view .LVU137
  615 0008 2060     		str	r0, [r4]
-  60:Src/effects.c ****   o->buffer = (short*) calloc(o->bufferSize, sizeof(short));
- 616              		.loc 1 60 3 is_stmt 1 view .LVU138
- 617              		.loc 1 60 24 is_stmt 0 view .LVU139
+  62:Src/effects.c ****   o->buffer = (short*) calloc(o->bufferSize, sizeof(short));
+ 616              		.loc 1 62 3 is_stmt 1 view .LVU138
+ 617              		.loc 1 62 24 is_stmt 0 view .LVU139
  618 000a 0221     		movs	r1, #2
  619 000c FFF7FEFF 		bl	calloc
  620              	.LVL45:
- 621              		.loc 1 60 13 view .LVU140
+ 621              		.loc 1 62 13 view .LVU140
  622 0010 6060     		str	r0, [r4, #4]
-  61:Src/effects.c ****   o->readIdx = o->bufferSize/2;
- 623              		.loc 1 61 3 is_stmt 1 view .LVU141
- 624              		.loc 1 61 14 is_stmt 0 view .LVU142
+  63:Src/effects.c ****   o->readIdx = o->bufferSize/2;
+ 623              		.loc 1 63 3 is_stmt 1 view .LVU141
+ 624              		.loc 1 63 14 is_stmt 0 view .LVU142
  625 0012 044B     		ldr	r3, .L31
  626 0014 A360     		str	r3, [r4, #8]	@ float
-  62:Src/effects.c ****   o->writeIdx = 0;
- 627              		.loc 1 62 3 is_stmt 1 view .LVU143
- 628              		.loc 1 62 15 is_stmt 0 view .LVU144
+  64:Src/effects.c ****   o->writeIdx = 0;
+ 627              		.loc 1 64 3 is_stmt 1 view .LVU143
+ 628              		.loc 1 64 15 is_stmt 0 view .LVU144
  629 0016 0023     		movs	r3, #0
  630 0018 E360     		str	r3, [r4, #12]
-  63:Src/effects.c ****   o->octChange = -1;
- 631              		.loc 1 63 3 is_stmt 1 view .LVU145
- 632              		.loc 1 63 16 is_stmt 0 view .LVU146
+  65:Src/effects.c ****   o->octChange = -1;
+ 631              		.loc 1 65 3 is_stmt 1 view .LVU145
+ARM GAS  /tmp/ccyP2jDx.s 			page 13
+
+
+ 632              		.loc 1 65 16 is_stmt 0 view .LVU146
  633 001a 4FF0FF33 		mov	r3, #-1
-ARM GAS  /tmp/ccXlQGvu.s 			page 13
-
-
  634 001e 2361     		str	r3, [r4, #16]
-  64:Src/effects.c **** }
- 635              		.loc 1 64 1 view .LVU147
+  66:Src/effects.c **** }
+ 635              		.loc 1 66 1 view .LVU147
  636 0020 10BD     		pop	{r4, pc}
  637              	.LVL46:
  638              	.L32:
- 639              		.loc 1 64 1 view .LVU148
+ 639              		.loc 1 66 1 view .LVU148
  640 0022 00BF     		.align	2
  641              	.L31:
  642 0024 00606A45 		.word	1164599296
  643              		.cfi_endproc
- 644              	.LFE9:
+ 644              	.LFE144:
  646              		.section	.text.step_chorus,"ax",%progbits
  647              		.align	1
  648              		.global	step_chorus
@@ -742,335 +744,372 @@ ARM GAS  /tmp/ccXlQGvu.s 			page 1
  652              		.fpu fpv4-sp-d16
  654              	step_chorus:
  655              	.LVL47:
- 656              	.LFB10:
-  65:Src/effects.c **** 
-  66:Src/effects.c **** void step_chorus(chorus* c, int* sample) {
- 657              		.loc 1 66 42 is_stmt 1 view -0
+ 656              	.LFB145:
+  67:Src/effects.c **** 
+  68:Src/effects.c **** void step_chorus(chorus* c, int* sample) {
+ 657              		.loc 1 68 42 is_stmt 1 view -0
  658              		.cfi_startproc
  659              		@ args = 0, pretend = 0, frame = 0
  660              		@ frame_needed = 0, uses_anonymous_args = 0
- 661              		.loc 1 66 42 is_stmt 0 view .LVU150
- 662 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 661              		.loc 1 68 42 is_stmt 0 view .LVU150
+ 662 0000 2DE97043 		push	{r4, r5, r6, r8, r9, lr}
  663              	.LCFI8:
- 664              		.cfi_def_cfa_offset 32
- 665              		.cfi_offset 3, -32
- 666              		.cfi_offset 4, -28
- 667              		.cfi_offset 5, -24
- 668              		.cfi_offset 6, -20
- 669              		.cfi_offset 7, -16
- 670              		.cfi_offset 8, -12
- 671              		.cfi_offset 9, -8
- 672              		.cfi_offset 14, -4
- 673 0004 2DED028B 		vpush.64	{d8}
- 674              	.LCFI9:
- 675              		.cfi_def_cfa_offset 40
- 676              		.cfi_offset 80, -40
- 677              		.cfi_offset 81, -36
- 678 0008 0446     		mov	r4, r0
- 679 000a 0E46     		mov	r6, r1
-  67:Src/effects.c ****   c->buffer[c->writeIdx % c->bufferSize] = *sample;
- 680              		.loc 1 67 3 is_stmt 1 view .LVU151
- 681              		.loc 1 67 4 is_stmt 0 view .LVU152
- 682 000c 4568     		ldr	r5, [r0, #4]
- 683              		.loc 1 67 14 view .LVU153
- 684 000e C168     		ldr	r1, [r0, #12]
- 685              	.LVL48:
- 686              		.loc 1 67 28 view .LVU154
- 687 0010 0268     		ldr	r2, [r0]
- 688              		.loc 1 67 25 view .LVU155
-ARM GAS  /tmp/ccXlQGvu.s 			page 14
+ 664              		.cfi_def_cfa_offset 24
+ 665              		.cfi_offset 4, -24
+ 666              		.cfi_offset 5, -20
+ 667              		.cfi_offset 6, -16
+ 668              		.cfi_offset 8, -12
+ 669              		.cfi_offset 9, -8
+ 670              		.cfi_offset 14, -4
+ 671 0004 2DED028B 		vpush.64	{d8}
+ 672              	.LCFI9:
+ 673              		.cfi_def_cfa_offset 32
+ 674              		.cfi_offset 80, -32
+ 675              		.cfi_offset 81, -28
+ 676 0008 0446     		mov	r4, r0
+ 677 000a 0E46     		mov	r6, r1
+  69:Src/effects.c ****   c->buffer[c->writeIdx] = *sample;
+ 678              		.loc 1 69 3 is_stmt 1 view .LVU151
+ 679              		.loc 1 69 4 is_stmt 0 view .LVU152
+ 680 000c 4568     		ldr	r5, [r0, #4]
+ 681              		.loc 1 69 14 view .LVU153
+ 682 000e C368     		ldr	r3, [r0, #12]
+ 683              		.loc 1 69 12 view .LVU154
+ 684 0010 05EBC305 		add	r5, r5, r3, lsl #3
+ 685              		.loc 1 69 26 view .LVU155
+ 686 0014 0868     		ldr	r0, [r1]
+ARM GAS  /tmp/ccyP2jDx.s 			page 14
 
 
- 689 0012 91FBF2F3 		sdiv	r3, r1, r2
- 690 0016 02FB1313 		mls	r3, r2, r3, r1
- 691              		.loc 1 67 12 view .LVU156
- 692 001a 05EBC305 		add	r5, r5, r3, lsl #3
- 693              		.loc 1 67 42 view .LVU157
- 694 001e 3068     		ldr	r0, [r6]
- 695              	.LVL49:
- 696              		.loc 1 67 42 view .LVU158
- 697 0020 FFF7FEFF 		bl	__aeabi_i2d
- 698              	.LVL50:
- 699 0024 C5E90001 		strd	r0, [r5]
-  68:Src/effects.c ****   c->writeIdx++;
- 700              		.loc 1 68 3 is_stmt 1 view .LVU159
- 701              		.loc 1 68 4 is_stmt 0 view .LVU160
- 702 0028 E368     		ldr	r3, [r4, #12]
- 703              		.loc 1 68 14 view .LVU161
- 704 002a 0133     		adds	r3, r3, #1
- 705 002c E360     		str	r3, [r4, #12]
-  69:Src/effects.c **** 
-  70:Src/effects.c ****   c->velocity = c->amp*sinf(2*PI*((float)HAL_GetTick()/1000)*c->freq)+c->amp+c->base;
- 706              		.loc 1 70 3 is_stmt 1 view .LVU162
- 707              		.loc 1 70 18 is_stmt 0 view .LVU163
- 708 002e 94ED078A 		vldr.32	s16, [r4, #28]
- 709              		.loc 1 70 42 view .LVU164
- 710 0032 FFF7FEFF 		bl	HAL_GetTick
- 711              	.LVL51:
- 712 0036 07EE900A 		vmov	s15, r0	@ int
- 713              		.loc 1 70 35 view .LVU165
- 714 003a F8EEE77A 		vcvt.f32.s32	s15, s15
- 715              		.loc 1 70 55 view .LVU166
- 716 003e 9FED387A 		vldr.32	s14, .L35+8
- 717 0042 C7EE877A 		vdiv.f32	s15, s15, s14
- 718 0046 17EE900A 		vmov	r0, s15
- 719 004a FFF7FEFF 		bl	__aeabi_f2d
- 720              	.LVL52:
- 721              		.loc 1 70 33 view .LVU167
- 722 004e 32A3     		adr	r3, .L35
- 723 0050 D3E90023 		ldrd	r2, [r3]
- 724 0054 FFF7FEFF 		bl	__aeabi_dmul
- 725              	.LVL53:
- 726 0058 8046     		mov	r8, r0
- 727 005a 8946     		mov	r9, r1
- 728              		.loc 1 70 61 view .LVU168
- 729 005c B4F92200 		ldrsh	r0, [r4, #34]
- 730 0060 FFF7FEFF 		bl	__aeabi_i2d
- 731              	.LVL54:
- 732 0064 4246     		mov	r2, r8
- 733 0066 4B46     		mov	r3, r9
- 734 0068 FFF7FEFF 		bl	__aeabi_dmul
- 735              	.LVL55:
- 736              		.loc 1 70 24 view .LVU169
- 737 006c FFF7FEFF 		bl	__aeabi_d2f
- 738              	.LVL56:
- 739 0070 00EE100A 		vmov	s0, r0
- 740 0074 FFF7FEFF 		bl	sinf
- 741              	.LVL57:
- 742              		.loc 1 70 23 view .LVU170
-ARM GAS  /tmp/ccXlQGvu.s 			page 15
-
-
- 743 0078 28EE008A 		vmul.f32	s16, s16, s0
- 744              		.loc 1 70 72 view .LVU171
- 745 007c 94ED070A 		vldr.32	s0, [r4, #28]
- 746              		.loc 1 70 70 view .LVU172
- 747 0080 38EE008A 		vadd.f32	s16, s16, s0
- 748              		.loc 1 70 79 view .LVU173
- 749 0084 B4F92030 		ldrsh	r3, [r4, #32]
- 750 0088 00EE103A 		vmov	s0, r3	@ int
- 751              		.loc 1 70 77 view .LVU174
- 752 008c B8EEC00A 		vcvt.f32.s32	s0, s0
- 753 0090 30EE080A 		vadd.f32	s0, s0, s16
- 754              		.loc 1 70 15 view .LVU175
- 755 0094 84ED050A 		vstr.32	s0, [r4, #20]
-  71:Src/effects.c ****   *sample *= (1-c->wet);
- 756              		.loc 1 71 3 is_stmt 1 view .LVU176
- 757              		.loc 1 71 18 is_stmt 0 view .LVU177
- 758 0098 94ED067A 		vldr.32	s14, [r4, #24]
- 759              		.loc 1 71 16 view .LVU178
- 760 009c F7EE007A 		vmov.f32	s15, #1.0e+0
- 761 00a0 37EEC77A 		vsub.f32	s14, s15, s14
- 762              		.loc 1 71 11 view .LVU179
- 763 00a4 D6ED007A 		vldr.32	s15, [r6]	@ int
- 764 00a8 F8EEE77A 		vcvt.f32.s32	s15, s15
- 765 00ac 67EE877A 		vmul.f32	s15, s15, s14
- 766 00b0 FDEEE77A 		vcvt.s32.f32	s15, s15
- 767 00b4 17EE905A 		vmov	r5, s15	@ int
- 768 00b8 C6ED007A 		vstr.32	s15, [r6]	@ int
-  72:Src/effects.c ****   *sample += c->wet*c->buffer[(int)c->readIdx % c->bufferSize];
- 769              		.loc 1 72 3 is_stmt 1 view .LVU180
- 770              		.loc 1 72 15 is_stmt 0 view .LVU181
- 771 00bc A069     		ldr	r0, [r4, #24]	@ float
- 772 00be FFF7FEFF 		bl	__aeabi_f2d
- 773              	.LVL58:
- 774              		.loc 1 72 37 view .LVU182
- 775 00c2 D4ED027A 		vldr.32	s15, [r4, #8]
- 776              		.loc 1 72 31 view .LVU183
- 777 00c6 FDEEE77A 		vcvt.s32.f32	s15, s15
- 778 00ca 17EE903A 		vmov	r3, s15	@ int
- 779              		.loc 1 72 50 view .LVU184
- 780 00ce 2268     		ldr	r2, [r4]
- 781              		.loc 1 72 47 view .LVU185
- 782 00d0 93FBF2F7 		sdiv	r7, r3, r2
- 783 00d4 02FB1733 		mls	r3, r2, r7, r3
- 784              		.loc 1 72 30 view .LVU186
- 785 00d8 6268     		ldr	r2, [r4, #4]
- 786 00da 02EBC302 		add	r2, r2, r3, lsl #3
- 787              		.loc 1 72 20 view .LVU187
- 788 00de D2E90023 		ldrd	r2, [r2]
- 789 00e2 FFF7FEFF 		bl	__aeabi_dmul
- 790              	.LVL59:
- 791 00e6 8046     		mov	r8, r0
- 792 00e8 8946     		mov	r9, r1
- 793              		.loc 1 72 11 view .LVU188
- 794 00ea 2846     		mov	r0, r5
- 795 00ec FFF7FEFF 		bl	__aeabi_i2d
- 796              	.LVL60:
- 797 00f0 4246     		mov	r2, r8
-ARM GAS  /tmp/ccXlQGvu.s 			page 16
-
-
- 798 00f2 4B46     		mov	r3, r9
- 799 00f4 FFF7FEFF 		bl	__aeabi_dadd
- 800              	.LVL61:
- 801 00f8 FFF7FEFF 		bl	__aeabi_d2iz
- 802              	.LVL62:
- 803 00fc 3060     		str	r0, [r6]
+ 687              	.LVL48:
+ 688              		.loc 1 69 26 view .LVU156
+ 689 0016 FFF7FEFF 		bl	__aeabi_i2d
+ 690              	.LVL49:
+ 691              		.loc 1 69 26 view .LVU157
+ 692 001a C5E90001 		strd	r0, [r5]
+  70:Src/effects.c ****   c->writeIdx++;
+ 693              		.loc 1 70 3 is_stmt 1 view .LVU158
+ 694              		.loc 1 70 4 is_stmt 0 view .LVU159
+ 695 001e E368     		ldr	r3, [r4, #12]
+ 696              		.loc 1 70 14 view .LVU160
+ 697 0020 0133     		adds	r3, r3, #1
+ 698 0022 E360     		str	r3, [r4, #12]
+  71:Src/effects.c **** 
+  72:Src/effects.c ****   float t = (HAL_GetTick() % (int)1000*(1/c->freq)) / 1000;
+ 699              		.loc 1 72 3 is_stmt 1 view .LVU161
+ 700              		.loc 1 72 14 is_stmt 0 view .LVU162
+ 701 0024 FFF7FEFF 		bl	HAL_GetTick
+ 702              	.LVL50:
+ 703              		.loc 1 72 28 view .LVU163
+ 704 0028 4749     		ldr	r1, .L37+8
+ 705 002a 81FB0023 		smull	r2, r3, r1, r0
+ 706 002e C217     		asrs	r2, r0, #31
+ 707 0030 C2EBA312 		rsb	r2, r2, r3, asr #6
+ 708 0034 4FF47A73 		mov	r3, #1000
+ 709 0038 03FB1202 		mls	r2, r3, r2, r0
+ 710              		.loc 1 72 44 view .LVU164
+ 711 003c B4F92250 		ldrsh	r5, [r4, #34]
+ 712              		.loc 1 72 42 view .LVU165
+ 713 0040 0123     		movs	r3, #1
+ 714 0042 93FBF5F3 		sdiv	r3, r3, r5
+ 715              		.loc 1 72 39 view .LVU166
+ 716 0046 03FB02F3 		mul	r3, r3, r2
+ 717              		.loc 1 72 53 view .LVU167
+ 718 004a 81FB0321 		smull	r2, r1, r1, r3
+ 719 004e DB17     		asrs	r3, r3, #31
+ 720 0050 C3EBA110 		rsb	r0, r3, r1, asr #6
+ 721              	.LVL51:
   73:Src/effects.c **** 
-  74:Src/effects.c ****   c->readIdx += c->velocity;
- 804              		.loc 1 74 3 is_stmt 1 view .LVU189
- 805              		.loc 1 74 18 is_stmt 0 view .LVU190
- 806 00fe 94ED057A 		vldr.32	s14, [r4, #20]
- 807              		.loc 1 74 14 view .LVU191
- 808 0102 D4ED027A 		vldr.32	s15, [r4, #8]
- 809 0106 77EE877A 		vadd.f32	s15, s15, s14
- 810 010a C4ED027A 		vstr.32	s15, [r4, #8]
-  75:Src/effects.c **** }
- 811              		.loc 1 75 1 view .LVU192
- 812 010e BDEC028B 		vldm	sp!, {d8}
- 813              	.LCFI10:
- 814              		.cfi_restore 80
- 815              		.cfi_restore 81
- 816              		.cfi_def_cfa_offset 32
- 817 0112 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
- 818              	.LVL63:
- 819              	.L36:
- 820              		.loc 1 75 1 view .LVU193
- 821 0116 00BF     		.align	3
- 822              	.L35:
- 823 0118 182D4454 		.word	1413754136
- 824 011c FB211940 		.word	1075388923
- 825 0120 00007A44 		.word	1148846080
- 826              		.cfi_endproc
- 827              	.LFE10:
- 829              		.section	.text.default_init_chorus,"ax",%progbits
- 830              		.align	1
- 831              		.global	default_init_chorus
- 832              		.syntax unified
- 833              		.thumb
- 834              		.thumb_func
- 835              		.fpu fpv4-sp-d16
- 837              	default_init_chorus:
- 838              	.LVL64:
- 839              	.LFB11:
-  76:Src/effects.c **** 
-  77:Src/effects.c **** void default_init_chorus(chorus* c) {
- 840              		.loc 1 77 37 is_stmt 1 view -0
- 841              		.cfi_startproc
- 842              		@ args = 0, pretend = 0, frame = 0
- 843              		@ frame_needed = 0, uses_anonymous_args = 0
- 844              		.loc 1 77 37 is_stmt 0 view .LVU195
- 845 0000 10B5     		push	{r4, lr}
- 846              	.LCFI11:
- 847              		.cfi_def_cfa_offset 8
- 848              		.cfi_offset 4, -8
- 849              		.cfi_offset 14, -4
- 850 0002 0446     		mov	r4, r0
-  78:Src/effects.c ****   c->bufferSize = 1000;
-ARM GAS  /tmp/ccXlQGvu.s 			page 17
+  74:Src/effects.c ****   c->velocity = c->amp*sinf(2*PI*t*c->freq)+c->amp+c->base;
+ 722              		.loc 1 74 3 is_stmt 1 view .LVU168
+ 723              		.loc 1 74 18 is_stmt 0 view .LVU169
+ 724 0054 94ED078A 		vldr.32	s16, [r4, #28]
+ 725              		.loc 1 74 33 view .LVU170
+ 726 0058 07EE900A 		vmov	s15, r0	@ int
+ 727 005c F8EEE77A 		vcvt.f32.s32	s15, s15
+ 728              	.LVL52:
+ 729              		.loc 1 74 33 view .LVU171
+ 730 0060 17EE900A 		vmov	r0, s15
+ 731 0064 FFF7FEFF 		bl	__aeabi_f2d
+ 732              	.LVL53:
+ 733              		.loc 1 74 33 view .LVU172
+ 734 0068 35A3     		adr	r3, .L37
+ 735 006a D3E90023 		ldrd	r2, [r3]
+ 736 006e FFF7FEFF 		bl	__aeabi_dmul
+ 737              	.LVL54:
+ 738 0072 8046     		mov	r8, r0
+ARM GAS  /tmp/ccyP2jDx.s 			page 15
 
 
- 851              		.loc 1 78 3 is_stmt 1 view .LVU196
- 852              		.loc 1 78 17 is_stmt 0 view .LVU197
- 853 0004 4FF47A70 		mov	r0, #1000
- 854              	.LVL65:
- 855              		.loc 1 78 17 view .LVU198
- 856 0008 2060     		str	r0, [r4]
-  79:Src/effects.c ****   c->buffer = (double*) calloc(c->bufferSize, sizeof(double));
- 857              		.loc 1 79 3 is_stmt 1 view .LVU199
- 858              		.loc 1 79 25 is_stmt 0 view .LVU200
- 859 000a 0821     		movs	r1, #8
- 860 000c FFF7FEFF 		bl	calloc
- 861              	.LVL66:
- 862              		.loc 1 79 13 view .LVU201
- 863 0010 6060     		str	r0, [r4, #4]
-  80:Src/effects.c ****   c->readIdx = 0;
- 864              		.loc 1 80 3 is_stmt 1 view .LVU202
- 865              		.loc 1 80 14 is_stmt 0 view .LVU203
- 866 0012 0023     		movs	r3, #0
- 867 0014 A360     		str	r3, [r4, #8]	@ float
-  81:Src/effects.c ****   c->writeIdx = 0;
- 868              		.loc 1 81 3 is_stmt 1 view .LVU204
- 869              		.loc 1 81 15 is_stmt 0 view .LVU205
- 870 0016 0022     		movs	r2, #0
- 871 0018 E260     		str	r2, [r4, #12]
-  82:Src/effects.c ****   c->shift = 0;
- 872              		.loc 1 82 3 is_stmt 1 view .LVU206
- 873              		.loc 1 82 12 is_stmt 0 view .LVU207
- 874 001a 2361     		str	r3, [r4, #16]	@ float
-  83:Src/effects.c ****   c->velocity = 0;
- 875              		.loc 1 83 3 is_stmt 1 view .LVU208
- 876              		.loc 1 83 15 is_stmt 0 view .LVU209
- 877 001c 6361     		str	r3, [r4, #20]	@ float
-  84:Src/effects.c ****   c->wet = 0.75;
- 878              		.loc 1 84 3 is_stmt 1 view .LVU210
- 879              		.loc 1 84 10 is_stmt 0 view .LVU211
- 880 001e 4FF07D53 		mov	r3, #1061158912
- 881 0022 A361     		str	r3, [r4, #24]	@ float
-  85:Src/effects.c ****   c->amp = 0.005;
- 882              		.loc 1 85 3 is_stmt 1 view .LVU212
- 883              		.loc 1 85 10 is_stmt 0 view .LVU213
- 884 0024 024B     		ldr	r3, .L39
- 885 0026 E361     		str	r3, [r4, #28]	@ float
-  86:Src/effects.c ****   c->base = 1;
- 886              		.loc 1 86 3 is_stmt 1 view .LVU214
- 887              		.loc 1 86 11 is_stmt 0 view .LVU215
- 888 0028 0123     		movs	r3, #1
- 889 002a 2384     		strh	r3, [r4, #32]	@ movhi
-  87:Src/effects.c ****   c->freq = 1;
- 890              		.loc 1 87 3 is_stmt 1 view .LVU216
- 891              		.loc 1 87 11 is_stmt 0 view .LVU217
- 892 002c 6384     		strh	r3, [r4, #34]	@ movhi
-  88:Src/effects.c **** }
- 893              		.loc 1 88 1 view .LVU218
- 894 002e 10BD     		pop	{r4, pc}
- 895              	.LVL67:
- 896              	.L40:
- 897              		.loc 1 88 1 view .LVU219
-ARM GAS  /tmp/ccXlQGvu.s 			page 18
+ 739 0074 8946     		mov	r9, r1
+ 740              		.loc 1 74 35 view .LVU173
+ 741 0076 2846     		mov	r0, r5
+ 742 0078 FFF7FEFF 		bl	__aeabi_i2d
+ 743              	.LVL55:
+ 744 007c 4246     		mov	r2, r8
+ 745 007e 4B46     		mov	r3, r9
+ 746 0080 FFF7FEFF 		bl	__aeabi_dmul
+ 747              	.LVL56:
+ 748              		.loc 1 74 24 view .LVU174
+ 749 0084 FFF7FEFF 		bl	__aeabi_d2f
+ 750              	.LVL57:
+ 751 0088 00EE100A 		vmov	s0, r0
+ 752 008c FFF7FEFF 		bl	sinf
+ 753              	.LVL58:
+ 754              		.loc 1 74 23 view .LVU175
+ 755 0090 28EE000A 		vmul.f32	s0, s16, s0
+ 756              		.loc 1 74 44 view .LVU176
+ 757 0094 38EE008A 		vadd.f32	s16, s16, s0
+ 758              		.loc 1 74 53 view .LVU177
+ 759 0098 B4F92030 		ldrsh	r3, [r4, #32]
+ 760 009c 00EE103A 		vmov	s0, r3	@ int
+ 761              		.loc 1 74 51 view .LVU178
+ 762 00a0 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 763 00a4 30EE080A 		vadd.f32	s0, s0, s16
+ 764              		.loc 1 74 15 view .LVU179
+ 765 00a8 84ED050A 		vstr.32	s0, [r4, #20]
+  75:Src/effects.c ****   *sample *= (1-c->wet);
+ 766              		.loc 1 75 3 is_stmt 1 view .LVU180
+ 767              		.loc 1 75 18 is_stmt 0 view .LVU181
+ 768 00ac 94ED067A 		vldr.32	s14, [r4, #24]
+ 769              		.loc 1 75 16 view .LVU182
+ 770 00b0 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 771 00b4 37EEC77A 		vsub.f32	s14, s15, s14
+ 772              		.loc 1 75 11 view .LVU183
+ 773 00b8 D6ED007A 		vldr.32	s15, [r6]	@ int
+ 774 00bc F8EEE77A 		vcvt.f32.s32	s15, s15
+ 775 00c0 67EE877A 		vmul.f32	s15, s15, s14
+ 776 00c4 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 777 00c8 17EE905A 		vmov	r5, s15	@ int
+ 778              		.loc 1 75 11 view .LVU184
+ 779 00cc C6ED007A 		vstr.32	s15, [r6]	@ int
+  76:Src/effects.c ****   *sample += c->wet*c->buffer[(int)c->readIdx];
+ 780              		.loc 1 76 3 is_stmt 1 view .LVU185
+ 781              		.loc 1 76 15 is_stmt 0 view .LVU186
+ 782 00d0 A069     		ldr	r0, [r4, #24]	@ float
+ 783 00d2 FFF7FEFF 		bl	__aeabi_f2d
+ 784              	.LVL59:
+ 785              		.loc 1 76 22 view .LVU187
+ 786 00d6 6368     		ldr	r3, [r4, #4]
+ 787              		.loc 1 76 37 view .LVU188
+ 788 00d8 D4ED027A 		vldr.32	s15, [r4, #8]
+ 789              		.loc 1 76 31 view .LVU189
+ 790 00dc FDEEE77A 		vcvt.s32.f32	s15, s15
+ 791              		.loc 1 76 30 view .LVU190
+ 792 00e0 17EE902A 		vmov	r2, s15	@ int
+ 793 00e4 03EBC203 		add	r3, r3, r2, lsl #3
+ARM GAS  /tmp/ccyP2jDx.s 			page 16
 
 
- 898              		.align	2
- 899              	.L39:
- 900 0030 0AD7A33B 		.word	1000593162
- 901              		.cfi_endproc
- 902              	.LFE11:
- 904              		.text
- 905              	.Letext0:
- 906              		.file 2 "Inc/effects.h"
- 907              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
- 908              		.file 4 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
- 909              		.file 5 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stddef
- 910              		.file 6 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
- 911              		.file 7 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
- 912              		.file 8 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/math.h"
-ARM GAS  /tmp/ccXlQGvu.s 			page 19
+ 794              		.loc 1 76 20 view .LVU191
+ 795 00e8 D3E90023 		ldrd	r2, [r3]
+ 796 00ec FFF7FEFF 		bl	__aeabi_dmul
+ 797              	.LVL60:
+ 798 00f0 8046     		mov	r8, r0
+ 799 00f2 8946     		mov	r9, r1
+ 800              		.loc 1 76 11 view .LVU192
+ 801 00f4 2846     		mov	r0, r5
+ 802 00f6 FFF7FEFF 		bl	__aeabi_i2d
+ 803              	.LVL61:
+ 804 00fa 4246     		mov	r2, r8
+ 805 00fc 4B46     		mov	r3, r9
+ 806 00fe FFF7FEFF 		bl	__aeabi_dadd
+ 807              	.LVL62:
+ 808 0102 FFF7FEFF 		bl	__aeabi_d2iz
+ 809              	.LVL63:
+ 810 0106 3060     		str	r0, [r6]
+  77:Src/effects.c **** 
+  78:Src/effects.c ****   c->readIdx += c->velocity;
+ 811              		.loc 1 78 3 is_stmt 1 view .LVU193
+ 812              		.loc 1 78 18 is_stmt 0 view .LVU194
+ 813 0108 D4ED057A 		vldr.32	s15, [r4, #20]
+ 814              		.loc 1 78 14 view .LVU195
+ 815 010c 94ED027A 		vldr.32	s14, [r4, #8]
+ 816 0110 77EE877A 		vadd.f32	s15, s15, s14
+ 817 0114 C4ED027A 		vstr.32	s15, [r4, #8]
+  79:Src/effects.c **** 
+  80:Src/effects.c ****   if((int)c->writeIdx > c->bufferSize) c->writeIdx = 0;
+ 818              		.loc 1 80 3 is_stmt 1 view .LVU196
+ 819              		.loc 1 80 6 is_stmt 0 view .LVU197
+ 820 0118 E268     		ldr	r2, [r4, #12]
+ 821              		.loc 1 80 26 view .LVU198
+ 822 011a 2368     		ldr	r3, [r4]
+ 823              		.loc 1 80 5 view .LVU199
+ 824 011c 9A42     		cmp	r2, r3
+ 825 011e 01DD     		ble	.L34
+ 826              		.loc 1 80 40 is_stmt 1 discriminator 1 view .LVU200
+ 827              		.loc 1 80 52 is_stmt 0 discriminator 1 view .LVU201
+ 828 0120 0022     		movs	r2, #0
+ 829 0122 E260     		str	r2, [r4, #12]
+ 830              	.L34:
+  81:Src/effects.c ****   if((int)c->readIdx > c->bufferSize) c->readIdx = 0;
+ 831              		.loc 1 81 3 is_stmt 1 view .LVU202
+ 832              		.loc 1 81 6 is_stmt 0 view .LVU203
+ 833 0124 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 834              		.loc 1 81 5 view .LVU204
+ 835 0128 17EE902A 		vmov	r2, s15	@ int
+ 836 012c 9342     		cmp	r3, r2
+ 837 012e 01DA     		bge	.L33
+ 838              		.loc 1 81 39 is_stmt 1 discriminator 1 view .LVU205
+ 839              		.loc 1 81 50 is_stmt 0 discriminator 1 view .LVU206
+ 840 0130 0023     		movs	r3, #0
+ 841 0132 A360     		str	r3, [r4, #8]	@ float
+ 842              	.L33:
+  82:Src/effects.c **** }
+ 843              		.loc 1 82 1 view .LVU207
+ 844 0134 BDEC028B 		vldm	sp!, {d8}
+ARM GAS  /tmp/ccyP2jDx.s 			page 17
+
+
+ 845              	.LCFI10:
+ 846              		.cfi_restore 80
+ 847              		.cfi_restore 81
+ 848              		.cfi_def_cfa_offset 24
+ 849 0138 BDE87083 		pop	{r4, r5, r6, r8, r9, pc}
+ 850              	.LVL64:
+ 851              	.L38:
+ 852              		.loc 1 82 1 view .LVU208
+ 853 013c AFF30080 		.align	3
+ 854              	.L37:
+ 855 0140 182D4454 		.word	1413754136
+ 856 0144 FB211940 		.word	1075388923
+ 857 0148 D34D6210 		.word	274877907
+ 858              		.cfi_endproc
+ 859              	.LFE145:
+ 861              		.section	.text.default_init_chorus,"ax",%progbits
+ 862              		.align	1
+ 863              		.global	default_init_chorus
+ 864              		.syntax unified
+ 865              		.thumb
+ 866              		.thumb_func
+ 867              		.fpu fpv4-sp-d16
+ 869              	default_init_chorus:
+ 870              	.LVL65:
+ 871              	.LFB146:
+  83:Src/effects.c **** 
+  84:Src/effects.c **** void default_init_chorus(chorus* c) {
+ 872              		.loc 1 84 37 is_stmt 1 view -0
+ 873              		.cfi_startproc
+ 874              		@ args = 0, pretend = 0, frame = 0
+ 875              		@ frame_needed = 0, uses_anonymous_args = 0
+ 876              		.loc 1 84 37 is_stmt 0 view .LVU210
+ 877 0000 10B5     		push	{r4, lr}
+ 878              	.LCFI11:
+ 879              		.cfi_def_cfa_offset 8
+ 880              		.cfi_offset 4, -8
+ 881              		.cfi_offset 14, -4
+ 882 0002 0446     		mov	r4, r0
+  85:Src/effects.c ****   c->bufferSize = 1000;
+ 883              		.loc 1 85 3 is_stmt 1 view .LVU211
+ 884              		.loc 1 85 17 is_stmt 0 view .LVU212
+ 885 0004 4FF47A70 		mov	r0, #1000
+ 886              	.LVL66:
+ 887              		.loc 1 85 17 view .LVU213
+ 888 0008 2060     		str	r0, [r4]
+  86:Src/effects.c ****   c->buffer = (double*) calloc(c->bufferSize, sizeof(double));
+ 889              		.loc 1 86 3 is_stmt 1 view .LVU214
+ 890              		.loc 1 86 25 is_stmt 0 view .LVU215
+ 891 000a 0821     		movs	r1, #8
+ 892 000c FFF7FEFF 		bl	calloc
+ 893              	.LVL67:
+ 894              		.loc 1 86 13 view .LVU216
+ 895 0010 6060     		str	r0, [r4, #4]
+  87:Src/effects.c ****   c->readIdx = 0;
+ 896              		.loc 1 87 3 is_stmt 1 view .LVU217
+ 897              		.loc 1 87 14 is_stmt 0 view .LVU218
+ 898 0012 0023     		movs	r3, #0
+ARM GAS  /tmp/ccyP2jDx.s 			page 18
+
+
+ 899 0014 A360     		str	r3, [r4, #8]	@ float
+  88:Src/effects.c ****   c->writeIdx = 0;
+ 900              		.loc 1 88 3 is_stmt 1 view .LVU219
+ 901              		.loc 1 88 15 is_stmt 0 view .LVU220
+ 902 0016 0022     		movs	r2, #0
+ 903 0018 E260     		str	r2, [r4, #12]
+  89:Src/effects.c ****   c->shift = 0;
+ 904              		.loc 1 89 3 is_stmt 1 view .LVU221
+ 905              		.loc 1 89 12 is_stmt 0 view .LVU222
+ 906 001a 2361     		str	r3, [r4, #16]	@ float
+  90:Src/effects.c ****   c->velocity = 0;
+ 907              		.loc 1 90 3 is_stmt 1 view .LVU223
+ 908              		.loc 1 90 15 is_stmt 0 view .LVU224
+ 909 001c 6361     		str	r3, [r4, #20]	@ float
+  91:Src/effects.c ****   c->wet = 0.75;
+ 910              		.loc 1 91 3 is_stmt 1 view .LVU225
+ 911              		.loc 1 91 10 is_stmt 0 view .LVU226
+ 912 001e 4FF07D53 		mov	r3, #1061158912
+ 913 0022 A361     		str	r3, [r4, #24]	@ float
+  92:Src/effects.c ****   c->amp = 0.005;
+ 914              		.loc 1 92 3 is_stmt 1 view .LVU227
+ 915              		.loc 1 92 10 is_stmt 0 view .LVU228
+ 916 0024 024B     		ldr	r3, .L41
+ 917 0026 E361     		str	r3, [r4, #28]	@ float
+  93:Src/effects.c ****   c->base = 1;
+ 918              		.loc 1 93 3 is_stmt 1 view .LVU229
+ 919              		.loc 1 93 11 is_stmt 0 view .LVU230
+ 920 0028 0123     		movs	r3, #1
+ 921 002a 2384     		strh	r3, [r4, #32]	@ movhi
+  94:Src/effects.c ****   c->freq = 1;
+ 922              		.loc 1 94 3 is_stmt 1 view .LVU231
+ 923              		.loc 1 94 11 is_stmt 0 view .LVU232
+ 924 002c 6384     		strh	r3, [r4, #34]	@ movhi
+  95:Src/effects.c **** }
+ 925              		.loc 1 95 1 view .LVU233
+ 926 002e 10BD     		pop	{r4, pc}
+ 927              	.LVL68:
+ 928              	.L42:
+ 929              		.loc 1 95 1 view .LVU234
+ 930              		.align	2
+ 931              	.L41:
+ 932 0030 0AD7A33B 		.word	1000593162
+ 933              		.cfi_endproc
+ 934              	.LFE146:
+ 936              		.text
+ 937              	.Letext0:
+ 938              		.file 2 "Inc/effects.h"
+ 939              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
+ 940              		.file 4 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
+ 941              		.file 5 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stddef
+ 942              		.file 6 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
+ 943              		.file 7 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
+ 944              		.file 8 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/math.h"
+ARM GAS  /tmp/ccyP2jDx.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 effects.c
-     /tmp/ccXlQGvu.s:22     .text.step_tremolo:0000000000000000 $t
-     /tmp/ccXlQGvu.s:30     .text.step_tremolo:0000000000000000 step_tremolo
-     /tmp/ccXlQGvu.s:99     .text.step_tremolo:0000000000000068 $d
-     /tmp/ccXlQGvu.s:106    .text.default_init_tremolo:0000000000000000 $t
-     /tmp/ccXlQGvu.s:113    .text.default_init_tremolo:0000000000000000 default_init_tremolo
-     /tmp/ccXlQGvu.s:134    .text.step_overdrive:0000000000000000 $t
-     /tmp/ccXlQGvu.s:141    .text.step_overdrive:0000000000000000 step_overdrive
-     /tmp/ccXlQGvu.s:214    .text.step_overdrive:0000000000000060 $d
-     /tmp/ccXlQGvu.s:222    .text.default_init_overdrive:0000000000000000 $t
-     /tmp/ccXlQGvu.s:229    .text.default_init_overdrive:0000000000000000 default_init_overdrive
-     /tmp/ccXlQGvu.s:251    .text.step_fuzz:0000000000000000 $t
-     /tmp/ccXlQGvu.s:258    .text.step_fuzz:0000000000000000 step_fuzz
-     /tmp/ccXlQGvu.s:301    .text.default_init_fuzz:0000000000000000 $t
-     /tmp/ccXlQGvu.s:308    .text.default_init_fuzz:0000000000000000 default_init_fuzz
-     /tmp/ccXlQGvu.s:326    .text.step_reverb:0000000000000000 $t
-     /tmp/ccXlQGvu.s:333    .text.step_reverb:0000000000000000 step_reverb
-     /tmp/ccXlQGvu.s:413    .text.default_init_reverb:0000000000000000 $t
-     /tmp/ccXlQGvu.s:420    .text.default_init_reverb:0000000000000000 default_init_reverb
-     /tmp/ccXlQGvu.s:463    .text.default_init_reverb:0000000000000020 $d
-     /tmp/ccXlQGvu.s:468    .text.step_octave:0000000000000000 $t
-     /tmp/ccXlQGvu.s:475    .text.step_octave:0000000000000000 step_octave
-     /tmp/ccXlQGvu.s:584    .text.step_octave:0000000000000078 $d
-     /tmp/ccXlQGvu.s:589    .text.default_init_octave:0000000000000000 $t
-     /tmp/ccXlQGvu.s:596    .text.default_init_octave:0000000000000000 default_init_octave
-     /tmp/ccXlQGvu.s:642    .text.default_init_octave:0000000000000024 $d
-     /tmp/ccXlQGvu.s:647    .text.step_chorus:0000000000000000 $t
-     /tmp/ccXlQGvu.s:654    .text.step_chorus:0000000000000000 step_chorus
-     /tmp/ccXlQGvu.s:823    .text.step_chorus:0000000000000118 $d
-     /tmp/ccXlQGvu.s:830    .text.default_init_chorus:0000000000000000 $t
-     /tmp/ccXlQGvu.s:837    .text.default_init_chorus:0000000000000000 default_init_chorus
-     /tmp/ccXlQGvu.s:900    .text.default_init_chorus:0000000000000030 $d
+     /tmp/ccyP2jDx.s:22     .text.step_tremolo:0000000000000000 $t
+     /tmp/ccyP2jDx.s:30     .text.step_tremolo:0000000000000000 step_tremolo
+     /tmp/ccyP2jDx.s:99     .text.step_tremolo:0000000000000068 $d
+     /tmp/ccyP2jDx.s:106    .text.default_init_tremolo:0000000000000000 $t
+     /tmp/ccyP2jDx.s:113    .text.default_init_tremolo:0000000000000000 default_init_tremolo
+     /tmp/ccyP2jDx.s:134    .text.step_overdrive:0000000000000000 $t
+     /tmp/ccyP2jDx.s:141    .text.step_overdrive:0000000000000000 step_overdrive
+     /tmp/ccyP2jDx.s:214    .text.step_overdrive:0000000000000060 $d
+     /tmp/ccyP2jDx.s:222    .text.default_init_overdrive:0000000000000000 $t
+     /tmp/ccyP2jDx.s:229    .text.default_init_overdrive:0000000000000000 default_init_overdrive
+     /tmp/ccyP2jDx.s:251    .text.step_fuzz:0000000000000000 $t
+     /tmp/ccyP2jDx.s:258    .text.step_fuzz:0000000000000000 step_fuzz
+     /tmp/ccyP2jDx.s:301    .text.default_init_fuzz:0000000000000000 $t
+     /tmp/ccyP2jDx.s:308    .text.default_init_fuzz:0000000000000000 default_init_fuzz
+     /tmp/ccyP2jDx.s:326    .text.step_reverb:0000000000000000 $t
+     /tmp/ccyP2jDx.s:333    .text.step_reverb:0000000000000000 step_reverb
+     /tmp/ccyP2jDx.s:413    .text.default_init_reverb:0000000000000000 $t
+     /tmp/ccyP2jDx.s:420    .text.default_init_reverb:0000000000000000 default_init_reverb
+     /tmp/ccyP2jDx.s:463    .text.default_init_reverb:0000000000000020 $d
+     /tmp/ccyP2jDx.s:468    .text.step_octave:0000000000000000 $t
+     /tmp/ccyP2jDx.s:475    .text.step_octave:0000000000000000 step_octave
+     /tmp/ccyP2jDx.s:584    .text.step_octave:0000000000000078 $d
+     /tmp/ccyP2jDx.s:589    .text.default_init_octave:0000000000000000 $t
+     /tmp/ccyP2jDx.s:596    .text.default_init_octave:0000000000000000 default_init_octave
+     /tmp/ccyP2jDx.s:642    .text.default_init_octave:0000000000000024 $d
+     /tmp/ccyP2jDx.s:647    .text.step_chorus:0000000000000000 $t
+     /tmp/ccyP2jDx.s:654    .text.step_chorus:0000000000000000 step_chorus
+     /tmp/ccyP2jDx.s:855    .text.step_chorus:0000000000000140 $d
+     /tmp/ccyP2jDx.s:862    .text.default_init_chorus:0000000000000000 $t
+     /tmp/ccyP2jDx.s:869    .text.default_init_chorus:0000000000000000 default_init_chorus
+     /tmp/ccyP2jDx.s:932    .text.default_init_chorus:0000000000000030 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2d
