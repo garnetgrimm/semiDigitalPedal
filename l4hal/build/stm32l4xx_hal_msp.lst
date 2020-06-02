@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccegb9Ts.s 			page 1
+ARM GAS  /tmp/cczTujXe.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
   28:Src/stm32l4xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
   29:Src/stm32l4xx_hal_msp.c **** /* USER CODE BEGIN TD */
   30:Src/stm32l4xx_hal_msp.c **** 
-ARM GAS  /tmp/ccegb9Ts.s 			page 2
+ARM GAS  /tmp/cczTujXe.s 			page 2
 
 
   31:Src/stm32l4xx_hal_msp.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
   43 0006 42F00102 		orr	r2, r2, #1
   44 000a 1A66     		str	r2, [r3, #96]
   45              		.loc 1 70 3 view .LVU4
-ARM GAS  /tmp/ccegb9Ts.s 			page 3
+ARM GAS  /tmp/cczTujXe.s 			page 3
 
 
   46 000c 1A6E     		ldr	r2, [r3, #96]
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
   81:Src/stm32l4xx_hal_msp.c **** * @brief ADC MSP Initialization
   82:Src/stm32l4xx_hal_msp.c **** * This function configures the hardware resources used in this example
   83:Src/stm32l4xx_hal_msp.c **** * @param hadc: ADC handle pointer
-ARM GAS  /tmp/ccegb9Ts.s 			page 4
+ARM GAS  /tmp/cczTujXe.s 			page 4
 
 
   84:Src/stm32l4xx_hal_msp.c **** * @retval None
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  108:Src/stm32l4xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(ADC1_IRQn);
  109:Src/stm32l4xx_hal_msp.c ****   /* USER CODE BEGIN ADC1_MspInit 1 */
  110:Src/stm32l4xx_hal_msp.c **** 
-ARM GAS  /tmp/ccegb9Ts.s 			page 5
+ARM GAS  /tmp/cczTujXe.s 			page 5
 
 
  111:Src/stm32l4xx_hal_msp.c ****   /* USER CODE END ADC1_MspInit 1 */
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  161              		.loc 1 97 5 view .LVU32
  162 0046 029B     		ldr	r3, [sp, #8]
  163              	.LBE5:
-ARM GAS  /tmp/ccegb9Ts.s 			page 6
+ARM GAS  /tmp/cczTujXe.s 			page 6
 
 
   97:Src/stm32l4xx_hal_msp.c ****     /**ADC1 GPIO Configuration    
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  208              		.thumb_func
  209              		.fpu fpv4-sp-d16
  211              	HAL_ADC_MspDeInit:
-ARM GAS  /tmp/ccegb9Ts.s 			page 7
+ARM GAS  /tmp/cczTujXe.s 			page 7
 
 
  212              	.LVL7:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  236              	.L14:
  130:Src/stm32l4xx_hal_msp.c ****   
  237              		.loc 1 130 5 is_stmt 1 view .LVU51
-ARM GAS  /tmp/ccegb9Ts.s 			page 8
+ARM GAS  /tmp/cczTujXe.s 			page 8
 
 
  238 000c 074A     		ldr	r2, .L15+4
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  282              		.cfi_offset 14, -4
  283 0002 89B0     		sub	sp, sp, #36
  284              	.LCFI8:
-ARM GAS  /tmp/ccegb9Ts.s 			page 9
+ARM GAS  /tmp/cczTujXe.s 			page 9
 
 
  285              		.cfi_def_cfa_offset 40
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  314              		.loc 1 161 5 is_stmt 1 view .LVU64
  315              	.LBB6:
  161:Src/stm32l4xx_hal_msp.c ****   
-ARM GAS  /tmp/ccegb9Ts.s 			page 10
+ARM GAS  /tmp/cczTujXe.s 			page 10
 
 
  316              		.loc 1 161 5 view .LVU65
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  354              		.loc 1 169 26 is_stmt 0 view .LVU81
  355 004e 0023     		movs	r3, #0
  356 0050 0593     		str	r3, [sp, #20]
-ARM GAS  /tmp/ccegb9Ts.s 			page 11
+ARM GAS  /tmp/cczTujXe.s 			page 11
 
 
  170:Src/stm32l4xx_hal_msp.c **** 
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  401              	.LVL19:
  402              	.L23:
  188:Src/stm32l4xx_hal_msp.c ****   {
-ARM GAS  /tmp/ccegb9Ts.s 			page 12
+ARM GAS  /tmp/cczTujXe.s 			page 12
 
 
  189:Src/stm32l4xx_hal_msp.c ****   /* USER CODE BEGIN DAC1_MspDeInit 0 */
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  439              	.LFB291:
  206:Src/stm32l4xx_hal_msp.c **** 
  207:Src/stm32l4xx_hal_msp.c **** /**
-ARM GAS  /tmp/ccegb9Ts.s 			page 13
+ARM GAS  /tmp/cczTujXe.s 			page 13
 
 
  208:Src/stm32l4xx_hal_msp.c **** * @brief OPAMP MSP Initialization
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  233:Src/stm32l4xx_hal_msp.c **** 
  234:Src/stm32l4xx_hal_msp.c ****   /* USER CODE BEGIN OPAMP1_MspInit 1 */
  235:Src/stm32l4xx_hal_msp.c **** 
-ARM GAS  /tmp/ccegb9Ts.s 			page 14
+ARM GAS  /tmp/cczTujXe.s 			page 14
 
 
  236:Src/stm32l4xx_hal_msp.c ****   /* USER CODE END OPAMP1_MspInit 1 */
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  508 0044 029B     		ldr	r3, [sp, #8]
  509              	.LBE9:
  224:Src/stm32l4xx_hal_msp.c ****     /**OPAMP1 GPIO Configuration    
-ARM GAS  /tmp/ccegb9Ts.s 			page 15
+ARM GAS  /tmp/cczTujXe.s 			page 15
 
 
  510              		.loc 1 224 5 view .LVU114
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  248:Src/stm32l4xx_hal_msp.c **** {
  550              		.loc 1 248 1 is_stmt 1 view -0
  551              		.cfi_startproc
-ARM GAS  /tmp/ccegb9Ts.s 			page 16
+ARM GAS  /tmp/cczTujXe.s 			page 16
 
 
  552              		@ args = 0, pretend = 0, frame = 0
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  583 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
  584              	.LVL32:
  585              		.loc 1 268 1 view .LVU133
-ARM GAS  /tmp/ccegb9Ts.s 			page 17
+ARM GAS  /tmp/cczTujXe.s 			page 17
 
 
  586 0020 F3E7     		b	.L35
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  284:Src/stm32l4xx_hal_msp.c ****     __HAL_RCC_TIM2_CLK_ENABLE();
  626              		.loc 1 284 5 is_stmt 1 view .LVU139
  627              	.LBB10:
-ARM GAS  /tmp/ccegb9Ts.s 			page 18
+ARM GAS  /tmp/cczTujXe.s 			page 18
 
 
  628              		.loc 1 284 5 view .LVU140
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  295:Src/stm32l4xx_hal_msp.c **** /**
  296:Src/stm32l4xx_hal_msp.c **** * @brief TIM_Base MSP De-Initialization
  297:Src/stm32l4xx_hal_msp.c **** * This function freeze the hardware resources used in this example
-ARM GAS  /tmp/ccegb9Ts.s 			page 19
+ARM GAS  /tmp/cczTujXe.s 			page 19
 
 
  298:Src/stm32l4xx_hal_msp.c **** * @param htim_base: TIM_Base handle pointer
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  704              		.loc 1 312 5 is_stmt 0 view .LVU157
  705 0018 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
  706              	.LVL41:
-ARM GAS  /tmp/ccegb9Ts.s 			page 20
+ARM GAS  /tmp/cczTujXe.s 			page 20
 
 
  707              		.loc 1 318 1 view .LVU158
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  752 0010 0268     		ldr	r2, [r0]
  753              		.loc 1 329 5 view .LVU165
  754 0012 1A4B     		ldr	r3, .L58
-ARM GAS  /tmp/ccegb9Ts.s 			page 21
+ARM GAS  /tmp/cczTujXe.s 			page 21
 
 
  755 0014 9A42     		cmp	r2, r3
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  774 001c 03F5E633 		add	r3, r3, #117760
  775 0020 9A6D     		ldr	r2, [r3, #88]
  776 0022 42F40032 		orr	r2, r2, #131072
-ARM GAS  /tmp/ccegb9Ts.s 			page 22
+ARM GAS  /tmp/cczTujXe.s 			page 22
 
 
  777 0026 9A65     		str	r2, [r3, #88]
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  814              		.loc 1 345 27 is_stmt 0 view .LVU186
  815 0050 0324     		movs	r4, #3
  816 0052 0694     		str	r4, [sp, #24]
-ARM GAS  /tmp/ccegb9Ts.s 			page 23
+ARM GAS  /tmp/cczTujXe.s 			page 23
 
 
  346:Src/stm32l4xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  856              	.LFE295:
  858              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
  859              		.align	1
-ARM GAS  /tmp/ccegb9Ts.s 			page 24
+ARM GAS  /tmp/cczTujXe.s 			page 24
 
 
  860              		.global	HAL_UART_MspDeInit
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  389:Src/stm32l4xx_hal_msp.c **** 
  390:Src/stm32l4xx_hal_msp.c **** }
  888              		.loc 1 390 1 view .LVU208
-ARM GAS  /tmp/ccegb9Ts.s 			page 25
+ARM GAS  /tmp/cczTujXe.s 			page 25
 
 
  889 000a 08BD     		pop	{r3, pc}
@@ -1468,84 +1468,90 @@ ARM GAS  /tmp/ccegb9Ts.s 			page 1
  910 0028 00100240 		.word	1073876992
  911              		.cfi_endproc
  912              	.LFE296:
- 914              		.comm	f,8,4
- 915              		.comm	o,20,4
- 916              		.comm	r,24,8
- 917              		.comm	huart2,128,4
- 918              		.comm	hopamp1,52,4
- 919              		.comm	hdac1,20,4
- 920              		.comm	hadc1,100,4
- 921              		.comm	adc_data,2,4
- 922              		.comm	value_dac,4,4
- 923              		.comm	trig,4,4
- 924              		.comm	value_adc,4,4
- 925              		.text
- 926              	.Letext0:
- 927              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
- 928              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
- 929              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 930              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
- 931              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
- 932              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
- 933              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 934              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
- 935              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 936              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 937              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
- 938              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
- 939              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
- 940              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h"
- 941              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
- 942              		.file 17 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 943              		.file 18 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
-ARM GAS  /tmp/ccegb9Ts.s 			page 26
+ 914              		.comm	c,36,4
+ 915              		.comm	od,8,4
+ 916              		.comm	t,2,4
+ 917              		.comm	f,4,4
+ 918              		.comm	o,20,4
+ 919              		.comm	r,24,8
+ 920              		.comm	huart2,128,4
+ 921              		.comm	hopamp1,52,4
+ 922              		.comm	hdac1,20,4
+ 923              		.comm	hadc1,100,4
+ 924              		.comm	adc_data,2,4
+ 925              		.comm	value_dac,4,4
+ 926              		.comm	trig,4,4
+ 927              		.comm	value_adc,4,4
+ 928              		.text
+ 929              	.Letext0:
+ 930              		.file 2 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/machine/_default_typ
+ 931              		.file 3 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 932              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 933              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 934              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h"
+ 935              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
+ 936              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 937              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 938              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 939              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+ 940              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dac.h"
+ 941              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 942              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
+ 943              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h"
+ARM GAS  /tmp/cczTujXe.s 			page 26
 
 
- 944              		.file 19 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
- 945              		.file 20 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stdde
- 946              		.file 21 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
- 947              		.file 22 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
- 948              		.file 23 "Inc/effects.h"
- 949              		.file 24 "Inc/main.h"
- 950              		.file 25 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
-ARM GAS  /tmp/ccegb9Ts.s 			page 27
+ 944              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
+ 945              		.file 17 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 946              		.file 18 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/lock.h"
+ 947              		.file 19 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/_types.h"
+ 948              		.file 20 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include/stdde
+ 949              		.file 21 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
+ 950              		.file 22 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
+ 951              		.file 23 "Inc/effects.h"
+ 952              		.file 24 "Inc/main.h"
+ 953              		.file 25 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ARM GAS  /tmp/cczTujXe.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_msp.c
-     /tmp/ccegb9Ts.s:18     .text.HAL_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:26     .text.HAL_MspInit:0000000000000000 HAL_MspInit
-     /tmp/ccegb9Ts.s:77     .text.HAL_MspInit:000000000000002c $d
-     /tmp/ccegb9Ts.s:82     .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:89     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccegb9Ts.s:199    .text.HAL_ADC_MspInit:0000000000000070 $d
-     /tmp/ccegb9Ts.s:204    .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:211    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccegb9Ts.s:258    .text.HAL_ADC_MspDeInit:0000000000000028 $d
-     /tmp/ccegb9Ts.s:264    .text.HAL_DAC_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:271    .text.HAL_DAC_MspInit:0000000000000000 HAL_DAC_MspInit
-     /tmp/ccegb9Ts.s:369    .text.HAL_DAC_MspInit:0000000000000060 $d
-     /tmp/ccegb9Ts.s:374    .text.HAL_DAC_MspDeInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:381    .text.HAL_DAC_MspDeInit:0000000000000000 HAL_DAC_MspDeInit
-     /tmp/ccegb9Ts.s:424    .text.HAL_DAC_MspDeInit:0000000000000024 $d
-     /tmp/ccegb9Ts.s:430    .text.HAL_OPAMP_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:437    .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
-     /tmp/ccegb9Ts.s:535    .text.HAL_OPAMP_MspInit:0000000000000060 $d
-     /tmp/ccegb9Ts.s:540    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:547    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
-     /tmp/ccegb9Ts.s:590    .text.HAL_OPAMP_MspDeInit:0000000000000024 $d
-     /tmp/ccegb9Ts.s:596    .text.HAL_TIM_Base_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:603    .text.HAL_TIM_Base_MspInit:0000000000000000 HAL_TIM_Base_MspInit
-     /tmp/ccegb9Ts.s:664    .text.HAL_TIM_Base_MspDeInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:671    .text.HAL_TIM_Base_MspDeInit:0000000000000000 HAL_TIM_Base_MspDeInit
-     /tmp/ccegb9Ts.s:712    .text.HAL_TIM_Base_MspDeInit:0000000000000020 $d
-     /tmp/ccegb9Ts.s:717    .text.HAL_UART_MspInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:724    .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
-     /tmp/ccegb9Ts.s:854    .text.HAL_UART_MspInit:000000000000007c $d
-     /tmp/ccegb9Ts.s:859    .text.HAL_UART_MspDeInit:0000000000000000 $t
-     /tmp/ccegb9Ts.s:866    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
-     /tmp/ccegb9Ts.s:909    .text.HAL_UART_MspDeInit:0000000000000024 $d
-                            *COM*:0000000000000008 f
+     /tmp/cczTujXe.s:18     .text.HAL_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:26     .text.HAL_MspInit:0000000000000000 HAL_MspInit
+     /tmp/cczTujXe.s:77     .text.HAL_MspInit:000000000000002c $d
+     /tmp/cczTujXe.s:82     .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:89     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/cczTujXe.s:199    .text.HAL_ADC_MspInit:0000000000000070 $d
+     /tmp/cczTujXe.s:204    .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/cczTujXe.s:211    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/cczTujXe.s:258    .text.HAL_ADC_MspDeInit:0000000000000028 $d
+     /tmp/cczTujXe.s:264    .text.HAL_DAC_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:271    .text.HAL_DAC_MspInit:0000000000000000 HAL_DAC_MspInit
+     /tmp/cczTujXe.s:369    .text.HAL_DAC_MspInit:0000000000000060 $d
+     /tmp/cczTujXe.s:374    .text.HAL_DAC_MspDeInit:0000000000000000 $t
+     /tmp/cczTujXe.s:381    .text.HAL_DAC_MspDeInit:0000000000000000 HAL_DAC_MspDeInit
+     /tmp/cczTujXe.s:424    .text.HAL_DAC_MspDeInit:0000000000000024 $d
+     /tmp/cczTujXe.s:430    .text.HAL_OPAMP_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:437    .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
+     /tmp/cczTujXe.s:535    .text.HAL_OPAMP_MspInit:0000000000000060 $d
+     /tmp/cczTujXe.s:540    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
+     /tmp/cczTujXe.s:547    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
+     /tmp/cczTujXe.s:590    .text.HAL_OPAMP_MspDeInit:0000000000000024 $d
+     /tmp/cczTujXe.s:596    .text.HAL_TIM_Base_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:603    .text.HAL_TIM_Base_MspInit:0000000000000000 HAL_TIM_Base_MspInit
+     /tmp/cczTujXe.s:664    .text.HAL_TIM_Base_MspDeInit:0000000000000000 $t
+     /tmp/cczTujXe.s:671    .text.HAL_TIM_Base_MspDeInit:0000000000000000 HAL_TIM_Base_MspDeInit
+     /tmp/cczTujXe.s:712    .text.HAL_TIM_Base_MspDeInit:0000000000000020 $d
+     /tmp/cczTujXe.s:717    .text.HAL_UART_MspInit:0000000000000000 $t
+     /tmp/cczTujXe.s:724    .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
+     /tmp/cczTujXe.s:854    .text.HAL_UART_MspInit:000000000000007c $d
+     /tmp/cczTujXe.s:859    .text.HAL_UART_MspDeInit:0000000000000000 $t
+     /tmp/cczTujXe.s:866    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
+     /tmp/cczTujXe.s:909    .text.HAL_UART_MspDeInit:0000000000000024 $d
+                            *COM*:0000000000000024 c
+                            *COM*:0000000000000008 od
+                            *COM*:0000000000000002 t
+                            *COM*:0000000000000004 f
                             *COM*:0000000000000014 o
                             *COM*:0000000000000018 r
                             *COM*:0000000000000080 huart2

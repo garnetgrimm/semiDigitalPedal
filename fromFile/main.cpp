@@ -17,8 +17,8 @@ int main() {
     reverb myreverb;
     fuzz myfuzz;
     octave myoctave;
-    effect* effect_list[3] = {&myreverb,&myfuzz,&myoctave};
-
+    chorus mychorus;
+    effect* effect_list[1] = {&mychorus};
 
     overdrive myoverdrive = overdrive(60,100);
     cout << "Beginning transformation" << endl;
@@ -26,7 +26,7 @@ int main() {
     for (int i = 0; i < audioFile.getNumSamplesPerChannel(); i++)
     {
       for(effect* e : effect_list) {
-        e->step(&audioFile.samples[channel][i]);
+        e->step(&audioFile.samples[channel][i], (float)i/audioFile.getSampleRate());
       }
     }
     auto end = high_resolution_clock::now();

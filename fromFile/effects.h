@@ -2,7 +2,7 @@
 #define _EFFECTS_H_
 
 struct effect {
-  virtual void step(double* sample) = 0;
+  virtual void step(double* sample, float t) = 0;
 };
 
 typedef struct reverb : effect {
@@ -18,7 +18,7 @@ typedef struct reverb : effect {
   {
       buffer = (double*) calloc(bufferSize, sizeof(double));
   };
-  void step(double* sample) override {
+  void step(double* sample, float t) override {
       *sample += (buffer[idx % bufferSize] * .3);
       buffer[idx % bufferSize] = *sample;
       idx++;
@@ -36,7 +36,7 @@ typedef struct fuzz : effect {
   gain(gain),
   volume(volume)
   {};
-  void step(double* sample) override {
+  void step(double* sample, float t) override {
     double threshold = 1/gain;
     if(*sample < -threshold) *sample = -threshold;
     if(*sample > threshold) *sample = threshold;
@@ -55,63 +55,85 @@ typedef struct overdrive : effect {
   gain(gain),
   volume(volume)
   {};
-  void step(double* sample) override {
+  void step(double* sample, float t) override {
     double threshold = 1 / gain;
     *sample = atan(*sample * (10 / M_PI)) * threshold * (2.0 / M_PI);
     *sample *= volume;
   }
 } _overdrive;
 
-typedef struct chorus {
+typedef struct chorus: effect {
+  uint32_t bufferSize = 1000;
+  double* buffer;
+  float readIdx = 0;
+  uint32_t writeIdx = 0;
+  float shift = 0;
+  float velocity = 0;
+  float wet = 0.5;
   chorus() {
+    buffer = (double*) calloc(bufferSize, sizeof(double));
   };
-  void step(double* sample) {
+  chorus(uint32_t bufferSize, int8_t octChange):
+  bufferSize(bufferSize)
+  {
+      buffer = (double*) calloc(bufferSize, sizeof(double));
+  };
+  void step(double* sample, float t) override {
+    //circular buffer
+    //the incoming sample gets placed at the same index in each buffer
+    //(reading each buffer is offset by buffSize/2)
+    buffer[writeIdx % bufferSize] = *sample;
+    writeIdx++;
+
+    float amp = 0.01;
+    float base = 1;
+    float freq = 2;
+    velocity = amp*sinf(2*M_PI*t*1)+amp+base;
+
+    //when sample = 0 is uncommented, only the octave goes through, no clean
+    *sample *= (1-wet);
+    *sample += wet*buffer[(int)readIdx % bufferSize];
+
+    //increase the buffer index by the expected amount
+    readIdx += velocity;
+
   }
 } _chorus;
 
 typedef struct tremolo {
   tremolo() {
   };
-  void step(double* sample) {
+  void step(double* sample, float t) {
     //*sample *= sinf (2. * M_PI * ((float) t / audioFile.getSampleRate()) * freq);
   }
 } _tremolo;
 
 typedef struct octave: effect {
-  uint32_t bufferSize = 5000;
-  double* bufferA;
-  double* bufferB;
-  //NOTE NO OFFSET
-  float readIdxA = 0;
-  //NOTE THE OFFSET
-  float readIdxB = bufferSize/2;
+  uint32_t bufferSize = 7500;
+  double* buffer;
+  float readIdx = 0;
   uint32_t writeIdx = 0;
   int8_t octChange = -1;
+  float wet = 1;
   octave() {
-    bufferA = (double*) calloc(bufferSize, sizeof(double));
-    bufferB = (double*) calloc(bufferSize, sizeof(double));
+    buffer = (double*) calloc(bufferSize, sizeof(double));
   };
   octave(uint32_t bufferSize, int8_t octChange):
   bufferSize(bufferSize),
   octChange(octChange)
   {
-      bufferA = (double*) calloc(bufferSize, sizeof(double));
-      bufferB = (double*) calloc(bufferSize, sizeof(double));
+      buffer = (double*) calloc(bufferSize, sizeof(double));
   };
-  void step(double* sample) override {
+  void step(double* sample, float t) override {
     //circular buffer
     //the incoming sample gets placed at the same index in each buffer
     //(reading each buffer is offset by buffSize/2)
-    bufferA[writeIdx % bufferSize] = *sample;
-    bufferB[writeIdx % bufferSize] = *sample;
-
+    buffer[writeIdx % bufferSize] = *sample;
     writeIdx++;
 
     //when sample = 0 is uncommented, only the octave goes through, no clean
-    //*sample = 0;
-
-    *sample += bufferA[(int)readIdxA % bufferSize];
-    *sample += bufferB[(int)readIdxB % bufferSize];
+    *sample *= (1-wet);
+    *sample += wet*buffer[(int)readIdx % bufferSize];
 
     //scale it so that you can easily set negative octaves
     float scale = 0;
@@ -119,8 +141,7 @@ typedef struct octave: effect {
     if(octChange >= 0) scale = octChange;
 
     //increase the buffer index by the expected amount
-    readIdxB += scale;
-    readIdxA += scale;
+    readIdx += scale;
 
   }
 } _octave;

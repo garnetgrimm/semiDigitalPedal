@@ -111,6 +111,7 @@ int main(void)
   default_init_reverb(&r);
   default_init_octave(&o);
   default_init_fuzz(&f);
+  default_init_chorus(&c);
   debugPrintln(&huart2, (char*) "Setting up HAL....");
   HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
   HAL_OPAMP_Start(&hopamp1);

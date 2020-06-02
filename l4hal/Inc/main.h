@@ -67,6 +67,9 @@ UART_HandleTypeDef huart2;
 reverb r;
 octave o;
 fuzz f;
+tremolo t;
+overdrive od;
+chorus c;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
