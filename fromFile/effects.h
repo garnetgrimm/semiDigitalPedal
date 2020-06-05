@@ -146,5 +146,23 @@ typedef struct octave: effect {
   }
 } _octave;
 
+typedef struct noise_comp : effect {
+  double avg = 0;
+  int sampleWeight = 1;
+  int volumeBoost = 1;
+  int avgWeight = 9;
+  noise_comp() {
+    
+  }
+  noise_comp(int sampleWeight, int avgWeight, int volumeBoost) {
+    this->sampleWeight = sampleWeight;
+    this->avgWeight = avgWeight;
+    this->volumeBoost = volumeBoost;
+  }
+  void step(double* sample, float t) override {
+    avg = ((*sample*sampleWeight)+(avg*avgWeight))/(sampleWeight+avgWeight);
+    *sample = avg*volumeBoost;
+  }
+} _noise_comp;
 
 #endif
