@@ -33,7 +33,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_LEN 6
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -48,11 +47,11 @@ DMA_HandleTypeDef hdma_adc1;
 DAC_HandleTypeDef hdac1;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim15;
 
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint16_t ADC_BUF [ADC_BUF_LEN];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,6 +62,7 @@ static void MX_ADC1_Init(void);
 static void MX_DAC1_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM15_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -81,15 +81,6 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   value_adc = ADC_BUF[3];
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  GPIOA -> ODR ^= GPIO_PIN_8;
-  value_dac = value_adc;
-  //step_octave(&o, &value_dac);
-  //step_fuzz(&f, &value_dac);
-  step_chorus(&c, &value_dac);
-  step_reverb(&r, &value_dac);
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_dac);
 }
 /* USER CODE END 0 */
 
@@ -124,11 +115,11 @@ int main(void)
   MX_DAC1_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
+  MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
   debugPrintln(&huart2, (char*) "Setting effects....");
   default_init_reverb(&r);
-  default_init_octave(&o);
-  default_init_fuzz(&f);
+  default_init_antinoise(&a);
   default_init_chorus(&c);
   debugPrintln(&huart2, (char*) "Setting up HAL....");
   HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
@@ -138,17 +129,29 @@ int main(void)
   //HAL_ADC_Start_IT(&hadc1);
   debugPrintln(&huart2, (char*) "(TIM IT)");
   HAL_TIM_Base_Start_IT(&htim2);
-  debugPrintln(&huart2, (char*) "done!");
+  HAL_TIM_Base_Start_IT(&htim15);
+  debugPrintln(&huart2, (char*) "done.");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  //c.freq = 0.01;
   while (1)
   {
-    //char buf[32];
-    //sprintf(buf, "ADC: %04d", (int)value_adc);
-    //sprintf(buf, "ADC: %04d %04d %04d %04d %04d %04d", (int)ADC_BUF[0], (int)ADC_BUF[1], (int)ADC_BUF[2], (int)ADC_BUF[3], (int)ADC_BUF[4], (int)ADC_BUF[5]);
-    //debugPrintln(&huart2,buf);
+
+    uint16_t POT1 = ADC_BUF[1]; //A5
+    uint16_t POT2 = ADC_BUF[2]; //A6
+    uint16_t POT3 = ADC_BUF[4]; //D3
+    uint16_t POT4 = ADC_BUF[5]; //D6
+
+    //c.amp = 0.1;
+    c.amp = 1-(atan((float)POT1/50)*(2/PI));
+    //c.wet = ((double)POT2/4095);
+    c.freq = 10-(atan((float)POT2/250)*(2/PI)*10);
+    r.fade = ((float)POT3/4095)*0.5;
+    int rawBuff = (((float)POT4/4095)*r.maxBufferSize);
+    rawBuff = (floor(rawBuff / 100) * 100);
+    r.bufferSize = rawBuff+1;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -387,7 +390,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 150;
+  htim2.Init.Prescaler = 200;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 10;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -410,6 +413,52 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM15 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM15_Init(void)
+{
+
+  /* USER CODE BEGIN TIM15_Init 0 */
+
+  /* USER CODE END TIM15_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM15_Init 1 */
+
+  /* USER CODE END TIM15_Init 1 */
+  htim15.Instance = TIM15;
+  htim15.Init.Prescaler = 128;
+  htim15.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim15.Init.Period = 10;
+  htim15.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim15.Init.RepetitionCounter = 0;
+  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim15) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim15, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim15, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM15_Init 2 */
+
+  /* USER CODE END TIM15_Init 2 */
 
 }
 

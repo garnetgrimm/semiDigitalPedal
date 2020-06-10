@@ -4,6 +4,18 @@
 #define __FPU_PRESENT 1
 #include "../Drivers/CMSIS/DSP/Include/arm_math.h"
 
+void step_antinoise(antinoise *a, int* sample) {
+  a->avg = ((*sample * a->sampleWeight)+(a->avg*a->avgWeight))/(a->sampleWeight+a->avgWeight);
+  *sample = a->avg*a->volumeBoost;
+}
+
+void default_init_antinoise(antinoise *a) {
+  a->avg = 0;
+  a->sampleWeight = 1;
+  a->volumeBoost = 1;
+  a->avgWeight = 20;
+}
+
 void step_tremolo(tremolo* t, int* sample) {
   *sample *= sinf(2*PI*t->freq*((float)HAL_GetTick()/1000));
 }
@@ -33,7 +45,7 @@ void default_init_fuzz(fuzz* f) {
 }
 
 void step_reverb(reverb* r, int* sample) {
-  *sample += (r->buffer[r->idx % r->bufferSize] * r->fade);
+  if(r->buffer[r->idx % r->bufferSize] != 0) *sample += (r->buffer[r->idx % r->bufferSize] * r->fade);
   r->buffer[r->idx % r->bufferSize] = *sample;
   r->idx++;
 }
@@ -41,7 +53,8 @@ void step_reverb(reverb* r, int* sample) {
 void default_init_reverb(reverb* r) {
   r->idx = 0;
   r->bufferSize = 7500;
-  r->buffer = (short*) calloc(r->bufferSize, sizeof(short));
+  r->maxBufferSize = 10000;
+  r->buffer = (short*) calloc(r->maxBufferSize, sizeof(short));
   r->fade = 0.5;
 }
 
@@ -69,8 +82,9 @@ void step_chorus(chorus* c, int* sample) {
   c->buffer[c->writeIdx] = *sample;
   c->writeIdx++;
 
-  float t = (HAL_GetTick() % (int)1000*(1/c->freq)) / 1000;
+  float t = fmod((float)HAL_GetTick()/1000, 1/c->freq);
 
+  //c->velocity = t+1;
   c->velocity = c->amp*sinf(2*PI*t*c->freq)+c->amp+c->base;
   *sample *= (1-c->wet);
   *sample += c->wet*c->buffer[(int)c->readIdx];
@@ -83,13 +97,13 @@ void step_chorus(chorus* c, int* sample) {
 
 void default_init_chorus(chorus* c) {
   c->bufferSize = 1000;
-  c->buffer = (double*) calloc(c->bufferSize, sizeof(double));
+  c->buffer = (short*) calloc(c->bufferSize, sizeof(short));
   c->readIdx = 0;
   c->writeIdx = 0;
   c->shift = 0;
   c->velocity = 0;
   c->wet = 0.75;
-  c->amp = 0.005;
+  c->amp = 0.05;
   c->base = 1;
   c->freq = 1;
 }

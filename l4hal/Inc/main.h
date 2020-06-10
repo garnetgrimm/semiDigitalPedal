@@ -43,12 +43,11 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+#define ADC_BUF_LEN 6
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -58,7 +57,7 @@ void Error_Handler(void);
 uint32_t value_adc;
 uint32_t trig;
 uint32_t value_dac;
-volatile uint16_t adc_data[1];
+volatile uint16_t ADC_BUF [ADC_BUF_LEN];
 void debugPrintln(UART_HandleTypeDef *huart, char _out[]);
 ADC_HandleTypeDef hadc1;
 DAC_HandleTypeDef hdac1;
@@ -69,6 +68,7 @@ fuzz f;
 tremolo t;
 overdrive od;
 chorus c;
+antinoise a;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

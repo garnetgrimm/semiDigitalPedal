@@ -6,6 +6,15 @@
 #define VOLUME_MAX 4095
 #define VOLUME_MIN 0
 
+typedef struct _antinoise {
+  float avg;
+  float sampleWeight;
+  float volumeBoost;
+  float avgWeight;
+} antinoise;
+void default_init_antinoise(antinoise *a);
+void step_antinoise(antinoise *a, int* sample);
+
 typedef struct _tremolo {
   short freq;
 } tremolo;
@@ -29,7 +38,8 @@ typedef struct _reverb {
   int bufferSize;
   short* buffer;
   int idx;
-  double fade;
+  float fade;
+  int maxBufferSize;
 } reverb;
 void default_init_reverb(reverb* r);
 void step_reverb(reverb* r, int* sample);
@@ -46,7 +56,7 @@ void step_octave(octave* o, int* sample);
 
 typedef struct _chorus {
   int bufferSize;
-  double* buffer;
+  short* buffer;
   float readIdx;
   int writeIdx;
   float shift;
@@ -54,7 +64,7 @@ typedef struct _chorus {
   float wet;
   float amp;
   short base;
-  short freq;
+  float freq;
 } chorus;
 void default_init_chorus(chorus* c);
 void step_chorus(chorus* c, int* sample);
