@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccyP2jDx.s 			page 1
+ARM GAS  /tmp/cclhpnIy.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
   48              		.loc 1 8 23 is_stmt 0 view .LVU3
   49 0004 B0F90000 		ldrsh	r0, [r0]
   50              	.LVL1:
-ARM GAS  /tmp/ccyP2jDx.s 			page 2
+ARM GAS  /tmp/cclhpnIy.s 			page 2
 
 
   51              		.loc 1 8 23 view .LVU4
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  105              		.section	.text.default_init_tremolo,"ax",%progbits
  106              		.align	1
  107              		.global	default_init_tremolo
-ARM GAS  /tmp/ccyP2jDx.s 			page 3
+ARM GAS  /tmp/cclhpnIy.s 			page 3
 
 
  108              		.syntax unified
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  159 0004 0E46     		mov	r6, r1
   16:Src/effects.c ****   *sample = (o->threshold*2/PI)*atanf((*sample-VOLUME_CENTER)/o->softness) + VOLUME_CENTER;
  160              		.loc 1 16 3 is_stmt 1 view .LVU20
-ARM GAS  /tmp/ccyP2jDx.s 			page 4
+ARM GAS  /tmp/cclhpnIy.s 			page 4
 
 
  161              		.loc 1 16 15 is_stmt 0 view .LVU21
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  213              	.L8:
  214 0060 182D4454 		.word	1413754136
  215 0064 FB210940 		.word	1074340347
-ARM GAS  /tmp/ccyP2jDx.s 			page 5
+ARM GAS  /tmp/cclhpnIy.s 			page 5
 
 
  216 0068 00000000 		.word	0
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  265              		@ link register save eliminated.
   27:Src/effects.c ****   if(*sample < VOLUME_CENTER-f->threshold) *sample = VOLUME_CENTER-f->threshold;
  266              		.loc 1 27 3 view .LVU41
-ARM GAS  /tmp/ccyP2jDx.s 			page 6
+ARM GAS  /tmp/cclhpnIy.s 			page 6
 
 
  267              		.loc 1 27 6 is_stmt 0 view .LVU42
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  318 0000 40F28A23 		movw	r3, #650
  319 0004 0360     		str	r3, [r0]
   33:Src/effects.c **** }
-ARM GAS  /tmp/ccyP2jDx.s 			page 7
+ARM GAS  /tmp/cclhpnIy.s 			page 7
 
 
  320              		.loc 1 33 1 view .LVU59
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  373              	.LVL28:
  374 0028 0646     		mov	r6, r0
  375 002a 0F46     		mov	r7, r1
-ARM GAS  /tmp/ccyP2jDx.s 			page 8
+ARM GAS  /tmp/cclhpnIy.s 			page 8
 
 
  376              		.loc 1 36 11 view .LVU69
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  427              		.loc 1 41 37 is_stmt 0 view .LVU82
  428 0000 10B5     		push	{r4, lr}
  429              	.LCFI3:
-ARM GAS  /tmp/ccyP2jDx.s 			page 9
+ARM GAS  /tmp/cclhpnIy.s 			page 9
 
 
  430              		.cfi_def_cfa_offset 8
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  479              		.cfi_startproc
  480              		@ args = 0, pretend = 0, frame = 0
  481              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccyP2jDx.s 			page 10
+ARM GAS  /tmp/cclhpnIy.s 			page 10
 
 
  482              		@ link register save eliminated.
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  530              		.loc 1 54 7 is_stmt 0 view .LVU117
  531 003a 0369     		ldr	r3, [r0, #16]
  532              		.loc 1 54 5 view .LVU118
-ARM GAS  /tmp/ccyP2jDx.s 			page 11
+ARM GAS  /tmp/cclhpnIy.s 			page 11
 
 
  533 003c 002B     		cmp	r3, #0
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  578              	.LVL42:
   54:Src/effects.c ****   if(o->octChange >= 0) scale = o->octChange+1;
  579              		.loc 1 54 30 discriminator 1 view .LVU132
-ARM GAS  /tmp/ccyP2jDx.s 			page 12
+ARM GAS  /tmp/cclhpnIy.s 			page 12
 
 
  580 0074 E6E7     		b	.L22
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  630 0018 E360     		str	r3, [r4, #12]
   65:Src/effects.c ****   o->octChange = -1;
  631              		.loc 1 65 3 is_stmt 1 view .LVU145
-ARM GAS  /tmp/ccyP2jDx.s 			page 13
+ARM GAS  /tmp/cclhpnIy.s 			page 13
 
 
  632              		.loc 1 65 16 is_stmt 0 view .LVU146
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  684 0010 05EBC305 		add	r5, r5, r3, lsl #3
  685              		.loc 1 69 26 view .LVU155
  686 0014 0868     		ldr	r0, [r1]
-ARM GAS  /tmp/ccyP2jDx.s 			page 14
+ARM GAS  /tmp/cclhpnIy.s 			page 14
 
 
  687              	.LVL48:
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  736 006e FFF7FEFF 		bl	__aeabi_dmul
  737              	.LVL54:
  738 0072 8046     		mov	r8, r0
-ARM GAS  /tmp/ccyP2jDx.s 			page 15
+ARM GAS  /tmp/cclhpnIy.s 			page 15
 
 
  739 0074 8946     		mov	r9, r1
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  791              		.loc 1 76 30 view .LVU190
  792 00e0 17EE902A 		vmov	r2, s15	@ int
  793 00e4 03EBC203 		add	r3, r3, r2, lsl #3
-ARM GAS  /tmp/ccyP2jDx.s 			page 16
+ARM GAS  /tmp/cclhpnIy.s 			page 16
 
 
  794              		.loc 1 76 20 view .LVU191
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
   82:Src/effects.c **** }
  843              		.loc 1 82 1 view .LVU207
  844 0134 BDEC028B 		vldm	sp!, {d8}
-ARM GAS  /tmp/ccyP2jDx.s 			page 17
+ARM GAS  /tmp/cclhpnIy.s 			page 17
 
 
  845              	.LCFI10:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  896              		.loc 1 87 3 is_stmt 1 view .LVU217
  897              		.loc 1 87 14 is_stmt 0 view .LVU218
  898 0012 0023     		movs	r3, #0
-ARM GAS  /tmp/ccyP2jDx.s 			page 18
+ARM GAS  /tmp/cclhpnIy.s 			page 18
 
 
  899 0014 A360     		str	r3, [r4, #8]	@ float
@@ -1074,42 +1074,42 @@ ARM GAS  /tmp/ccyP2jDx.s 			page 1
  942              		.file 6 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/sys/reent.h"
  943              		.file 7 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/stdlib.h"
  944              		.file 8 "/home/garnet/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include/math.h"
-ARM GAS  /tmp/ccyP2jDx.s 			page 19
+ARM GAS  /tmp/cclhpnIy.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 effects.c
-     /tmp/ccyP2jDx.s:22     .text.step_tremolo:0000000000000000 $t
-     /tmp/ccyP2jDx.s:30     .text.step_tremolo:0000000000000000 step_tremolo
-     /tmp/ccyP2jDx.s:99     .text.step_tremolo:0000000000000068 $d
-     /tmp/ccyP2jDx.s:106    .text.default_init_tremolo:0000000000000000 $t
-     /tmp/ccyP2jDx.s:113    .text.default_init_tremolo:0000000000000000 default_init_tremolo
-     /tmp/ccyP2jDx.s:134    .text.step_overdrive:0000000000000000 $t
-     /tmp/ccyP2jDx.s:141    .text.step_overdrive:0000000000000000 step_overdrive
-     /tmp/ccyP2jDx.s:214    .text.step_overdrive:0000000000000060 $d
-     /tmp/ccyP2jDx.s:222    .text.default_init_overdrive:0000000000000000 $t
-     /tmp/ccyP2jDx.s:229    .text.default_init_overdrive:0000000000000000 default_init_overdrive
-     /tmp/ccyP2jDx.s:251    .text.step_fuzz:0000000000000000 $t
-     /tmp/ccyP2jDx.s:258    .text.step_fuzz:0000000000000000 step_fuzz
-     /tmp/ccyP2jDx.s:301    .text.default_init_fuzz:0000000000000000 $t
-     /tmp/ccyP2jDx.s:308    .text.default_init_fuzz:0000000000000000 default_init_fuzz
-     /tmp/ccyP2jDx.s:326    .text.step_reverb:0000000000000000 $t
-     /tmp/ccyP2jDx.s:333    .text.step_reverb:0000000000000000 step_reverb
-     /tmp/ccyP2jDx.s:413    .text.default_init_reverb:0000000000000000 $t
-     /tmp/ccyP2jDx.s:420    .text.default_init_reverb:0000000000000000 default_init_reverb
-     /tmp/ccyP2jDx.s:463    .text.default_init_reverb:0000000000000020 $d
-     /tmp/ccyP2jDx.s:468    .text.step_octave:0000000000000000 $t
-     /tmp/ccyP2jDx.s:475    .text.step_octave:0000000000000000 step_octave
-     /tmp/ccyP2jDx.s:584    .text.step_octave:0000000000000078 $d
-     /tmp/ccyP2jDx.s:589    .text.default_init_octave:0000000000000000 $t
-     /tmp/ccyP2jDx.s:596    .text.default_init_octave:0000000000000000 default_init_octave
-     /tmp/ccyP2jDx.s:642    .text.default_init_octave:0000000000000024 $d
-     /tmp/ccyP2jDx.s:647    .text.step_chorus:0000000000000000 $t
-     /tmp/ccyP2jDx.s:654    .text.step_chorus:0000000000000000 step_chorus
-     /tmp/ccyP2jDx.s:855    .text.step_chorus:0000000000000140 $d
-     /tmp/ccyP2jDx.s:862    .text.default_init_chorus:0000000000000000 $t
-     /tmp/ccyP2jDx.s:869    .text.default_init_chorus:0000000000000000 default_init_chorus
-     /tmp/ccyP2jDx.s:932    .text.default_init_chorus:0000000000000030 $d
+     /tmp/cclhpnIy.s:22     .text.step_tremolo:0000000000000000 $t
+     /tmp/cclhpnIy.s:30     .text.step_tremolo:0000000000000000 step_tremolo
+     /tmp/cclhpnIy.s:99     .text.step_tremolo:0000000000000068 $d
+     /tmp/cclhpnIy.s:106    .text.default_init_tremolo:0000000000000000 $t
+     /tmp/cclhpnIy.s:113    .text.default_init_tremolo:0000000000000000 default_init_tremolo
+     /tmp/cclhpnIy.s:134    .text.step_overdrive:0000000000000000 $t
+     /tmp/cclhpnIy.s:141    .text.step_overdrive:0000000000000000 step_overdrive
+     /tmp/cclhpnIy.s:214    .text.step_overdrive:0000000000000060 $d
+     /tmp/cclhpnIy.s:222    .text.default_init_overdrive:0000000000000000 $t
+     /tmp/cclhpnIy.s:229    .text.default_init_overdrive:0000000000000000 default_init_overdrive
+     /tmp/cclhpnIy.s:251    .text.step_fuzz:0000000000000000 $t
+     /tmp/cclhpnIy.s:258    .text.step_fuzz:0000000000000000 step_fuzz
+     /tmp/cclhpnIy.s:301    .text.default_init_fuzz:0000000000000000 $t
+     /tmp/cclhpnIy.s:308    .text.default_init_fuzz:0000000000000000 default_init_fuzz
+     /tmp/cclhpnIy.s:326    .text.step_reverb:0000000000000000 $t
+     /tmp/cclhpnIy.s:333    .text.step_reverb:0000000000000000 step_reverb
+     /tmp/cclhpnIy.s:413    .text.default_init_reverb:0000000000000000 $t
+     /tmp/cclhpnIy.s:420    .text.default_init_reverb:0000000000000000 default_init_reverb
+     /tmp/cclhpnIy.s:463    .text.default_init_reverb:0000000000000020 $d
+     /tmp/cclhpnIy.s:468    .text.step_octave:0000000000000000 $t
+     /tmp/cclhpnIy.s:475    .text.step_octave:0000000000000000 step_octave
+     /tmp/cclhpnIy.s:584    .text.step_octave:0000000000000078 $d
+     /tmp/cclhpnIy.s:589    .text.default_init_octave:0000000000000000 $t
+     /tmp/cclhpnIy.s:596    .text.default_init_octave:0000000000000000 default_init_octave
+     /tmp/cclhpnIy.s:642    .text.default_init_octave:0000000000000024 $d
+     /tmp/cclhpnIy.s:647    .text.step_chorus:0000000000000000 $t
+     /tmp/cclhpnIy.s:654    .text.step_chorus:0000000000000000 step_chorus
+     /tmp/cclhpnIy.s:855    .text.step_chorus:0000000000000140 $d
+     /tmp/cclhpnIy.s:862    .text.default_init_chorus:0000000000000000 $t
+     /tmp/cclhpnIy.s:869    .text.default_init_chorus:0000000000000000 default_init_chorus
+     /tmp/cclhpnIy.s:932    .text.default_init_chorus:0000000000000030 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2d

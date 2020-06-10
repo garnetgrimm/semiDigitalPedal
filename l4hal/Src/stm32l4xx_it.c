@@ -56,14 +56,14 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern ADC_HandleTypeDef hadc1;
+extern DMA_HandleTypeDef hdma_adc1;
 extern TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M4 Processor Interruption and Exception Handlers          */
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -199,19 +199,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles ADC1 global interrupt.
-  */
-void ADC1_IRQHandler(void)
-{
-  /* USER CODE BEGIN ADC1_IRQn 0 */
-
-  /* USER CODE END ADC1_IRQn 0 */
-  HAL_ADC_IRQHandler(&hadc1);
-  /* USER CODE BEGIN ADC1_IRQn 1 */
-  /* USER CODE END ADC1_IRQn 1 */
-}
-
-/**
   * @brief This function handles TIM2 global interrupt.
   */
 void TIM2_IRQHandler(void)
@@ -225,20 +212,21 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 1 */
 }
 
+/**
+  * @brief This function handles DMA2 channel3 global interrupt.
+  */
+void DMA2_Channel3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Channel3_IRQn 0 */
+
+  /* USER CODE END DMA2_Channel3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_adc1);
+  /* USER CODE BEGIN DMA2_Channel3_IRQn 1 */
+
+  /* USER CODE END DMA2_Channel3_IRQn 1 */
+}
+
 /* USER CODE BEGIN 1 */
 //uint32_t trig = 0;
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-  value_adc = HAL_ADC_GetValue(&hadc1);
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  GPIOB -> ODR ^= GPIO_PIN_0;
-  value_dac = value_adc;
-  //step_octave(&o, &value_dac);
-  //step_fuzz(&f, &value_dac);
-  step_chorus(&c, &value_dac);
-  step_reverb(&r, &value_dac);
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, value_dac);
-}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
